@@ -1,5 +1,5 @@
 ## 画面遷移図
-Figma：https://www.figma.com/board/cvXVUjUc4lzWIKlDJgZYmE/FigJam%E3%81%B8%E3%82%88%E3%81%86%E3%81%93%E3%81%9D?node-id=0-1&t=5h1V1wGw1yh1zHYf-1
+Figma：https://www.figma.com/board/cvXVUjUc4lzWIKlDJgZYmE/FigJam%E3%81%B8%E3%82%88%E3%81%86%E3%81%93%E3%81%9D?node-id=0-1&t=zxzP5Io6tg0HVZu2-1
 
 ## サービス概要
 プロ野球観戦の結果を記録するサービス（仮称：Blog-Baseball Log）
