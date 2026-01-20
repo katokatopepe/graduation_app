@@ -1,5 +1,5 @@
 ## ER図
-https://i.gyazo.com/2b4f59a877e8c3812a120bf76445323b.png
+https://i.gyazo.com/15073f80173c2a85bf0226777ac399d8.png
 
 ## 画面遷移図
 Figma：https://www.figma.com/board/cvXVUjUc4lzWIKlDJgZYmE/FigJam%E3%81%B8%E3%82%88%E3%81%86%E3%81%93%E3%81%9D?node-id=0-1&t=zxzP5Io6tg0HVZu2-1
