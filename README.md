@@ -1,3 +1,6 @@
+## issue
+https://github.com/users/katokatopepe/projects/2/views/1?reload=1
+
 ## ER図
 https://i.gyazo.com/15073f80173c2a85bf0226777ac399d8.png
 
