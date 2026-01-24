@@ -1,0 +1,19 @@
+current directory: /app/src/vendor/bundle/ruby/3.3.0/gems/erb-6.0.1/ext/erb/escape
+/usr/local/bin/ruby extconf.rb
+checking for rb_ext_ractor_safe() in ruby.h... yes
+creating Makefile
+
+current directory: /app/src/vendor/bundle/ruby/3.3.0/gems/erb-6.0.1/ext/erb/escape
+make DESTDIR\= sitearchdir\=./.gem.20260124-1-hejpik sitelibdir\=./.gem.20260124-1-hejpik clean
+
+current directory: /app/src/vendor/bundle/ruby/3.3.0/gems/erb-6.0.1/ext/erb/escape
+make DESTDIR\= sitearchdir\=./.gem.20260124-1-hejpik sitelibdir\=./.gem.20260124-1-hejpik
+compiling escape.c
+linking shared-object erb/escape.so
+
+current directory: /app/src/vendor/bundle/ruby/3.3.0/gems/erb-6.0.1/ext/erb/escape
+make DESTDIR\= sitearchdir\=./.gem.20260124-1-hejpik sitelibdir\=./.gem.20260124-1-hejpik install
+/usr/bin/install -c -m 0755 escape.so ./.gem.20260124-1-hejpik/erb
+
+current directory: /app/src/vendor/bundle/ruby/3.3.0/gems/erb-6.0.1/ext/erb/escape
+make DESTDIR\= sitearchdir\=./.gem.20260124-1-hejpik sitelibdir\=./.gem.20260124-1-hejpik clean
