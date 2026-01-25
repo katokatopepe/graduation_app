@@ -1,2 +1,4 @@
 src/config/master.key
 src_broken_backup_*/
+.env
+src/tmp/pids/server.pid
