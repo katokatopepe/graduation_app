@@ -101,3 +101,102 @@ FOREIGN KEY ("favorite_team_id")
   [1m[35mSQL (0.5ms)[0m  [1m[35mSET search_path TO public /*application='Src'*/[0m
   [1m[35mSQL (0.1ms)[0m  [1m[35mSET search_path TO "$user", public /*application='Src'*/[0m
   [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Src'*/[0m
+Started GET "/" for 172.28.0.1 at 2026-01-25 15:00:50 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Src'*/[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering vendor/bundle/ruby/3.3.0/gems/railties-8.1.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered vendor/bundle/ruby/3.3.0/gems/railties-8.1.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.1ms | GC: 0.0ms)
+Completed 200 OK in 36ms (Views: 15.0ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Src'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[35mSET search_path TO public /*application='Src'*/[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[35mSET search_path TO "$user", public /*application='Src'*/[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mSET search_path TO public /*application='Src'*/[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[35mSET search_path TO "$user", public /*application='Src'*/[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7805954144794715910) /*application='Src'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Src'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Src'*/[0m
+Migrating to AddShortNameToTeams (20260125150213)
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN /*application='Src'*/[0m
+  [1m[35m (12.2ms)[0m  [1m[35mALTER TABLE "teams" ADD "short_name" character varying /*application='Src'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260125150213') RETURNING "version" /*application='Src'*/[0m
+  [1m[36mTRANSACTION (9.1ms)[0m  [1m[35mCOMMIT /*application='Src'*/[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(7805954144794715910) /*application='Src'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Src'*/[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mSET search_path TO public /*application='Src'*/[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[35mSET search_path TO "$user", public /*application='Src'*/[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[35mSET search_path TO public /*application='Src'*/[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mSET search_path TO "$user", public /*application='Src'*/[0m
+  [1m[36mTeam Count (40.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "teams" /*application='Src'*/[0m
+  [1m[36mTeam Pluck (0.5ms)[0m  [1m[34mSELECT "teams"."id", "teams"."name", "teams"."short_name" FROM "teams" /*application='Src'*/[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7805954144794715910) /*application='Src'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Src'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Src'*/[0m
+Migrating to AddConstraintsToTeams (20260125150258)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='Src'*/[0m
+  [1m[35m (6.6ms)[0m  [1m[35mALTER TABLE "teams" ALTER COLUMN "name" SET NOT NULL /*application='Src'*/[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "teams" ALTER COLUMN "short_name" SET NOT NULL /*application='Src'*/[0m
+  [1m[35m (7.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_teams_on_name" ON "teams" ("name") /*application='Src'*/[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_teams_on_short_name" ON "teams" ("short_name") /*application='Src'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260125150258') RETURNING "version" /*application='Src'*/[0m
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT /*application='Src'*/[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT pg_advisory_unlock(7805954144794715910) /*application='Src'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Src'*/[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[35mSET search_path TO public /*application='Src'*/[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mSET search_path TO "$user", public /*application='Src'*/[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mSET search_path TO public /*application='Src'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[35mSET search_path TO "$user", public /*application='Src'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Src'*/[0m
+  [1m[36mTeam Load (0.8ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = '読売ジャイアンツ' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='Src'*/[0m
+  [1m[36mTeam Create (3.1ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at", "short_name") VALUES ('読売ジャイアンツ', '2026-01-25 15:05:35.980026', '2026-01-25 15:05:35.980026', '巨人') RETURNING "id" /*application='Src'*/[0m
+  [1m[36mTRANSACTION (2.6ms)[0m  [1m[35mCOMMIT /*application='Src'*/[0m
+  [1m[36mTeam Load (5.7ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = '阪神タイガース' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='Src'*/[0m
+  [1m[36mTeam Create (8.2ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at", "short_name") VALUES ('阪神タイガース', '2026-01-25 15:05:36.011076', '2026-01-25 15:05:36.011076', '阪神') RETURNING "id" /*application='Src'*/[0m
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT /*application='Src'*/[0m
+  [1m[36mTeam Load (0.6ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = '横浜DeNAベイスターズ' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='Src'*/[0m
+  [1m[36mTeam Create (1.7ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at", "short_name") VALUES ('横浜DeNAベイスターズ', '2026-01-25 15:05:36.031991', '2026-01-25 15:05:36.031991', 'DeNA') RETURNING "id" /*application='Src'*/[0m
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT /*application='Src'*/[0m
+  [1m[36mTeam Load (1.0ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = '広島東洋カープ' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='Src'*/[0m
+  [1m[36mTeam Create (2.7ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at", "short_name") VALUES ('広島東洋カープ', '2026-01-25 15:05:36.040791', '2026-01-25 15:05:36.040791', '広島') RETURNING "id" /*application='Src'*/[0m
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT /*application='Src'*/[0m
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = '東京ヤクルトスワローズ' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='Src'*/[0m
+  [1m[36mTeam Create (1.6ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at", "short_name") VALUES ('東京ヤクルトスワローズ', '2026-01-25 15:05:36.049761', '2026-01-25 15:05:36.049761', 'ヤクルト') RETURNING "id" /*application='Src'*/[0m
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[35mCOMMIT /*application='Src'*/[0m
+  [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = '中日ドラゴンズ' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='Src'*/[0m
+  [1m[36mTeam Create (1.7ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at", "short_name") VALUES ('中日ドラゴンズ', '2026-01-25 15:05:36.058312', '2026-01-25 15:05:36.058312', '中日') RETURNING "id" /*application='Src'*/[0m
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT /*application='Src'*/[0m
+  [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = '福岡ソフトバンクホークス' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='Src'*/[0m
+  [1m[36mTeam Create (1.8ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at", "short_name") VALUES ('福岡ソフトバンクホークス', '2026-01-25 15:05:36.065166', '2026-01-25 15:05:36.065166', 'ソフトバンク') RETURNING "id" /*application='Src'*/[0m
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[35mCOMMIT /*application='Src'*/[0m
+  [1m[36mTeam Load (0.6ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = '千葉ロッテマリーンズ' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='Src'*/[0m
+  [1m[36mTeam Create (2.2ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at", "short_name") VALUES ('千葉ロッテマリーンズ', '2026-01-25 15:05:36.074689', '2026-01-25 15:05:36.074689', 'ロッテ') RETURNING "id" /*application='Src'*/[0m
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT /*application='Src'*/[0m
+  [1m[36mTeam Load (0.6ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = '埼玉西武ライオンズ' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='Src'*/[0m
+  [1m[36mTeam Create (2.4ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at", "short_name") VALUES ('埼玉西武ライオンズ', '2026-01-25 15:05:36.083359', '2026-01-25 15:05:36.083359', '西武') RETURNING "id" /*application='Src'*/[0m
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT /*application='Src'*/[0m
+  [1m[36mTeam Load (0.6ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = '東北楽天ゴールデンイーグルス' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='Src'*/[0m
+  [1m[36mTeam Create (2.0ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at", "short_name") VALUES ('東北楽天ゴールデンイーグルス', '2026-01-25 15:05:36.092565', '2026-01-25 15:05:36.092565', '楽天') RETURNING "id" /*application='Src'*/[0m
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT /*application='Src'*/[0m
+  [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = '北海道日本ハムファイターズ' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='Src'*/[0m
+  [1m[36mTeam Create (2.6ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at", "short_name") VALUES ('北海道日本ハムファイターズ', '2026-01-25 15:05:36.100317', '2026-01-25 15:05:36.100317', '日本ハム') RETURNING "id" /*application='Src'*/[0m
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT /*application='Src'*/[0m
+  [1m[36mTeam Load (0.6ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = 'オリックス・バファローズ' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='Src'*/[0m
+  [1m[36mTeam Create (2.2ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at", "short_name") VALUES ('オリックス・バファローズ', '2026-01-25 15:05:36.110245', '2026-01-25 15:05:36.110245', 'オリックス') RETURNING "id" /*application='Src'*/[0m
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT /*application='Src'*/[0m
+  [1m[36mTeam Count (37.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "teams" /*application='Src'*/[0m
+  [1m[36mTeam Pluck (0.8ms)[0m  [1m[34mSELECT "teams"."name", "teams"."short_name" FROM "teams" /*application='Src'*/[0m
+  [1m[36mTeam Load (1.5ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = '中日ドラゴンズ' LIMIT 1 /*application='Src'*/[0m
