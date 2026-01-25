@@ -12,6 +12,8 @@ services:
       DATABASE_HOST: db
       DATABASE_USERNAME: postgres
       DATABASE_PASSWORD: password
+      BUNDLE_PATH: /app/src/vendor/bundle
+      BUNDLE_APP_CONFIG: /app/src/.bundle
     command: bash -lc "cd /app/src && bundle install && bin/rails s -b 0.0.0.0 -p 3000"
 
   db:
