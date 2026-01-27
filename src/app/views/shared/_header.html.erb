@@ -1,0 +1,26 @@
+<header class="app-header">
+  <nav class="app-nav">
+    <div class="app-nav-left">
+
+      <span class="app-logo">LOGO</span>
+
+      <% if logged_in? %>
+
+        <%= link_to "ホーム", dashboard_path %>
+
+        <%= link_to "試合登録", "#" %>
+
+        <%= link_to "マイページ", "#" %>
+      <% end %>
+    </div>
+
+    <div class="app-nav-right">
+      <% if logged_in? %>
+        <%= link_to "ログアウト", logout_path, data: { turbo_method: :delete } %>
+        <span class="app-username"><%= current_user.name %></span>
+      <% else %>
+        <%= link_to "ログイン", login_path %>
+      <% end %>
+    </div>
+  </nav>
+</header>

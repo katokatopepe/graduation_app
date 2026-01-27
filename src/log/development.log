@@ -200,3 +200,42 @@ Migrating to AddConstraintsToTeams (20260125150258)
   [1m[36mTeam Count (37.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "teams" /*application='Src'*/[0m
   [1m[36mTeam Pluck (0.8ms)[0m  [1m[34mSELECT "teams"."name", "teams"."short_name" FROM "teams" /*application='Src'*/[0m
   [1m[36mTeam Load (1.5ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = '中日ドラゴンズ' LIMIT 1 /*application='Src'*/[0m
+Started GET "/" for 172.28.0.1 at 2026-01-27 02:12:12 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[36mActiveRecord::SchemaMigration Load (4.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Src'*/[0m
+Processing by UserSessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering user_sessions/new.html.erb within layouts/application
+  Rendered user_sessions/new.html.erb within layouts/application (Duration: 7.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 15.2ms | GC: 0.0ms)
+Completed 200 OK in 56ms (Views: 21.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 172.28.0.1 at 2026-01-27 02:19:36 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by UserSessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering user_sessions/new.html.erb within layouts/application
+  Rendered user_sessions/new.html.erb within layouts/application (Duration: 57.1ms | GC: 23.8ms)
+  Rendered layout layouts/application.html.erb (Duration: 58.0ms | GC: 23.8ms)
+Completed 200 OK in 59ms (Views: 58.7ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 23.8ms)
+
+
+Started GET "/" for 172.28.0.1 at 2026-01-27 16:44:32 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by UserSessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering user_sessions/new.html.erb within layouts/application
+  Rendered user_sessions/new.html.erb within layouts/application (Duration: 15.7ms | GC: 0.0ms)
+  Rendered shared/_header.html.erb (Duration: 11.8ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 2.1ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 39.9ms | GC: 0.0ms)
+Completed 200 OK in 51ms (Views: 45.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/favicon.ico" for 172.28.0.1 at 2026-01-27 16:44:32 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
