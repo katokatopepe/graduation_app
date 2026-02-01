@@ -1,15 +1,789 @@
-<h1>ログイン</h1>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>Baseball Log - あなただけのプロ野球観戦記録</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
 
-<%= form_with url: user_session_path, method: :post do %>
-  <div>
-    <%= label_tag :email, "Email" %>
-    <%= email_field_tag :email %>
+  <%= csrf_meta_tags %>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.6;
+      overflow: hidden;
+      background: #1a1a1a;
+      height: 100vh;
+    }
+
+    /* 夜のスタジアム背景写真 */
+    .login-container.pro-theme {
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pro-theme .stadium-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      opacity: 0;
+      animation: backgroundFadeIn 4s ease-out 0s forwards, breathe 8s ease-in-out 4s infinite;
+    }
+
+    @keyframes backgroundFadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes breathe {
+      0%, 100% { filter: brightness(1) contrast(0.85); }
+      50% { filter: brightness(1.005) contrast(0.855); }
+    }
+
+    /* スタジアム写真の模擬 */
+    .pro-theme .stadium-photo {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(ellipse at 50% 60%, rgba(50, 205, 50, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 30% 30%, rgba(255, 200, 100, 0.08) 0%, transparent 25%),
+        radial-gradient(circle at 70% 35%, rgba(255, 200, 100, 0.08) 0%, transparent 25%),
+        radial-gradient(circle at 50% 80%, rgba(100, 150, 255, 0.06) 0%, transparent 30%),
+        linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%);
+      filter: blur(80px);
+    }
+
+    /* フィルムグレイン */
+    .pro-theme .film-grain {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        repeating-linear-gradient(0deg, transparent 0px, rgba(255, 255, 255, 0.03) 1px, transparent 2px),
+        repeating-linear-gradient(90deg, transparent 0px, rgba(255, 255, 255, 0.03) 1px, transparent 2px);
+      background-size: 4px 4px;
+      opacity: 0.15;
+      pointer-events: none;
+      animation: grainShift 0.5s steps(4) infinite;
+    }
+
+    @keyframes grainShift {
+      0%, 100% { transform: translate(0, 0); }
+      25% { transform: translate(1px, -1px); }
+      50% { transform: translate(-1px, 1px); }
+      75% { transform: translate(1px, 1px); }
+    }
+
+    /* 遠くのスコアボード光 */
+    .pro-theme .scoreboard-lights {
+      position: absolute;
+      top: 15%;
+      left: 0;
+      width: 100%;
+      height: 20%;
+      background: 
+        radial-gradient(circle at 25% 50%, rgba(255, 100, 50, 0.12) 0%, transparent 15%),
+        radial-gradient(circle at 50% 50%, rgba(255, 200, 50, 0.10) 0%, transparent 12%),
+        radial-gradient(circle at 75% 50%, rgba(100, 200, 255, 0.08) 0%, transparent 15%);
+      filter: blur(30px);
+      animation: scoreboardPulse 6s ease-in-out infinite;
+    }
+
+    @keyframes scoreboardPulse {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 0.75; }
+    }
+
+    /* メインコンテンツ */
+    .pro-theme .main-content {
+      position: relative;
+      z-index: 2;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 3rem 6rem 3rem;
+    }
+
+    /* 2カラムコンテナ */
+    .pro-theme .two-column-container {
+      max-width: 1400px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    /* 左側：サービス概要 */
+    .pro-theme .service-overview {
+      padding: 2rem;
+      opacity: 0;
+      transform: translateX(-30px);
+      animation: slideInLeft 0.8s ease-out 0.3s forwards;
+    }
+
+    @keyframes slideInLeft {
+      0% { opacity: 0; transform: translateX(-30px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+
+    .pro-theme .overview-header { margin-bottom: 2.5rem; }
+
+    .pro-theme .overview-title {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 3.2rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 1.2rem;
+      letter-spacing: 3px;
+      line-height: 1.2;
+      text-shadow: 0 0 10px rgba(50, 205, 50, 0.3), 0 2px 6px rgba(0, 0, 0, 0.8);
+    }
+
+    .pro-theme .overview-subtitle {
+      font-size: 1.2rem;
+      color: #f0f0f5;
+      font-weight: 300;
+      line-height: 1.8;
+      letter-spacing: 0.5px;
+      opacity: 0.9;
+    }
+
+    /* 統計バッジ */
+    .pro-theme .stats-section {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .pro-theme .stat-card {
+      background: rgba(30, 30, 30, 0.7);
+      backdrop-filter: blur(10px);
+      padding: 1.5rem 1.2rem;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      text-align: center;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pro-theme .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #32CD32, transparent);
+    }
+
+    .pro-theme .stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 30px rgba(50, 205, 50, 0.2);
+      border-color: rgba(50, 205, 50, 0.3);
+    }
+
+    .pro-theme .stat-value {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #32CD32;
+      font-family: 'Courier New', monospace;
+      text-shadow: 0 0 15px rgba(50, 205, 50, 0.5);
+      margin-bottom: 0.3rem;
+    }
+
+    .pro-theme .stat-label {
+      font-size: 0.8rem;
+      color: #b0b0b0;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      font-weight: 600;
+    }
+
+    /* 機能リスト */
+    .pro-theme .features-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .pro-theme .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+      padding: 1.2rem;
+      background: rgba(30, 30, 30, 0.5);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .pro-theme .feature-item:hover {
+      background: rgba(35, 35, 35, 0.7);
+      border-color: rgba(50, 205, 50, 0.2);
+      transform: translateX(10px);
+    }
+
+    .pro-theme .feature-icon {
+      width: 45px;
+      height: 45px;
+      background: rgba(50, 205, 50, 0.15);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      flex-shrink: 0;
+      border: 1px solid rgba(50, 205, 50, 0.2);
+    }
+
+    .pro-theme .feature-content h3 {
+      font-size: 1.1rem;
+      color: #ffffff;
+      margin-bottom: 0.3rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .pro-theme .feature-content p {
+      font-size: 0.95rem;
+      color: #b0b0b0;
+      line-height: 1.6;
+    }
+
+    /* 右側：ログインカード */
+    .pro-theme .login-card-wrapper { position: relative; }
+
+    /* スコアボード風ライン（上） */
+    .pro-theme .scoreboard-line-top {
+      position: absolute;
+      top: -25px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background:
+        repeating-linear-gradient(90deg,
+          rgba(255, 255, 255, 0.3) 0px,
+          rgba(255, 255, 255, 0.3) 10px,
+          transparent 10px,
+          transparent 25px
+        );
+      animation: lineDrawIn 2.5s ease-out 0.5s backwards;
+    }
+
+    @keyframes lineDrawIn {
+      0% { clip-path: inset(0 100% 0 0); opacity: 0; }
+      100% { clip-path: inset(0 0 0 0); opacity: 1; }
+    }
+
+    /* スコアボード風ライン（下） */
+    .pro-theme .scoreboard-line-bottom {
+      position: absolute;
+      bottom: -25px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background:
+        repeating-linear-gradient(90deg,
+          rgba(255, 255, 255, 0.3) 0px,
+          rgba(255, 255, 255, 0.3) 10px,
+          transparent 10px,
+          transparent 25px
+        );
+      animation: lineDrawIn 2.5s ease-out 0.7s backwards;
+    }
+
+    /* メインカード */
+    .pro-theme .login-card {
+      background: linear-gradient(180deg, rgba(30, 30, 30, 0.75) 0%, rgba(20, 20, 20, 0.8) 100%);
+      backdrop-filter: blur(30px) saturate(120%);
+      border-radius: 16px;
+      padding: 2.8rem 2.5rem;
+      box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.6),
+        0 0 1px rgba(255, 255, 255, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.5);
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      opacity: 0;
+      transform: translateX(30px);
+      animation: slideInRight 0.8s ease-out 0.5s forwards;
+    }
+
+    @keyframes slideInRight {
+      0% { opacity: 0; transform: translateX(30px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+
+    .pro-theme .login-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(50, 205, 50, 0.4) 50%, transparent 100%);
+      filter: blur(3px);
+    }
+
+    /* 装飾バッジ */
+    .pro-theme .badge {
+      position: absolute;
+      width: 55px;
+      height: 55px;
+      background: rgba(30, 30, 30, 0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      border: 2px solid rgba(255, 255, 255, 0.15);
+      box-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      transition: all 0.4s ease;
+      animation: badgePulse 4s ease-in-out infinite;
+      cursor: default;
+    }
+
+    @keyframes badgePulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+    }
+
+    .pro-theme .badge:hover {
+      transform: rotate(10deg) scale(1.1);
+      box-shadow:
+        0 6px 30px rgba(50, 205, 50, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      border-color: rgba(50, 205, 50, 0.5);
+    }
+
+    .pro-theme .badge-top-right { top: -22px; right: -22px; }
+    .pro-theme .badge-bottom-left { bottom: -22px; left: -22px; }
+
+    /* 見出し */
+    .pro-theme .form-header { text-align: center; margin-bottom: 2.5rem; }
+
+    .pro-theme .form-title {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.8rem;
+      letter-spacing: 3px;
+      text-shadow: 0 0 8px rgba(50, 205, 50, 0.25), 0 2px 4px rgba(0, 0, 0, 0.8);
+      line-height: 1.3;
+    }
+
+    .pro-theme .form-subtitle {
+      font-size: 0.95rem;
+      color: #f0f0f5;
+      font-weight: 300;
+      line-height: 1.7;
+      letter-spacing: 0.5px;
+      opacity: 0.85;
+    }
+
+    /* フォーム */
+    .pro-theme .login-form { margin-top: 2rem; }
+
+    .pro-theme .form-group { margin-bottom: 1.8rem; position: relative; }
+
+    .pro-theme .form-label {
+      display: block;
+      margin-bottom: 0.7rem;
+      font-weight: 600;
+      color: #e0e0e0;
+      font-size: 0.85rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .pro-theme .form-input {
+      width: 100%;
+      padding: 1.1rem 1.3rem;
+      border: 2px solid #555;
+      border-radius: 10px;
+      font-size: 1rem;
+      background: rgba(20, 20, 20, 0.8);
+      color: #ffffff;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      outline: none;
+    }
+
+    .pro-theme .form-input::placeholder { color: #777; }
+
+    .pro-theme .form-input:focus {
+      border-color: #32CD32;
+      background: rgba(25, 25, 25, 0.95);
+      box-shadow:
+        0 0 0 4px rgba(50, 205, 50, 0.15),
+        0 0 12px rgba(50, 205, 50, 0.4);
+    }
+
+    /* ボタン */
+    .pro-theme .btn {
+      width: 100%;
+      padding: 1.2rem;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .pro-theme .btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.4s, height 0.4s;
+    }
+
+    .pro-theme .btn:active::before { width: 300px; height: 300px; }
+
+    .pro-theme .btn-primary {
+      background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+      color: #32CD32;
+      box-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(50, 205, 50, 0.3);
+    }
+
+    .pro-theme .btn-primary:hover {
+      transform: scale(1.05);
+      box-shadow:
+        0 6px 30px rgba(50, 205, 50, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+      border-color: #32CD32;
+    }
+
+    .pro-theme .btn-secondary {
+      background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+      color: #32CD32;
+      margin-top: 1rem;
+      box-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(50, 205, 50, 0.3);
+      text-transform: none;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+    }
+
+    .pro-theme .btn-secondary:hover {
+      transform: scale(1.05);
+      box-shadow:
+        0 6px 30px rgba(50, 205, 50, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+      border-color: #32CD32;
+    }
+
+    .pro-theme .form-links { text-align: center; margin-top: 1.5rem; }
+
+    .pro-theme .link-secondary {
+      color: #FF4500;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      transition: all 0.3s;
+      border-bottom: 1px solid transparent;
+    }
+
+    .pro-theme .link-secondary:hover {
+      text-shadow: 0 0 10px rgba(255, 69, 0, 0.6);
+      border-bottom-color: #FF4500;
+    }
+
+    .pro-theme .signup-section {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .pro-theme .alert-danger {
+      background: rgba(255, 69, 0, 0.15);
+      color: #ff6347;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(255, 69, 0, 0.3);
+      font-weight: 600;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(255, 69, 0, 0.2);
+    }
+
+    /* フッター */
+    .pro-theme .login-footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(15, 15, 15, 0.5);
+      backdrop-filter: blur(10px);
+      padding: 1.2rem;
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      z-index: 10;
+    }
+
+    .pro-theme .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .pro-theme .footer-link {
+      color: #999;
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: all 0.3s;
+      border-bottom: 1px solid transparent;
+    }
+
+    .pro-theme .footer-link:hover {
+      color: #32CD32;
+      border-bottom-color: #32CD32;
+    }
+
+    .pro-theme .footer-copyright {
+      color: #666;
+      font-size: 0.65rem;
+      letter-spacing: 0.5px;
+    }
+
+    /* アクセシビリティ */
+    @media (prefers-reduced-motion: reduce) {
+      .pro-theme .stadium-background,
+      .pro-theme .film-grain,
+      .pro-theme .scoreboard-lights,
+      .pro-theme .badge,
+      .pro-theme .service-overview,
+      .pro-theme .login-card,
+      .pro-theme .scoreboard-line-top,
+      .pro-theme .scoreboard-line-bottom {
+        animation: none;
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    /* レスポンシブ */
+    @media (max-width: 1200px) {
+      .pro-theme .two-column-container { gap: 3rem; }
+      .pro-theme .overview-title { font-size: 2.8rem; }
+    }
+
+    @media (max-width: 1024px) {
+      body {
+        overflow-y: auto;
+        height: auto;
+      }
+
+      .pro-theme .login-container { height: auto; }
+
+      .pro-theme .main-content {
+        height: auto;
+        padding: 3rem 2rem 8rem 2rem;
+      }
+
+      .pro-theme .two-column-container {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+        max-width: 600px;
+      }
+
+      .pro-theme .overview-title {
+        font-size: 2.5rem;
+      }
+
+      .pro-theme .login-footer { position: relative; }
+    }
+
+    @media (max-width: 768px) {
+      .pro-theme .service-overview,
+      .pro-theme .login-card { padding: 2rem 1.5rem; }
+
+      .pro-theme .overview-title { font-size: 2.2rem; letter-spacing: 2px; }
+      .pro-theme .form-title { font-size: 1.9rem; }
+
+      .pro-theme .stats-section { grid-template-columns: 1fr; gap: 1rem; }
+
+      .pro-theme .badge { width: 50px; height: 50px; font-size: 1.5rem; }
+
+      .pro-theme .footer-links { flex-direction: column; gap: 0.8rem; }
+    }
+
+    .pro-theme .btn.link-disabled:hover {
+     transform: none;
+     box-shadow: inherit;
+    }
+  </style>
+</head>
+<body>
+
+<div class="login-container pro-theme">
+  <!-- 背景スタジアム -->
+  <div class="stadium-background">
+    <div class="stadium-photo"></div>
+    <div class="film-grain"></div>
+    <div class="scoreboard-lights"></div>
   </div>
 
-  <div>
-    <%= label_tag :password, "Password" %>
-    <%= password_field_tag :password %>
+  <!-- メインコンテンツ -->
+  <div class="main-content">
+    <div class="two-column-container">
+      <!-- 左側：サービス概要 -->
+      <div class="service-overview">
+        <div class="overview-header">
+          <h1 class="overview-title">Baseball Log</h1>
+          <p class="overview-subtitle">
+            あの日の歓声を再び。<br>
+            球場で感じた全てを、ここに記録。
+          </p>
+        </div>
+
+        <!-- 統計バッジ -->
+        <div class="stats-section">
+          <div class="stat-card">
+            <div class="stat-value">∞</div>
+            <div class="stat-label">試合記録</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">12+α</div>
+            <div class="stat-label">全球場</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">24h</div>
+            <div class="stat-label">Always On</div>
+          </div>
+        </div>
+
+        <!-- 機能リスト -->
+        <div class="features-list">
+          <div class="feature-item">
+            <div class="feature-icon">📊</div>
+            <div class="feature-content">
+              <h3>詳細な戦績記録</h3>
+              <p>推しチームの全試合を記録。スコア、選手、印象的なプレーまで</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">📸</div>
+            <div class="feature-content">
+              <h3>思い出の保存</h3>
+              <p>球場で撮った写真や動画を、試合記録と一緒に保管</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">🏟️</div>
+            <div class="feature-content">
+              <h3>球場マップ</h3>
+              <p>訪れた全ての球場を記録。あなただけの観戦マップ</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 右側：ログインカード -->
+      <div class="login-card-wrapper">
+        <div class="scoreboard-line-top"></div>
+
+        <div class="login-card">
+          <div class="badge badge-top-right">⚾</div>
+          <div class="badge badge-bottom-left">🎫</div>
+
+          <div class="form-header">
+            <h2 class="form-title">Welcome Back</h2>
+            <p class="form-subtitle">あなたの観戦記録へようこそ</p>
+          </div>
+
+          <% if flash[:alert] %>
+            <div class="alert-danger">
+              <%= flash[:alert] %>
+            </div>
+          <% end %>
+
+          <%= form_with url: user_session_path, method: :post, local: true, class: "login-form" do |f| %>
+            <div class="form-group">
+              <%= f.label :email, "Email Address", class: "form-label" %>
+              <%= f.email_field :email, class: "form-input", placeholder: "your@email.com", required: true %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :password, "Password", class: "form-label" %>
+              <%= f.password_field :password, class: "form-input", placeholder: "••••••••", required: true %>
+            </div>
+
+            <%= f.submit "ログイン", class: "btn btn-primary" %>
+          <% end %>
+
+          <div class="form-links">
+            <span class="link-secondary link-disabled" aria-disabled="true">
+              パスワードをお忘れですか？
+            </span>
+          </div>
+
+          <div class="signup-section">
+            <span class="btn btn-secondary link-disabled" aria-disabled="true">
+              新規会員登録はこちら
+            </span>
+          </div>
+        </div>
+
+        <div class="scoreboard-line-bottom"></div>
+      </div>
+    </div>
   </div>
 
-  <%= submit_tag "ログイン" %>
-<% end %>
+  <footer class="login-footer">
+    <div class="footer-links">
+      <span class="footer-link link-disabled" aria-disabled="true">Terms</span>
+      <span class="footer-link link-disabled" aria-disabled="true">Privacy</span>
+      <span class="footer-link link-disabled" aria-disabled="true">Contact</span>
+    </div>
+    <p class="footer-copyright">© 2026 Baseball Log. All rights reserved.</p>
+  </footer>
+</div>
+
+</body>
+</html>

@@ -1,4 +1,6 @@
 class UserSessionsController < ApplicationController
+  layout false
+
   def new; end
 
   def create
@@ -14,5 +16,4 @@ class UserSessionsController < ApplicationController
     logout
     redirect_to root_path, notice: "ログアウトしました"
   end
-
 end
