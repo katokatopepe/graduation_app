@@ -936,3 +936,13 @@ Processing by UserSessionsController#new as HTML
 Completed 200 OK in 17ms (Views: 11.9ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
 
 
+  [1m[36mUser Count (47.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" /*application='Src'*/[0m
+  [1m[36mTeam Load (8.0ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = '中日ドラゴンズ' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTeam Load (1.2ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = '中日ドラゴンズ' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN /*application='Src'*/[0m
+  [1m[36mUser Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mUser Create (6.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "crypted_password", "salt", "created_at", "updated_at", "name", "favorite_team_id") VALUES ('test@example.com', '$2a$10$.6KGtKS3AHEwJj4srzWS2eYGBukUy31qWBzW3v4lWOg8sFq7fJip2', 'aMUpsSoYsGhwxKQV15wf', '2026-02-01 09:31:14.419955', '2026-02-01 09:31:14.419955', 'テスト', 6) RETURNING "id" /*application='Src'*/[0m
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[35mCOMMIT /*application='Src'*/[0m
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTeam Load (1.0ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*application='Src'*/[0m
