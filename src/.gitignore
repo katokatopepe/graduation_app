@@ -6,3 +6,7 @@
 /vendor/bundle
 .DS_Store
 *.swp
+
+# Ignore key files for decrypting credentials and more.
+/config/*.key
+
