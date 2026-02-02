@@ -764,11 +764,14 @@
           </div>
 
           <div class="signup-section">
-            <span class="btn btn-secondary link-disabled" aria-disabled="true">
-              新規会員登録はこちら
-            </span>
+            <% if logged_in? %>
+              <span class="btn btn-secondary link-disabled" aria-disabled="true">
+                すでにログインしています
+              </span>
+            <% else %>
+              <%= link_to "新規会員登録はこちら",new_user_path,class: "btn btn-secondary" %>
+            <% end %>
           </div>
-        </div>
 
         <div class="scoreboard-line-bottom"></div>
       </div>

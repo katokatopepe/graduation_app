@@ -1,5 +1,8 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
+  attr_accessor :password_confirmation
+  validates :password, confirmation: true
+
   belongs_to :favorite_team, class_name: "Team"
 
   validates :name, presence: true
