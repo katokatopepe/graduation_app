@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>新規会員登録 - Baseball Log</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.6;
+      overflow: hidden;
+      background: #1a1a1a;
+      height: 100vh;
+    }
+
+    /* 夜のスタジアム背景写真 */
+    .signup-container.pro-theme {
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pro-theme .stadium-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      opacity: 0;
+      animation: backgroundFadeIn 4s ease-out 0s forwards, breathe 8s ease-in-out 4s infinite;
+    }
+
+    @keyframes backgroundFadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes breathe {
+      0%, 100% { filter: brightness(1) contrast(0.85); }
+      50% { filter: brightness(1.005) contrast(0.855); }
+    }
+
+    /* スタジアム写真の模擬 */
+    .pro-theme .stadium-photo {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(ellipse at 50% 60%, rgba(50, 205, 50, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 30% 30%, rgba(255, 200, 100, 0.08) 0%, transparent 25%),
+        radial-gradient(circle at 70% 35%, rgba(255, 200, 100, 0.08) 0%, transparent 25%),
+        radial-gradient(circle at 50% 80%, rgba(100, 150, 255, 0.06) 0%, transparent 30%),
+        linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%);
+      filter: blur(80px);
+    }
+
+    /* フィルムグレイン */
+    .pro-theme .film-grain {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        repeating-linear-gradient(0deg, transparent 0px, rgba(255, 255, 255, 0.03) 1px, transparent 2px),
+        repeating-linear-gradient(90deg, transparent 0px, rgba(255, 255, 255, 0.03) 1px, transparent 2px);
+      background-size: 4px 4px;
+      opacity: 0.15;
+      pointer-events: none;
+      animation: grainShift 0.5s steps(4) infinite;
+    }
+
+    @keyframes grainShift {
+      0%, 100% { transform: translate(0, 0); }
+      25% { transform: translate(1px, -1px); }
+      50% { transform: translate(-1px, 1px); }
+      75% { transform: translate(1px, 1px); }
+    }
+
+    /* 遠くのスコアボード光 */
+    .pro-theme .scoreboard-lights {
+      position: absolute;
+      top: 15%;
+      left: 0;
+      width: 100%;
+      height: 20%;
+      background: 
+        radial-gradient(circle at 25% 50%, rgba(255, 100, 50, 0.12) 0%, transparent 15%),
+        radial-gradient(circle at 50% 50%, rgba(255, 200, 50, 0.10) 0%, transparent 12%),
+        radial-gradient(circle at 75% 50%, rgba(100, 200, 255, 0.08) 0%, transparent 15%);
+      filter: blur(30px);
+      animation: scoreboardPulse 6s ease-in-out infinite;
+    }
+
+    @keyframes scoreboardPulse {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 0.75; }
+    }
+
+    /* メインコンテンツ */
+    .pro-theme .main-content {
+      position: relative;
+      z-index: 2;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 3rem 6rem 3rem;
+    }
+
+    /* 登録カードラッパー */
+    .pro-theme .signup-card-wrapper {
+      position: relative;
+      max-width: 550px;
+      width: 100%;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.8s ease-out 0.5s forwards;
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* スコアボード風ライン（上） */
+    .pro-theme .scoreboard-line-top {
+      position: absolute;
+      top: -25px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: 
+        repeating-linear-gradient(90deg, 
+          rgba(255, 255, 255, 0.3) 0px, 
+          rgba(255, 255, 255, 0.3) 10px, 
+          transparent 10px, 
+          transparent 25px
+        );
+      animation: lineDrawIn 2.5s ease-out 0.5s backwards;
+    }
+
+    @keyframes lineDrawIn {
+      0% { 
+        clip-path: inset(0 100% 0 0);
+        opacity: 0;
+      }
+      100% { 
+        clip-path: inset(0 0 0 0);
+        opacity: 1;
+      }
+    }
+
+    /* スコアボード風ライン（下） */
+    .pro-theme .scoreboard-line-bottom {
+      position: absolute;
+      bottom: -25px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: 
+        repeating-linear-gradient(90deg, 
+          rgba(255, 255, 255, 0.3) 0px, 
+          rgba(255, 255, 255, 0.3) 10px, 
+          transparent 10px, 
+          transparent 25px
+        );
+      animation: lineDrawIn 2.5s ease-out 0.7s backwards;
+    }
+
+    /* メインカード */
+    .pro-theme .signup-card {
+      background: linear-gradient(180deg, rgba(30, 30, 30, 0.75) 0%, rgba(20, 20, 20, 0.8) 100%);
+      backdrop-filter: blur(30px) saturate(120%);
+      border-radius: 16px;
+      padding: 2.8rem 2.8rem;
+      box-shadow: 
+        0 30px 80px rgba(0, 0, 0, 0.6),
+        0 0 1px rgba(255, 255, 255, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.5);
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      max-height: calc(100vh - 12rem);
+      overflow-y: auto;
+    }
+
+    /* スクロールバーのスタイル */
+    .pro-theme .signup-card::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .pro-theme .signup-card::-webkit-scrollbar-track {
+      background: rgba(30, 30, 30, 0.5);
+      border-radius: 4px;
+    }
+
+    .pro-theme .signup-card::-webkit-scrollbar-thumb {
+      background: rgba(50, 205, 50, 0.3);
+      border-radius: 4px;
+    }
+
+    .pro-theme .signup-card::-webkit-scrollbar-thumb:hover {
+      background: rgba(50, 205, 50, 0.5);
+    }
+
+    /* カード上部グロー */
+    .pro-theme .signup-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+      height: 1px;
+      background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(50, 205, 50, 0.4) 50%, 
+        transparent 100%
+      );
+      filter: blur(3px);
+    }
+
+    /* 装飾バッジ */
+    .pro-theme .badge {
+      position: absolute;
+      width: 55px;
+      height: 55px;
+      background: rgba(30, 30, 30, 0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      border: 2px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 
+        0 4px 20px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      transition: all 0.4s ease;
+      animation: badgePulse 4s ease-in-out infinite;
+      cursor: default;
+    }
+
+    @keyframes badgePulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+    }
+
+    .pro-theme .badge:hover {
+      transform: rotate(10deg) scale(1.1);
+      box-shadow: 
+        0 6px 30px rgba(50, 205, 50, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      border-color: rgba(50, 205, 50, 0.5);
+    }
+
+    .pro-theme .badge-top-right {
+      top: -22px;
+      right: -22px;
+    }
+
+    .pro-theme .badge-bottom-left {
+      bottom: -22px;
+      left: -22px;
+    }
+
+    /* 見出し */
+    .pro-theme .form-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .pro-theme .form-title {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.8rem;
+      letter-spacing: 3px;
+      text-shadow: 
+        0 0 8px rgba(50, 205, 50, 0.25),
+        0 2px 4px rgba(0, 0, 0, 0.8);
+      line-height: 1.3;
+    }
+
+    .pro-theme .form-subtitle {
+      font-size: 1rem;
+      color: #f0f0f5;
+      font-weight: 300;
+      line-height: 1.7;
+      letter-spacing: 0.5px;
+      opacity: 0.85;
+    }
+
+    /* エラーメッセージ */
+    .pro-theme .error-messages {
+      background: rgba(255, 69, 0, 0.15);
+      border: 1px solid rgba(255, 69, 0, 0.3);
+      border-radius: 10px;
+      padding: 1.2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 0 10px rgba(255, 69, 0, 0.2);
+    }
+
+    .pro-theme .error-messages ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .pro-theme .error-messages li {
+      color: #ff6347;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 0.3rem 0;
+      letter-spacing: 0.3px;
+    }
+
+    .pro-theme .error-messages li::before {
+      content: "⚠ ";
+      margin-right: 0.5rem;
+    }
+
+    /* フォーム */
+    .pro-theme .signup-form {
+      margin-top: 1.5rem;
+    }
+
+    .pro-theme .form-group {
+      margin-bottom: 1.8rem;
+      position: relative;
+    }
+
+    .pro-theme .form-label {
+      display: block;
+      margin-bottom: 0.7rem;
+      font-weight: 600;
+      color: #e0e0e0;
+      font-size: 0.85rem;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+
+    .pro-theme .form-input,
+    .pro-theme .form-select {
+      width: 100%;
+      padding: 1.1rem 1.3rem;
+      border: 2px solid #555;
+      border-radius: 10px;
+      font-size: 1rem;
+      background: rgba(20, 20, 20, 0.8);
+      color: #ffffff;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      outline: none;
+    }
+
+    .pro-theme .form-input::placeholder {
+      color: #777;
+    }
+
+    .pro-theme .form-input:focus,
+    .pro-theme .form-select:focus {
+      border-color: #32CD32;
+      background: rgba(25, 25, 25, 0.95);
+      box-shadow: 
+        0 0 0 4px rgba(50, 205, 50, 0.15),
+        0 0 12px rgba(50, 205, 50, 0.4);
+    }
+
+    .pro-theme .form-select {
+      cursor: pointer;
+    }
+
+    .pro-theme .form-select option {
+      background: #1a1a1a;
+      color: #ffffff;
+      padding: 0.5rem;
+    }
+
+    /* ボタン */
+    .pro-theme .btn {
+      width: 100%;
+      padding: 1.3rem;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      margin-top: 0.5rem;
+    }
+
+    .pro-theme .btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.4s, height 0.4s;
+    }
+
+    .pro-theme .btn:active::before {
+      width: 300px;
+      height: 300px;
+    }
+
+    .pro-theme .btn-primary {
+      background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+      color: #32CD32;
+      box-shadow: 
+        0 4px 20px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(50, 205, 50, 0.3);
+    }
+
+    .pro-theme .btn-primary:hover {
+      transform: scale(1.05);
+      box-shadow: 
+        0 6px 30px rgba(50, 205, 50, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+      border-color: #32CD32;
+    }
+
+    .pro-theme .form-links {
+      text-align: center;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .pro-theme .link-secondary {
+      color: #FF4500;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      transition: all 0.3s;
+      border-bottom: 1px solid transparent;
+    }
+
+    .pro-theme .link-secondary:hover {
+      text-shadow: 0 0 10px rgba(255, 69, 0, 0.6);
+      border-bottom-color: #FF4500;
+    }
+
+    /* フッター */
+    .pro-theme .signup-footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(15, 15, 15, 0.5);
+      backdrop-filter: blur(10px);
+      padding: 1.2rem;
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      z-index: 10;
+    }
+
+    .pro-theme .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .pro-theme .footer-link {
+      color: #999;
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: all 0.3s;
+      border-bottom: 1px solid transparent;
+    }
+
+    .pro-theme .footer-link:hover {
+      color: #32CD32;
+      border-bottom-color: #32CD32;
+    }
+
+    .pro-theme .footer-copyright {
+      color: #666;
+      font-size: 0.65rem;
+      letter-spacing: 0.5px;
+    }
+
+    /* アクセシビリティ */
+    @media (prefers-reduced-motion: reduce) {
+      .pro-theme .stadium-background,
+      .pro-theme .film-grain,
+      .pro-theme .scoreboard-lights,
+      .pro-theme .badge,
+      .pro-theme .signup-card-wrapper,
+      .pro-theme .scoreboard-line-top,
+      .pro-theme .scoreboard-line-bottom {
+        animation: none;
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    /* レスポンシブ */
+    @media (max-width: 1024px) {
+      body {
+        overflow-y: auto;
+        height: auto;
+      }
+
+      .pro-theme .signup-container {
+        height: auto;
+      }
+
+      .pro-theme .main-content {
+        height: auto;
+        padding: 3rem 2rem 8rem 2rem;
+      }
+
+      .pro-theme .signup-card {
+        max-height: none;
+      }
+
+      .pro-theme .signup-footer {
+        position: relative;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .pro-theme .main-content {
+        padding: 2rem 1.5rem 6rem 1.5rem;
+      }
+
+      .pro-theme .signup-card {
+        padding: 2.5rem 2rem;
+      }
+
+      .pro-theme .form-title {
+        font-size: 2rem;
+      }
+
+      .pro-theme .badge {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+      }
+
+      .pro-theme .footer-links {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="signup-container pro-theme">
+  <!-- 背景スタジアム -->
+  <div class="stadium-background">
+    <div class="stadium-photo"></div>
+    <div class="film-grain"></div>
+    <div class="scoreboard-lights"></div>
+  </div>
+
+  <!-- メインコンテンツ -->
+  <div class="main-content">
+    <div class="signup-card-wrapper">
+      <!-- スコアボードライン -->
+      <div class="scoreboard-line-top"></div>
+
+      <!-- メインカード -->
+      <div class="signup-card">
+        <!-- 装飾バッジ -->
+        <div class="badge badge-top-right">⚾</div>
+        <div class="badge badge-bottom-left">🎫</div>
+
+        <!-- ヘッダー -->
+        <div class="form-header">
+          <h2 class="form-title">Join Us</h2>
+          <p class="form-subtitle">
+            新規会員登録
+          </p>
+        </div>
+        
+        <!-- エラーメッセージ -->
+        <% if @user.errors.any? %>
+          <div class="error-messages">
+            <ul>
+              <% @user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <!-- 登録フォーム -->
+        <%= form_with model: @user, local: true, class: "signup-form" do |f| %>
+          <div class="form-group">
+            <%= f.label :name, "ユーザー名", class: "form-label" %>
+            <%= f.text_field :name, class: "form-input", placeholder: "山田太郎", required: true %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :email, "メールアドレス", class: "form-label" %>
+            <%= f.email_field :email, class: "form-input", placeholder: "your@email.com", required: true %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :password, "パスワード", class: "form-label" %>
+            <%= f.password_field :password, class: "form-input", placeholder: "8文字以上", required: true %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :password_confirmation, "パスワード（確認用）", class: "form-label" %>
+            <%= f.password_field :password_confirmation, class: "form-input", placeholder: "もう一度入力", required: true %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :favorite_team_id, "推し球団", class: "form-label" %>
+            <%= f.collection_select :favorite_team_id,@teams,:id,:name, { prompt: "選択してください" }, { class: "form-select", required: true } %>
+          </div>
+
+          <%= f.submit "登録する", class: "btn btn-primary" %>
+        <% end %>
+
+        <div class="form-links">
+          <%= link_to "すでにアカウントをお持ちの方はこちら", login_path, class: "link-secondary" %>
+        </div>
+      </div>
+
+      <!-- スコアボードライン -->
+      <div class="scoreboard-line-bottom"></div>
+    </div>
+  </div>
+
+  <!-- フッター -->
+  <footer class="signup-footer">
+    <div class="footer-links">
+      <a href="#" class="footer-link">Terms</a>
+      <a href="#" class="footer-link">Privacy</a>
+      <a href="#" class="footer-link">Contact</a>
+    </div>
+    <p class="footer-copyright">© 2026 Baseball Log. All rights reserved.</p>
+  </footer>
+</div>
+
+</body>
+</html>

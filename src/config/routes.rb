@@ -9,4 +9,6 @@ Rails.application.routes.draw do
 
   get "dashboard", to: "dashboards#show"
 
+  resources :users, only: %i[new create]
+
 end

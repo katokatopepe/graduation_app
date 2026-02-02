@@ -946,3 +946,301 @@ Completed 200 OK in 17ms (Views: 11.9ms | ActiveRecord: 0.0ms (0 queries, 0 cach
   [1m[36mTRANSACTION (3.3ms)[0m  [1m[35mCOMMIT /*application='Src'*/[0m
   [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1 /*application='Src'*/[0m
   [1m[36mTeam Load (1.0ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*application='Src'*/[0m
+Started GET "/" for 172.28.0.1 at 2026-02-02 10:31:06 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[36mActiveRecord::SchemaMigration Load (7.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Src'*/[0m
+Processing by UserSessionsController#new as HTML
+  Rendering user_sessions/new.html.erb
+  Rendered user_sessions/new.html.erb (Duration: 34.6ms | GC: 0.0ms)
+Completed 200 OK in 149ms (Views: 48.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/favicon.ico" for 172.28.0.1 at 2026-02-02 10:31:07 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/" for 172.28.0.1 at 2026-02-02 12:50:43 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by UserSessionsController#new as HTML
+  Rendering user_sessions/new.html.erb
+  Rendered user_sessions/new.html.erb (Duration: 21.6ms | GC: 0.0ms)
+Completed 200 OK in 37ms (Views: 29.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 172.28.0.1 at 2026-02-02 12:56:18 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by UserSessionsController#new as HTML
+  Rendering user_sessions/new.html.erb
+  Rendered user_sessions/new.html.erb (Duration: 5.4ms | GC: 0.0ms)
+Completed 200 OK in 8ms (Views: 7.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/new" for 172.28.0.1 at 2026-02-02 12:56:21 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mTeam Load (12.3ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."name" ASC /*action='new',application='Src',controller='users'*/[0m
+  ↳ app/views/users/new.html.erb:37
+  Rendered users/new.html.erb within layouts/application (Duration: 52.8ms | GC: 1.5ms)
+  Rendered shared/_header.html.erb (Duration: 0.9ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.7ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 70.7ms | GC: 1.7ms)
+Completed 200 OK in 227ms (Views: 56.7ms | ActiveRecord: 75.5ms (1 query, 0 cached) | GC: 6.9ms)
+
+
+Started POST "/users" for 172.28.0.1 at 2026-02-02 12:56:54 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"name"=>"aaa", "email"=>"[FILTERED]", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "favorite_team_id"=>"6"}, "commit"=>"登録する"}
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'password_confirmation' for User.)
+Caused by: NoMethodError (undefined method `password_confirmation=' for an instance of User)
+
+Information for: ActiveModel::UnknownAttributeError (unknown attribute 'password_confirmation' for User.):
+  
+app/controllers/users_controller.rb:8:in `create'
+
+Information for cause: NoMethodError (undefined method `password_confirmation=' for an instance of User):
+  
+app/controllers/users_controller.rb:8:in `create'
+Started POST "/users" for 172.28.0.1 at 2026-02-02 12:59:25 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"name"=>"aaa", "email"=>"[FILTERED]", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "favorite_team_id"=>"6"}, "commit"=>"登録する"}
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN /*action='create',application='Src',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:10:in `create'
+  [1m[36mTeam Load (1.2ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*action='create',application='Src',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:10:in `create'
+  [1m[36mUser Exists? (2.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'aaa@aaa' LIMIT 1 /*action='create',application='Src',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:10:in `create'
+  [1m[36mUser Create (5.1ms)[0m  [1m[32mINSERT INTO "users" ("email", "crypted_password", "salt", "created_at", "updated_at", "name", "favorite_team_id") VALUES ('aaa@aaa', '$2a$10$singTfkPQmxrfnLKTnzfdukz1WhIi7QSR3Kg4KwGnPddUOWDfmvZK', 'pXKeWpX819o52F8cVPNn', '2026-02-02 12:59:25.538215', '2026-02-02 12:59:25.538215', 'aaa', 6) RETURNING "id" /*action='create',application='Src',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:10:in `create'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT /*action='create',application='Src',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:10:in `create'
+Redirected to http://localhost:3000/dashboard
+↳ app/controllers/users_controller.rb:13:in `create'
+Completed 302 Found in 117ms (ActiveRecord: 19.2ms (3 queries, 0 cached) | GC: 2.1ms)
+
+
+Started GET "/dashboard" for 172.28.0.1 at 2026-02-02 12:59:25 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardsController#show as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering dashboards/show.html.erb within layouts/application
+  Rendered dashboards/show.html.erb within layouts/application (Duration: 0.8ms | GC: 0.0ms)
+  Rendered shared/_header.html.erb (Duration: 0.5ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.5ms | GC: 0.0ms)
+Completed 200 OK in 10ms (Views: 5.0ms | ActiveRecord: 0.7ms (1 query, 0 cached) | GC: 0.2ms)
+
+
+Started DELETE "/logout" for 172.28.0.1 at 2026-02-02 12:59:31 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by UserSessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1 /*action='destroy',application='Src',controller='user_sessions'*/[0m
+  ↳ app/controllers/user_sessions_controller.rb:16:in `destroy'
+Redirected to http://localhost:3000/
+↳ app/controllers/user_sessions_controller.rb:17:in `destroy'
+Completed 302 Found in 5ms (ActiveRecord: 0.8ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 172.28.0.1 at 2026-02-02 12:59:31 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by UserSessionsController#new as HTML
+  Rendering user_sessions/new.html.erb
+  Rendered user_sessions/new.html.erb (Duration: 3.2ms | GC: 0.2ms)
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/users/new" for 172.28.0.1 at 2026-02-02 13:38:01 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mTeam Load (2.6ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."name" ASC /*action='new',application='Src',controller='users'*/[0m
+  ↳ app/views/users/new.html.erb:37
+  Rendered users/new.html.erb within layouts/application (Duration: 21.3ms | GC: 0.5ms)
+  Rendered shared/_header.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 28.3ms | GC: 0.5ms)
+Completed 200 OK in 38ms (Views: 29.3ms | ActiveRecord: 2.6ms (1 query, 0 cached) | GC: 1.2ms)
+
+
+Started GET "/users/new" for 172.28.0.1 at 2026-02-02 13:52:04 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mTeam Load (60.8ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."name" ASC /*action='new',application='Src',controller='users'*/[0m
+  ↳ app/views/users/new.html.erb:37
+  Rendered users/new.html.erb within layouts/application (Duration: 83.9ms | GC: 4.5ms)
+  Rendered shared/_header.html.erb (Duration: 1.1ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.8ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 4.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 101.4ms | GC: 4.5ms)
+Completed 200 OK in 126ms (Views: 28.4ms | ActiveRecord: 77.9ms (1 query, 0 cached) | GC: 8.4ms)
+
+
+Started GET "/users/new" for 172.28.0.1 at 2026-02-02 14:02:00 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb
+  [1m[36mTeam Load (50.2ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."name" ASC /*action='new',application='Src',controller='users'*/[0m
+  ↳ app/views/users/new.html.erb:37
+  Rendered users/new.html.erb (Duration: 75.3ms | GC: 0.0ms)
+Completed 200 OK in 95ms (Views: 15.1ms | ActiveRecord: 63.9ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/new" for 172.28.0.1 at 2026-02-02 14:10:11 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb
+  [1m[36mTeam Load (145.1ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."name" ASC /*action='new',application='Src',controller='users'*/[0m
+  ↳ app/views/users/new.html.erb:37
+  Rendered users/new.html.erb (Duration: 175.1ms | GC: 61.9ms)
+Completed 200 OK in 190ms (Views: 15.6ms | ActiveRecord: 164.2ms (1 query, 0 cached) | GC: 61.9ms)
+
+
+Started GET "/users/new" for 172.28.0.1 at 2026-02-02 14:10:35 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb
+  [1m[36mTeam Load (1.2ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."name" ASC /*action='new',application='Src',controller='users'*/[0m
+  ↳ app/views/users/new.html.erb:885
+  Rendered users/new.html.erb (Duration: 19.9ms | GC: 0.0ms)
+Completed 200 OK in 45ms (Views: 17.0ms | ActiveRecord: 15.7ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/new" for 172.28.0.1 at 2026-02-02 14:11:07 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb
+  [1m[36mTeam Load (1.5ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."name" ASC /*action='new',application='Src',controller='users'*/[0m
+  ↳ app/views/users/new.html.erb:37
+  Rendered users/new.html.erb (Duration: 28.3ms | GC: 3.1ms)
+Completed 200 OK in 62ms (Views: 26.9ms | ActiveRecord: 14.8ms (1 query, 0 cached) | GC: 3.1ms)
+
+
+Started GET "/users/new" for 172.28.0.1 at 2026-02-02 14:22:55 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by UsersController#new as HTML
+  [1m[36mTeam Load (5.0ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" IN ('阪神タイガース', '横浜DeNAベイスターズ', '読売ジャイアンツ', '中日ドラゴンズ', '広島東洋カープ', '東京ヤクルトスワローズ', '福岡ソフトバンクホークス', '北海道日本ハムファイターズ', 'オリックス・バファローズ', '東北楽天ゴールデンイーグルス', '埼玉西武ライオンズ', '千葉ロッテマリーンズ') /*action='new',application='Src',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:26:in `set_teams'
+  Rendering users/new.html.erb
+  [1m[36mTeam Load (2.2ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."name" ASC /*action='new',application='Src',controller='users'*/[0m
+  ↳ app/views/users/new.html.erb:645
+  Rendered users/new.html.erb (Duration: 54.6ms | GC: 0.6ms)
+Completed 200 OK in 315ms (Views: 68.6ms | ActiveRecord: 40.7ms (2 queries, 0 cached) | GC: 7.7ms)
+
+
+Started GET "/login" for 172.28.0.1 at 2026-02-02 14:23:12 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by UserSessionsController#new as HTML
+  Rendering user_sessions/new.html.erb
+  Rendered user_sessions/new.html.erb (Duration: 14.3ms | GC: 0.2ms)
+Completed 200 OK in 20ms (Views: 16.9ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/login" for 172.28.0.1 at 2026-02-02 14:23:16 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by UserSessionsController#new as HTML
+  Rendering user_sessions/new.html.erb
+  Rendered user_sessions/new.html.erb (Duration: 4.4ms | GC: 0.0ms)
+Completed 200 OK in 8ms (Views: 6.0ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.1ms)
+
+
+Started GET "/users/new" for 172.28.0.1 at 2026-02-02 14:24:48 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by UsersController#new as HTML
+  [1m[36mTeam Load (6.7ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" IN ('阪神タイガース', '横浜DeNAベイスターズ', '読売ジャイアンツ', '中日ドラゴンズ', '広島東洋カープ', '東京ヤクルトスワローズ', '福岡ソフトバンクホークス', '北海道日本ハムファイターズ', 'オリックス・バファローズ', '東北楽天ゴールデンイーグルス', '埼玉西武ライオンズ', '千葉ロッテマリーンズ') /*action='new',application='Src',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:26:in `set_teams'
+  Rendering users/new.html.erb
+  Rendered users/new.html.erb (Duration: 28.9ms | GC: 0.0ms)
+Completed 200 OK in 146ms (Views: 35.0ms | ActiveRecord: 35.9ms (1 query, 0 cached) | GC: 3.6ms)
+
+
+Started GET "/users/new" for 172.28.0.1 at 2026-02-02 14:26:39 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by UsersController#new as HTML
+  [1m[36mTeam Load (1.6ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" IN ('阪神タイガース', '横浜DeNAベイスターズ', '読売ジャイアンツ', '中日ドラゴンズ', '広島東洋カープ', '東京ヤクルトスワローズ', '福岡ソフトバンクホークス', '北海道日本ハムファイターズ', 'オリックス・バファローズ', '東北楽天ゴールデンイーグルス', '埼玉西武ライオンズ', '千葉ロッテマリーンズ') /*action='new',application='Src',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:26:in `set_teams'
+  Rendering users/new.html.erb
+  Rendered users/new.html.erb (Duration: 11.2ms | GC: 0.0ms)
+Completed 200 OK in 59ms (Views: 15.8ms | ActiveRecord: 14.5ms (1 query, 0 cached) | GC: 2.1ms)
+
+
+Started POST "/users" for 172.28.0.1 at 2026-02-02 14:27:03 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"name"=>"bbb", "email"=>"[FILTERED]", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "favorite_team_id"=>"2"}, "commit"=>"登録する"}
+  [1m[36mTeam Load (2.3ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" IN ('阪神タイガース', '横浜DeNAベイスターズ', '読売ジャイアンツ', '中日ドラゴンズ', '広島東洋カープ', '東京ヤクルトスワローズ', '福岡ソフトバンクホークス', '北海道日本ハムファイターズ', 'オリックス・バファローズ', '東北楽天ゴールデンイーグルス', '埼玉西武ライオンズ', '千葉ロッテマリーンズ') /*action='create',application='Src',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:26:in `set_teams'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN /*action='create',application='Src',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:13:in `create'
+  [1m[36mTeam Load (4.6ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 2 LIMIT 1 /*action='create',application='Src',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:13:in `create'
+  [1m[36mUser Exists? (2.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'bbb@bbb' LIMIT 1 /*action='create',application='Src',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:13:in `create'
+  [1m[36mUser Create (3.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "crypted_password", "salt", "created_at", "updated_at", "name", "favorite_team_id") VALUES ('bbb@bbb', '$2a$10$ej3IKc4aMfpn5vc0xjs5muMtku4yYsmlKgSn6O4BwgcTf8je1kJs.', 'xBygxxLsGXkP3mM8Zpx5', '2026-02-02 14:27:03.317979', '2026-02-02 14:27:03.317979', 'bbb', 2) RETURNING "id" /*action='create',application='Src',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:13:in `create'
+  [1m[36mTRANSACTION (10.5ms)[0m  [1m[35mCOMMIT /*action='create',application='Src',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:13:in `create'
+Redirected to http://localhost:3000/dashboard
+↳ app/controllers/users_controller.rb:15:in `create'
+Completed 302 Found in 159ms (ActiveRecord: 24.0ms (4 queries, 0 cached) | GC: 1.2ms)
+
+
+Started GET "/dashboard" for 172.28.0.1 at 2026-02-02 14:27:03 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardsController#show as HTML
+  [1m[36mUser Load (3.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering dashboards/show.html.erb within layouts/application
+  Rendered dashboards/show.html.erb within layouts/application (Duration: 1.7ms | GC: 0.0ms)
+  Rendered shared/_header.html.erb (Duration: 2.0ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 1.3ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 1.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 13.6ms | GC: 0.0ms)
+Completed 200 OK in 41ms (Views: 15.4ms | ActiveRecord: 3.6ms (1 query, 0 cached) | GC: 1.1ms)
+
+
+Started GET "/users/new" for 172.28.0.1 at 2026-02-02 14:27:18 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by UsersController#new as HTML
+  [1m[36mTeam Load (2.3ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" IN ('阪神タイガース', '横浜DeNAベイスターズ', '読売ジャイアンツ', '中日ドラゴンズ', '広島東洋カープ', '東京ヤクルトスワローズ', '福岡ソフトバンクホークス', '北海道日本ハムファイターズ', 'オリックス・バファローズ', '東北楽天ゴールデンイーグルス', '埼玉西武ライオンズ', '千葉ロッテマリーンズ') /*action='new',application='Src',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:26:in `set_teams'
+  Rendering users/new.html.erb
+  Rendered users/new.html.erb (Duration: 5.2ms | GC: 0.0ms)
+Completed 200 OK in 23ms (Views: 6.8ms | ActiveRecord: 2.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/login" for 172.28.0.1 at 2026-02-02 14:27:21 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by UserSessionsController#new as HTML
+  Rendering user_sessions/new.html.erb
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1 /*action='new',application='Src',controller='user_sessions'*/[0m
+  ↳ app/views/user_sessions/new.html.erb:768
+  Rendered user_sessions/new.html.erb (Duration: 20.3ms | GC: 0.0ms)
+Completed 200 OK in 29ms (Views: 22.0ms | ActiveRecord: 1.4ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/new" for 172.28.0.1 at 2026-02-02 14:27:46 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by UsersController#new as HTML
+  [1m[36mTeam Load (2.6ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" IN ('阪神タイガース', '横浜DeNAベイスターズ', '読売ジャイアンツ', '中日ドラゴンズ', '広島東洋カープ', '東京ヤクルトスワローズ', '福岡ソフトバンクホークス', '北海道日本ハムファイターズ', 'オリックス・バファローズ', '東北楽天ゴールデンイーグルス', '埼玉西武ライオンズ', '千葉ロッテマリーンズ') /*action='new',application='Src',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:26:in `set_teams'
+  Rendering users/new.html.erb
+  Rendered users/new.html.erb (Duration: 19.1ms | GC: 12.6ms)
+Completed 200 OK in 38ms (Views: 23.6ms | ActiveRecord: 2.5ms (1 query, 0 cached) | GC: 12.6ms)
+
+
