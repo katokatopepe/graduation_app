@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   root "user_sessions#new"
 
   resource :user_session, only: %i[new create destroy]
+  get "/logout", to: redirect("/")
+
   get    "/login",  to: "user_sessions#new"
   delete "/logout", to: "user_sessions#destroy"
 
