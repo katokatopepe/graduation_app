@@ -1244,3 +1244,124 @@ Processing by UsersController#new as HTML
 Completed 200 OK in 38ms (Views: 23.6ms | ActiveRecord: 2.5ms (1 query, 0 cached) | GC: 12.6ms)
 
 
+  [1m[35m (8.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7805954144794715910) /*application='Src'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Src'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.7ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Src'*/[0m
+Migrating to CreateStadia (20260205114316)
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_advisory_unlock(7805954144794715910) /*application='Src'*/[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7805954144794715910) /*application='Src'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Src'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Src'*/[0m
+Migrating to CreateStadiums (20260205114316)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='Src'*/[0m
+  [1m[35m (32.4ms)[0m  [1m[35mCREATE TABLE "stadiums" ("id" bigserial primary key, "name" character varying NOT NULL, "short_name" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='Src'*/[0m
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_stadiums_on_name" ON "stadiums" ("name") /*application='Src'*/[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_stadiums_on_short_name" ON "stadiums" ("short_name") /*application='Src'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260205114316') RETURNING "version" /*application='Src'*/[0m
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[35mCOMMIT /*application='Src'*/[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(7805954144794715910) /*application='Src'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Src'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[35mSET search_path TO public /*application='Src'*/[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[35mSET search_path TO "$user", public /*application='Src'*/[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mSET search_path TO public /*application='Src'*/[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[35mSET search_path TO "$user", public /*application='Src'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Src'*/[0m
+  [1m[36mTeam Load (4.0ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = '阪神タイガース' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTeam Load (0.9ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = '横浜DeNAベイスターズ' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTeam Load (2.0ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = '読売ジャイアンツ' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTeam Load (2.4ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = '中日ドラゴンズ' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTeam Load (2.5ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = '広島東洋カープ' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTeam Load (1.5ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = '東京ヤクルトスワローズ' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTeam Load (1.1ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = '福岡ソフトバンクホークス' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTeam Load (2.1ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = '北海道日本ハムファイターズ' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTeam Load (1.4ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = 'オリックス・バファローズ' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = '東北楽天ゴールデンイーグルス' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTeam Load (0.6ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = '埼玉西武ライオンズ' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = '千葉ロッテマリーンズ' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Src'*/[0m
+  [1m[36mTeam Load (0.9ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = '阪神タイガース' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = '横浜DeNAベイスターズ' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = '読売ジャイアンツ' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = '中日ドラゴンズ' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = '広島東洋カープ' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = '東京ヤクルトスワローズ' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTeam Load (0.7ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = '福岡ソフトバンクホークス' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = '北海道日本ハムファイターズ' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = 'オリックス・バファローズ' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = '東北楽天ゴールデンイーグルス' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = '埼玉西武ライオンズ' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = '千葉ロッテマリーンズ' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mStadium Load (0.6ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" WHERE "stadiums"."name" = '阪神甲子園球場' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='Src'*/[0m
+  [1m[36mStadium Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "stadiums" WHERE "stadiums"."name" = '阪神甲子園球場' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mStadium Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "stadiums" WHERE "stadiums"."short_name" = '甲子園' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mStadium Create (1.4ms)[0m  [1m[32mINSERT INTO "stadiums" ("name", "short_name", "created_at", "updated_at") VALUES ('阪神甲子園球場', '甲子園', '2026-02-05 11:56:14.198783', '2026-02-05 11:56:14.198783') RETURNING "id" /*application='Src'*/[0m
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[35mCOMMIT /*application='Src'*/[0m
+  [1m[36mStadium Load (0.5ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" WHERE "stadiums"."name" = '横浜スタジアム' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='Src'*/[0m
+  [1m[36mStadium Exists? (3.5ms)[0m  [1m[34mSELECT 1 AS one FROM "stadiums" WHERE "stadiums"."name" = '横浜スタジアム' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mStadium Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "stadiums" WHERE "stadiums"."short_name" = 'ハマスタ' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mStadium Create (0.5ms)[0m  [1m[32mINSERT INTO "stadiums" ("name", "short_name", "created_at", "updated_at") VALUES ('横浜スタジアム', 'ハマスタ', '2026-02-05 11:56:14.214573', '2026-02-05 11:56:14.214573') RETURNING "id" /*application='Src'*/[0m
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT /*application='Src'*/[0m
+  [1m[36mStadium Load (0.6ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" WHERE "stadiums"."name" = '東京ドーム' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='Src'*/[0m
+  [1m[36mStadium Exists? (1.8ms)[0m  [1m[34mSELECT 1 AS one FROM "stadiums" WHERE "stadiums"."name" = '東京ドーム' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mStadium Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "stadiums" WHERE "stadiums"."short_name" = '東京D' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mStadium Create (0.4ms)[0m  [1m[32mINSERT INTO "stadiums" ("name", "short_name", "created_at", "updated_at") VALUES ('東京ドーム', '東京D', '2026-02-05 11:56:14.226802', '2026-02-05 11:56:14.226802') RETURNING "id" /*application='Src'*/[0m
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT /*application='Src'*/[0m
+  [1m[36mStadium Load (0.3ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" WHERE "stadiums"."name" = 'バンテリンドーム ナゴヤ' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='Src'*/[0m
+  [1m[36mStadium Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM "stadiums" WHERE "stadiums"."name" = 'バンテリンドーム ナゴヤ' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mStadium Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "stadiums" WHERE "stadiums"."short_name" = 'バンテリンD' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mStadium Create (0.8ms)[0m  [1m[32mINSERT INTO "stadiums" ("name", "short_name", "created_at", "updated_at") VALUES ('バンテリンドーム ナゴヤ', 'バンテリンD', '2026-02-05 11:56:14.235818', '2026-02-05 11:56:14.235818') RETURNING "id" /*application='Src'*/[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT /*application='Src'*/[0m
+  [1m[36mStadium Load (0.4ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" WHERE "stadiums"."name" = 'MAZDA Zoom-Zoom スタジアム広島' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='Src'*/[0m
+  [1m[36mStadium Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM "stadiums" WHERE "stadiums"."name" = 'MAZDA Zoom-Zoom スタジアム広島' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mStadium Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "stadiums" WHERE "stadiums"."short_name" = 'マツダ' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mStadium Create (0.3ms)[0m  [1m[32mINSERT INTO "stadiums" ("name", "short_name", "created_at", "updated_at") VALUES ('MAZDA Zoom-Zoom スタジアム広島', 'マツダ', '2026-02-05 11:56:14.245586', '2026-02-05 11:56:14.245586') RETURNING "id" /*application='Src'*/[0m
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT /*application='Src'*/[0m
+  [1m[36mStadium Load (0.5ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" WHERE "stadiums"."name" = '明治神宮野球場' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Src'*/[0m
+  [1m[36mStadium Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "stadiums" WHERE "stadiums"."name" = '明治神宮野球場' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mStadium Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "stadiums" WHERE "stadiums"."short_name" = '神宮' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mStadium Create (0.3ms)[0m  [1m[32mINSERT INTO "stadiums" ("name", "short_name", "created_at", "updated_at") VALUES ('明治神宮野球場', '神宮', '2026-02-05 11:56:14.254250', '2026-02-05 11:56:14.254250') RETURNING "id" /*application='Src'*/[0m
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT /*application='Src'*/[0m
+  [1m[36mStadium Load (1.0ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" WHERE "stadiums"."name" = 'みずほPayPayドーム福岡' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='Src'*/[0m
+  [1m[36mStadium Exists? (1.9ms)[0m  [1m[34mSELECT 1 AS one FROM "stadiums" WHERE "stadiums"."name" = 'みずほPayPayドーム福岡' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mStadium Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "stadiums" WHERE "stadiums"."short_name" = 'PayPay' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mStadium Create (0.4ms)[0m  [1m[32mINSERT INTO "stadiums" ("name", "short_name", "created_at", "updated_at") VALUES ('みずほPayPayドーム福岡', 'PayPay', '2026-02-05 11:56:14.266804', '2026-02-05 11:56:14.266804') RETURNING "id" /*application='Src'*/[0m
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT /*application='Src'*/[0m
+  [1m[36mStadium Load (0.8ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" WHERE "stadiums"."name" = 'エスコンフィールドHOKKAIDO' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='Src'*/[0m
+  [1m[36mStadium Exists? (2.4ms)[0m  [1m[34mSELECT 1 AS one FROM "stadiums" WHERE "stadiums"."name" = 'エスコンフィールドHOKKAIDO' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mStadium Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "stadiums" WHERE "stadiums"."short_name" = 'エスコン' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mStadium Create (0.5ms)[0m  [1m[32mINSERT INTO "stadiums" ("name", "short_name", "created_at", "updated_at") VALUES ('エスコンフィールドHOKKAIDO', 'エスコン', '2026-02-05 11:56:14.289511', '2026-02-05 11:56:14.289511') RETURNING "id" /*application='Src'*/[0m
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT /*application='Src'*/[0m
+  [1m[36mStadium Load (1.0ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" WHERE "stadiums"."name" = '京セラドーム大阪' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='Src'*/[0m
+  [1m[36mStadium Exists? (1.6ms)[0m  [1m[34mSELECT 1 AS one FROM "stadiums" WHERE "stadiums"."name" = '京セラドーム大阪' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mStadium Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "stadiums" WHERE "stadiums"."short_name" = '京セラ' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mStadium Create (0.8ms)[0m  [1m[32mINSERT INTO "stadiums" ("name", "short_name", "created_at", "updated_at") VALUES ('京セラドーム大阪', '京セラ', '2026-02-05 11:56:14.301092', '2026-02-05 11:56:14.301092') RETURNING "id" /*application='Src'*/[0m
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mCOMMIT /*application='Src'*/[0m
+  [1m[36mStadium Load (0.4ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" WHERE "stadiums"."name" = '楽天モバイルパーク宮城' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='Src'*/[0m
+  [1m[36mStadium Exists? (2.3ms)[0m  [1m[34mSELECT 1 AS one FROM "stadiums" WHERE "stadiums"."name" = '楽天モバイルパーク宮城' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mStadium Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "stadiums" WHERE "stadiums"."short_name" = '楽天' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mStadium Create (0.3ms)[0m  [1m[32mINSERT INTO "stadiums" ("name", "short_name", "created_at", "updated_at") VALUES ('楽天モバイルパーク宮城', '楽天', '2026-02-05 11:56:14.313437', '2026-02-05 11:56:14.313437') RETURNING "id" /*application='Src'*/[0m
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT /*application='Src'*/[0m
+  [1m[36mStadium Load (0.4ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" WHERE "stadiums"."name" = 'ベルーナドーム' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='Src'*/[0m
+  [1m[36mStadium Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "stadiums" WHERE "stadiums"."name" = 'ベルーナドーム' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mStadium Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "stadiums" WHERE "stadiums"."short_name" = 'ベルーナ' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mStadium Create (0.6ms)[0m  [1m[32mINSERT INTO "stadiums" ("name", "short_name", "created_at", "updated_at") VALUES ('ベルーナドーム', 'ベルーナ', '2026-02-05 11:56:14.323362', '2026-02-05 11:56:14.323362') RETURNING "id" /*application='Src'*/[0m
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT /*application='Src'*/[0m
+  [1m[36mStadium Load (0.3ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" WHERE "stadiums"."name" = 'ZOZOマリンスタジアム' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='Src'*/[0m
+  [1m[36mStadium Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "stadiums" WHERE "stadiums"."name" = 'ZOZOマリンスタジアム' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mStadium Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "stadiums" WHERE "stadiums"."short_name" = 'ZOZO' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mStadium Create (0.4ms)[0m  [1m[32mINSERT INTO "stadiums" ("name", "short_name", "created_at", "updated_at") VALUES ('ZOZOマリンスタジアム', 'ZOZO', '2026-02-05 11:56:14.333364', '2026-02-05 11:56:14.333364') RETURNING "id" /*application='Src'*/[0m
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT /*application='Src'*/[0m
+  [1m[36mStadium Count (38.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "stadiums" /*application='Src'*/[0m
+  [1m[36mStadium Pluck (0.5ms)[0m  [1m[34mSELECT "stadiums"."name", "stadiums"."short_name" FROM "stadiums" /*application='Src'*/[0m
