@@ -1365,3 +1365,76 @@ Migrating to CreateStadiums (20260205114316)
   [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT /*application='Src'*/[0m
   [1m[36mStadium Count (38.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "stadiums" /*application='Src'*/[0m
   [1m[36mStadium Pluck (0.5ms)[0m  [1m[34mSELECT "stadiums"."name", "stadiums"."short_name" FROM "stadiums" /*application='Src'*/[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7805954144794715910) /*application='Src'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Src'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.5ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Src'*/[0m
+Migrating to CreateGames (20260209104037)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='Src'*/[0m
+  [1m[35m (20.4ms)[0m  [1m[35mCREATE TABLE "games" ("id" bigserial primary key, "user_id" bigint NOT NULL, "opponent_team_id" bigint NOT NULL, "stadium_id" bigint, "date" date NOT NULL, "home_away" integer NOT NULL, "starting_pitcher" character varying, "favorite_team_score" integer, "opponent_score" integer, "custom_stadium_name" character varying, "result" integer, "video_url" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_de9e6ea7f7"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_115c26b7e6"
+FOREIGN KEY ("opponent_team_id")
+  REFERENCES "teams" ("id")
+, CONSTRAINT "fk_rails_9665a33659"
+FOREIGN KEY ("stadium_id")
+  REFERENCES "stadiums" ("id")
+) /*application='Src'*/[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE INDEX "index_games_on_user_id" ON "games" ("user_id") /*application='Src'*/[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE INDEX "index_games_on_opponent_team_id" ON "games" ("opponent_team_id") /*application='Src'*/[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE INDEX "index_games_on_stadium_id" ON "games" ("stadium_id") /*application='Src'*/[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE INDEX "index_games_on_user_id_and_date" ON "games" ("user_id", "date") /*application='Src'*/[0m
+  [1m[35m (7.0ms)[0m  [1m[35mCREATE INDEX "index_games_on_opponent_team_id" ON "games" ("opponent_team_id") /*application='Src'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK /*application='Src'*/[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(7805954144794715910) /*application='Src'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Src'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7805954144794715910) /*application='Src'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Src'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Src'*/[0m
+Migrating to CreateGames (20260209104037)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='Src'*/[0m
+  [1m[35m (12.8ms)[0m  [1m[35mCREATE TABLE "games" ("id" bigserial primary key, "user_id" bigint NOT NULL, "opponent_team_id" bigint NOT NULL, "stadium_id" bigint, "date" date NOT NULL, "home_away" integer NOT NULL, "starting_pitcher" character varying, "favorite_team_score" integer, "opponent_score" integer, "custom_stadium_name" character varying, "result" integer, "video_url" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_de9e6ea7f7"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_115c26b7e6"
+FOREIGN KEY ("opponent_team_id")
+  REFERENCES "teams" ("id")
+, CONSTRAINT "fk_rails_9665a33659"
+FOREIGN KEY ("stadium_id")
+  REFERENCES "stadiums" ("id")
+) /*application='Src'*/[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE INDEX "index_games_on_user_id" ON "games" ("user_id") /*application='Src'*/[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE INDEX "index_games_on_opponent_team_id" ON "games" ("opponent_team_id") /*application='Src'*/[0m
+  [1m[35m (4.1ms)[0m  [1m[35mCREATE INDEX "index_games_on_stadium_id" ON "games" ("stadium_id") /*application='Src'*/[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE INDEX "index_games_on_user_id_and_date" ON "games" ("user_id", "date") /*application='Src'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209104037') RETURNING "version" /*application='Src'*/[0m
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mCOMMIT /*application='Src'*/[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(7805954144794715910) /*application='Src'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Src'*/[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mSET search_path TO public /*application='Src'*/[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mSET search_path TO "$user", public /*application='Src'*/[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[35mSET search_path TO public /*application='Src'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[35mSET search_path TO "$user", public /*application='Src'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Src'*/[0m
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTeam Load (1.1ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."id" ASC LIMIT 1 /*application='Src'*/[0m
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTeam Load (0.9ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."id" ASC LIMIT 1 /*application='Src'*/[0m
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTeam Load (0.6ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."id" ASC LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN /*application='Src'*/[0m
+  [1m[36mGame Create (5.8ms)[0m  [1m[32mINSERT INTO "games" ("user_id", "opponent_team_id", "stadium_id", "date", "home_away", "starting_pitcher", "favorite_team_score", "opponent_score", "custom_stadium_name", "result", "video_url", "created_at", "updated_at") VALUES (1, 1, NULL, '2026-02-09', 0, NULL, NULL, NULL, NULL, NULL, NULL, '2026-02-09 10:59:35.312453', '2026-02-09 10:59:35.312453') RETURNING "id" /*application='Src'*/[0m
+  [1m[36mTRANSACTION (6.7ms)[0m  [1m[35mCOMMIT /*application='Src'*/[0m
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTeam Load (0.9ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."id" ASC LIMIT 1 /*application='Src'*/[0m
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTeam Load (0.6ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."id" ASC LIMIT 1 /*application='Src'*/[0m
+  [1m[36mUser Load (7.7ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTeam Load (1.5ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."id" ASC LIMIT 1 /*application='Src'*/[0m
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTeam Load (0.6ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."id" ASC LIMIT 1 /*application='Src'*/[0m
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTeam Load (0.9ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."id" ASC LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN /*application='Src'*/[0m
+  [1m[36mGame Create (3.9ms)[0m  [1m[32mINSERT INTO "games" ("user_id", "opponent_team_id", "stadium_id", "date", "home_away", "starting_pitcher", "favorite_team_score", "opponent_score", "custom_stadium_name", "result", "video_url", "created_at", "updated_at") VALUES (1, 1, NULL, '2026-02-09', 0, NULL, 5, 3, NULL, 0, NULL, '2026-02-09 11:07:12.285676', '2026-02-09 11:07:12.285676') RETURNING "id" /*application='Src'*/[0m
+  [1m[36mTRANSACTION (9.4ms)[0m  [1m[35mCOMMIT /*application='Src'*/[0m
