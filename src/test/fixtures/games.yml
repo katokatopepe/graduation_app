@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  opponent_team: one
+  stadium: one
+  date: 2026-02-09
+  home_away: 1
+  starting_pitcher: MyString
+  favorite_team_score: 1
+  opponent_score: 1
+  custom_stadium_name: MyString
+  result: 1
+  video_url: MyString
+
+two:
+  user: two
+  opponent_team: two
+  stadium: two
+  date: 2026-02-09
+  home_away: 1
+  starting_pitcher: MyString
+  favorite_team_score: 1
+  opponent_score: 1
+  custom_stadium_name: MyString
+  result: 1
+  video_url: MyString

@@ -10,9 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_02_05_114316) do
+ActiveRecord::Schema[8.1].define(version: 2026_02_09_104037) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "games", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "custom_stadium_name"
+    t.date "date", null: false
+    t.integer "favorite_team_score"
+    t.integer "home_away", null: false
+    t.integer "opponent_score"
+    t.bigint "opponent_team_id", null: false
+    t.integer "result"
+    t.bigint "stadium_id"
+    t.string "starting_pitcher"
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.string "video_url"
+    t.index ["opponent_team_id"], name: "index_games_on_opponent_team_id"
+    t.index ["stadium_id"], name: "index_games_on_stadium_id"
+    t.index ["user_id", "date"], name: "index_games_on_user_id_and_date"
+    t.index ["user_id"], name: "index_games_on_user_id"
+  end
 
   create_table "stadiums", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -44,5 +64,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_05_114316) do
     t.index ["favorite_team_id"], name: "index_users_on_favorite_team_id"
   end
 
+  add_foreign_key "games", "stadiums"
+  add_foreign_key "games", "teams", column: "opponent_team_id"
+  add_foreign_key "games", "users"
   add_foreign_key "users", "teams", column: "favorite_team_id"
 end
