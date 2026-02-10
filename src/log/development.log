@@ -1438,3 +1438,1055 @@ FOREIGN KEY ("stadium_id")
   [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN /*application='Src'*/[0m
   [1m[36mGame Create (3.9ms)[0m  [1m[32mINSERT INTO "games" ("user_id", "opponent_team_id", "stadium_id", "date", "home_away", "starting_pitcher", "favorite_team_score", "opponent_score", "custom_stadium_name", "result", "video_url", "created_at", "updated_at") VALUES (1, 1, NULL, '2026-02-09', 0, NULL, 5, 3, NULL, 0, NULL, '2026-02-09 11:07:12.285676', '2026-02-09 11:07:12.285676') RETURNING "id" /*application='Src'*/[0m
   [1m[36mTRANSACTION (9.4ms)[0m  [1m[35mCOMMIT /*application='Src'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Src'*/[0m
+  [1m[36mTeam Load (4.3ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = '阪神タイガース' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTeam Load (0.9ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = '横浜DeNAベイスターズ' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTeam Load (1.3ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = '読売ジャイアンツ' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTeam Load (1.0ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = '中日ドラゴンズ' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTeam Load (1.0ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = '広島東洋カープ' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTeam Load (0.7ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = '東京ヤクルトスワローズ' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTeam Load (1.0ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = '福岡ソフトバンクホークス' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTeam Load (0.7ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = '北海道日本ハムファイターズ' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTeam Load (1.2ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = 'オリックス・バファローズ' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTeam Load (0.6ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = '東北楽天ゴールデンイーグルス' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTeam Load (0.6ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = '埼玉西武ライオンズ' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTeam Load (0.7ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = '千葉ロッテマリーンズ' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mStadium Load (1.3ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" WHERE "stadiums"."name" = '阪神甲子園球場' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mStadium Load (0.9ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" WHERE "stadiums"."name" = '横浜スタジアム' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mStadium Load (0.8ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" WHERE "stadiums"."name" = '東京ドーム' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mStadium Load (1.0ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" WHERE "stadiums"."name" = 'バンテリンドーム ナゴヤ' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mStadium Load (0.8ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" WHERE "stadiums"."name" = 'MAZDA Zoom-Zoom スタジアム広島' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mStadium Load (0.9ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" WHERE "stadiums"."name" = '明治神宮野球場' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mStadium Load (1.0ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" WHERE "stadiums"."name" = 'みずほPayPayドーム福岡' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mStadium Load (0.9ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" WHERE "stadiums"."name" = 'エスコンフィールドHOKKAIDO' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mStadium Load (0.5ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" WHERE "stadiums"."name" = '京セラドーム大阪' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mStadium Load (0.9ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" WHERE "stadiums"."name" = '楽天モバイルパーク宮城' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mStadium Load (0.9ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" WHERE "stadiums"."name" = 'ベルーナドーム' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mStadium Load (0.9ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" WHERE "stadiums"."name" = 'ZOZOマリンスタジアム' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mStadium Load (1.0ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" WHERE "stadiums"."name" = 'その他' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN /*application='Src'*/[0m
+  [1m[36mStadium Exists? (3.5ms)[0m  [1m[34mSELECT 1 AS one FROM "stadiums" WHERE "stadiums"."name" = 'その他' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mStadium Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "stadiums" WHERE "stadiums"."short_name" = 'その他' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mStadium Create (2.8ms)[0m  [1m[32mINSERT INTO "stadiums" ("name", "short_name", "created_at", "updated_at") VALUES ('その他', 'その他', '2026-02-10 10:14:54.025915', '2026-02-10 10:14:54.025915') RETURNING "id" /*application='Src'*/[0m
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[35mCOMMIT /*application='Src'*/[0m
+  [1m[36mStadium Load (1.4ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" WHERE "stadiums"."name" = 'その他' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mStadium Pluck (0.8ms)[0m  [1m[34mSELECT "stadiums"."id", "stadiums"."name", "stadiums"."short_name" FROM "stadiums" WHERE "stadiums"."name" = 'その他' /*application='Src'*/[0m
+  [1m[36mStadium Load (1.6ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" WHERE "stadiums"."name" = 'その他' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTeam Load (1.0ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."id" ASC LIMIT 1 /*application='Src'*/[0m
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1 /*application='Src'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN /*application='Src'*/[0m
+  [1m[36mGame Create (5.9ms)[0m  [1m[32mINSERT INTO "games" ("user_id", "opponent_team_id", "stadium_id", "date", "home_away", "starting_pitcher", "favorite_team_score", "opponent_score", "custom_stadium_name", "result", "video_url", "created_at", "updated_at") VALUES (1, 1, 13, '2026-02-10', 0, NULL, 3, 2, '○○グラウンド', 0, NULL, '2026-02-10 10:19:37.513468', '2026-02-10 10:19:37.513468') RETURNING "id" /*application='Src'*/[0m
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT /*application='Src'*/[0m
+  [1m[36mGame Load (1.1ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = 3 LIMIT 1 /*application='Src'*/[0m
+Started GET "/" for 172.28.0.1 at 2026-02-10 10:25:58 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[36mActiveRecord::SchemaMigration Load (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Src'*/[0m
+Processing by UserSessionsController#new as HTML
+  Rendering user_sessions/new.html.erb
+  Rendered user_sessions/new.html.erb (Duration: 21.1ms | GC: 0.0ms)
+Completed 200 OK in 60ms (Views: 26.9ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/favicon.ico" for 172.28.0.1 at 2026-02-10 10:25:59 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/" for 172.28.0.1 at 2026-02-10 10:26:30 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by UserSessionsController#new as HTML
+  Rendering user_sessions/new.html.erb
+  Rendered user_sessions/new.html.erb (Duration: 3.2ms | GC: 0.0ms)
+Completed 200 OK in 6ms (Views: 4.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/favicon.ico" for 172.28.0.1 at 2026-02-10 10:26:30 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/users/new" for 172.28.0.1 at 2026-02-10 10:26:53 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by UsersController#new as HTML
+  [1m[36mTeam Load (1.7ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" IN ('阪神タイガース', '横浜DeNAベイスターズ', '読売ジャイアンツ', '中日ドラゴンズ', '広島東洋カープ', '東京ヤクルトスワローズ', '福岡ソフトバンクホークス', '北海道日本ハムファイターズ', 'オリックス・バファローズ', '東北楽天ゴールデンイーグルス', '埼玉西武ライオンズ', '千葉ロッテマリーンズ') /*action='new',application='Src',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:26:in `set_teams'
+  Rendering users/new.html.erb
+  Rendered users/new.html.erb (Duration: 5.9ms | GC: 0.0ms)
+Completed 200 OK in 84ms (Views: 7.0ms | ActiveRecord: 19.8ms (1 query, 0 cached) | GC: 2.8ms)
+
+
+Started GET "/users/new" for 172.28.0.1 at 2026-02-10 10:32:27 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by UsersController#new as HTML
+  [1m[36mTeam Load (3.2ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" IN ('阪神タイガース', '横浜DeNAベイスターズ', '読売ジャイアンツ', '中日ドラゴンズ', '広島東洋カープ', '東京ヤクルトスワローズ', '福岡ソフトバンクホークス', '北海道日本ハムファイターズ', 'オリックス・バファローズ', '東北楽天ゴールデンイーグルス', '埼玉西武ライオンズ', '千葉ロッテマリーンズ') /*action='new',application='Src',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:26:in `set_teams'
+  Rendering users/new.html.erb
+  Rendered users/new.html.erb (Duration: 4.6ms | GC: 0.0ms)
+Completed 200 OK in 101ms (Views: 6.2ms | ActiveRecord: 15.1ms (1 query, 0 cached) | GC: 32.8ms)
+
+
+Started POST "/user_session" for 172.28.0.1 at 2026-02-10 10:32:39 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by UserSessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"[FILTERED]", "password"=>"[FILTERED]", "commit"=>"ログイン"}
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'test@example.com' ORDER BY "users"."id" ASC LIMIT 1 /*action='create',application='Src',controller='user_sessions'*/[0m
+  ↳ app/controllers/user_sessions_controller.rb:7:in `create'
+DEPRECATION WARNING: `redirect_back_or_to` overrides the method of the same name defined in Rails 7. To avoid overriding, set `config.use_redirect_back_or_to_by_rails = true` and use `redirect_to_before_login_path`. In a future release, `config.use_redirect_back_or_to_by_rails = true` will become the default. (called from create at /app/src/app/controllers/user_sessions_controller.rb:8)
+Redirected to http://localhost:3000/dashboard
+↳ app/controllers/user_sessions_controller.rb:8:in `create'
+Completed 302 Found in 155ms (ActiveRecord: 2.5ms (1 query, 0 cached) | GC: 0.9ms)
+
+
+Started GET "/dashboard" for 172.28.0.1 at 2026-02-10 10:32:39 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardsController#show as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering dashboards/show.html.erb within layouts/application
+  Rendered dashboards/show.html.erb within layouts/application (Duration: 0.4ms | GC: 0.0ms)
+  Rendered shared/_header.html.erb (Duration: 3.9ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.8ms | GC: 0.2ms)
+  Rendered shared/_footer.html.erb (Duration: 0.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 24.7ms | GC: 0.5ms)
+Completed 200 OK in 37ms (Views: 28.4ms | ActiveRecord: 1.1ms (1 query, 0 cached) | GC: 0.7ms)
+
+
+Started GET "/games/new" for 172.28.0.1 at 2026-02-10 10:32:43 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by GamesController#new as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='new',application='Src',controller='games'*/[0m
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 4.0ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+NoMethodError (undefined method `games' for an instance of User):
+  
+app/controllers/games_controller.rb:6:in `new'
+Started GET "/games/new" for 172.28.0.1 at 2026-02-10 10:35:07 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Src'*/[0m
+Processing by GamesController#new as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='new',application='Src',controller='games'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering games/new.html.erb within layouts/application
+  Rendered games/new.html.erb within layouts/application (Duration: 0.3ms | GC: 0.0ms)
+  Rendered shared/_header.html.erb (Duration: 1.0ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.8ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.4ms | GC: 0.0ms)
+Completed 200 OK in 102ms (Views: 10.1ms | ActiveRecord: 17.8ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/games/new" for 172.28.0.1 at 2026-02-10 10:35:10 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by GamesController#new as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='new',application='Src',controller='games'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering games/new.html.erb within layouts/application
+  Rendered games/new.html.erb within layouts/application (Duration: 0.0ms | GC: 0.0ms)
+  Rendered shared/_header.html.erb (Duration: 0.8ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.5ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.9ms | GC: 0.0ms)
+Completed 200 OK in 12ms (Views: 5.6ms | ActiveRecord: 1.0ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/games/new" for 172.28.0.1 at 2026-02-10 10:35:11 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by GamesController#new as HTML
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='new',application='Src',controller='games'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering games/new.html.erb within layouts/application
+  Rendered games/new.html.erb within layouts/application (Duration: 0.1ms | GC: 0.0ms)
+  Rendered shared/_header.html.erb (Duration: 0.8ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | GC: 0.0ms)
+Completed 200 OK in 11ms (Views: 4.3ms | ActiveRecord: 1.9ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/games/new" for 172.28.0.1 at 2026-02-10 10:35:12 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by GamesController#new as HTML
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='new',application='Src',controller='games'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering games/new.html.erb within layouts/application
+  Rendered games/new.html.erb within layouts/application (Duration: 0.5ms | GC: 0.0ms)
+  Rendered shared/_header.html.erb (Duration: 0.7ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.2ms | GC: 0.0ms)
+Completed 200 OK in 18ms (Views: 8.5ms | ActiveRecord: 1.4ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/games/new" for 172.28.0.1 at 2026-02-10 10:36:00 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by GamesController#new as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='new',application='Src',controller='games'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering games/new.html.erb within layouts/application
+  [1m[36mTeam Load (1.0ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."id" ASC /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:26
+  [1m[36mStadium Load (0.9ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" ORDER BY "stadiums"."id" ASC /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:31
+  Rendered games/_form.html.erb (Duration: 31.6ms | GC: 0.6ms)
+  Rendered games/new.html.erb within layouts/application (Duration: 32.4ms | GC: 0.6ms)
+  Rendered shared/_header.html.erb (Duration: 1.0ms | GC: 0.3ms)
+  Rendered shared/_flash.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 36.3ms | GC: 0.9ms)
+Completed 200 OK in 65ms (Views: 33.9ms | ActiveRecord: 10.5ms (3 queries, 0 cached) | GC: 2.2ms)
+
+
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7805954144794715910) /*application='Src'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Src'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Src'*/[0m
+Migrating to CreateActiveStorageTables (20260210103857)
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN /*application='Src'*/[0m
+  [1m[35m (18.6ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "service_name" character varying NOT NULL, "byte_size" bigint NOT NULL, "checksum" character varying, "created_at" timestamp(6) NOT NULL) /*application='Src'*/[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key") /*application='Src'*/[0m
+  [1m[35m (13.8ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+) /*application='Src'*/[0m
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id") /*application='Src'*/[0m
+  [1m[35m (5.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id") /*application='Src'*/[0m
+  [1m[35m (14.4ms)[0m  [1m[35mCREATE TABLE "active_storage_variant_records" ("id" bigserial primary key, "blob_id" bigint NOT NULL, "variation_digest" character varying NOT NULL, CONSTRAINT "fk_rails_993965df05"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+) /*application='Src'*/[0m
+  [1m[35m (5.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_variant_records_uniqueness" ON "active_storage_variant_records" ("blob_id", "variation_digest") /*application='Src'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260210103857') RETURNING "version" /*application='Src'*/[0m
+  [1m[36mTRANSACTION (3.0ms)[0m  [1m[35mCOMMIT /*application='Src'*/[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_advisory_unlock(7805954144794715910) /*application='Src'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Src'*/[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[35mSET search_path TO public /*application='Src'*/[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[35mSET search_path TO "$user", public /*application='Src'*/[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[35mSET search_path TO public /*application='Src'*/[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[35mSET search_path TO "$user", public /*application='Src'*/[0m
+  [1m[36mGame Load (1.9ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT 1 /*application='Src'*/[0m
+  [1m[36mActiveStorage::Attachment Exists? (1.7ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 3 AND "active_storage_attachments"."record_type" = 'Game' AND "active_storage_attachments"."name" = 'photos' LIMIT 1 /*application='Src'*/[0m
+  [1m[36mActiveStorage::Attachment Count (1.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 3 AND "active_storage_attachments"."record_type" = 'Game' AND "active_storage_attachments"."name" = 'photos' /*application='Src'*/[0m
+Started GET "/games/new" for 172.28.0.1 at 2026-02-10 10:41:26 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Src'*/[0m
+Processing by GamesController#new as HTML
+  [1m[36mUser Load (27.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='new',application='Src',controller='games'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering games/new.html.erb within layouts/application
+  [1m[36mTeam Load (1.0ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."id" ASC /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:26
+  [1m[36mStadium Load (1.3ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" ORDER BY "stadiums"."id" ASC /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:31
+  Rendered games/_form.html.erb (Duration: 16.8ms | GC: 0.5ms)
+  Rendered games/new.html.erb within layouts/application (Duration: 17.5ms | GC: 0.5ms)
+  Rendered shared/_header.html.erb (Duration: 0.9ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.7ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 22.4ms | GC: 0.5ms)
+Completed 200 OK in 104ms (Views: 21.5ms | ActiveRecord: 36.9ms (3 queries, 0 cached) | GC: 3.7ms)
+
+
+  [1m[36mGame Load (0.7ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT 1 /*application='Src'*/[0m
+  [1m[36mActiveStorage::Attachment Count (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 3 AND "active_storage_attachments"."record_type" = 'Game' AND "active_storage_attachments"."name" = 'photos' /*application='Src'*/[0m
+  [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 3 AND "active_storage_attachments"."record_type" = 'Game' AND "active_storage_attachments"."name" = 'photos' /*application='Src'*/[0m
+  [1m[36mGame Pluck (1.3ms)[0m  [1m[34mSELECT "games"."id", "games"."created_at", "games"."stadium_id", "games"."custom_stadium_name", "games"."favorite_team_score", "games"."opponent_score" FROM "games" ORDER BY "games"."id" DESC LIMIT 5 /*application='Src'*/[0m
+  [1m[36mActiveStorage::Attachment Pluck (0.8ms)[0m  [1m[34mSELECT "active_storage_attachments"."id", "active_storage_attachments"."record_id", "active_storage_attachments"."blob_id", "active_storage_attachments"."created_at" FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_type" = 'Game' AND "active_storage_attachments"."name" = 'photos' ORDER BY "active_storage_attachments"."id" DESC LIMIT 10 /*application='Src'*/[0m
+  [1m[36mGame Pluck (1.0ms)[0m  [1m[34mSELECT "games"."id", "games"."created_at", "games"."stadium_id", "games"."custom_stadium_name", "games"."favorite_team_score", "games"."opponent_score" FROM "games" ORDER BY "games"."id" DESC LIMIT 5 /*application='Src'*/[0m
+  [1m[36mActiveStorage::Attachment Pluck (1.2ms)[0m  [1m[34mSELECT "active_storage_attachments"."id", "active_storage_attachments"."record_id", "active_storage_attachments"."blob_id", "active_storage_attachments"."created_at" FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_type" = 'Game' AND "active_storage_attachments"."name" = 'photos' ORDER BY "active_storage_attachments"."id" DESC LIMIT 10 /*application='Src'*/[0m
+Started POST "/games" for 172.28.0.1 at 2026-02-10 10:48:02 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Src'*/[0m
+Processing by GamesController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "game"=>{"date"=>"2026-02-10", "home_away"=>"home", "opponent_team_id"=>"1", "stadium_id"=>"1", "custom_stadium_name"=>"", "favorite_team_score"=>"1", "opponent_score"=>"1", "starting_pitcher"=>"", "photos"=>["", #<ActionDispatch::Http::UploadedFile:0x00007f3ff6c44978 @tempfile=#<Tempfile:/tmp/RackMultipart20260210-1-avxjt0.png>, @content_type="image/png", @original_filename="1417101.png", @headers="Content-Disposition: form-data; name=\"game[photos][]\"; filename=\"1417101.png\"\r\nContent-Type: image/png\r\n">, #<ActionDispatch::Http::UploadedFile:0x00007f3ff6c448d8 @tempfile=#<Tempfile:/tmp/RackMultipart20260210-1-bvg9ul.jpg>, @content_type="image/jpeg", @original_filename="e35546.jpg", @headers="Content-Disposition: form-data; name=\"game[photos][]\"; filename=\"e35546.jpg\"\r\nContent-Type: image/jpeg\r\n">], "video_url"=>""}, "commit"=>"登録する"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='create',application='Src',controller='games'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/models/game.rb:26:in `other_stadium?'
+  [1m[36mStadium Load (0.8ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" WHERE "stadiums"."id" = 1 LIMIT 1 /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/models/game.rb:26:in `other_stadium?'
+  [1m[36mTeam Load (0.7ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 1 LIMIT 1 /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/controllers/games_controller.rb:12:in `create'
+  [1m[36mGame Create (1.7ms)[0m  [1m[32mINSERT INTO "games" ("user_id", "opponent_team_id", "stadium_id", "date", "home_away", "starting_pitcher", "favorite_team_score", "opponent_score", "custom_stadium_name", "result", "video_url", "created_at", "updated_at") VALUES (1, 1, 1, '2026-02-10', 0, '', 1, 1, NULL, 2, '', '2026-02-10 10:48:02.535442', '2026-02-10 10:48:02.535442') RETURNING "id" /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/controllers/games_controller.rb:12:in `create'
+  [1m[36mActiveStorage::Attachment Load (1.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 4 AND "active_storage_attachments"."record_type" = 'Game' AND "active_storage_attachments"."name" = 'photos' /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/controllers/games_controller.rb:12:in `create'
+  [1m[36mActiveStorage::Blob Create (1.2ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ('inaq8459uxe2h6if2v3p4rmex16g', '1417101.png', 'image/png', '{"identified":true}', 'local', 49550, 'eG1V7A9B0gcZwwHO3oTgcQ==', '2026-02-10 10:48:02.543415') RETURNING "id" /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/controllers/games_controller.rb:12:in `create'
+  [1m[36mActiveStorage::Attachment Create (1.1ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ('photos', 'Game', 4, 1, '2026-02-10 10:48:02.547640') RETURNING "id" /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/controllers/games_controller.rb:12:in `create'
+  [1m[36mActiveStorage::Blob Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ('ihqc81hucp17aqdo64g7ejrfy8qv', 'e35546.jpg', 'image/jpeg', '{"identified":true}', 'local', 16669, 'd/9r/bpJSEJkvqMXdlLH8w==', '2026-02-10 10:48:02.552102') RETURNING "id" /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/controllers/games_controller.rb:12:in `create'
+  [1m[36mActiveStorage::Attachment Create (0.6ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ('photos', 'Game', 4, 2, '2026-02-10 10:48:02.554970') RETURNING "id" /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/controllers/games_controller.rb:12:in `create'
+  [1m[36mGame Update (2.4ms)[0m  [1m[33mUPDATE "games" SET "updated_at" = '2026-02-10 10:48:02.557310' WHERE "games"."id" = 4 /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/controllers/games_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/controllers/games_controller.rb:12:in `create'
+[36m  Disk Storage (1.0ms) [0m[32mUploaded file to key: inaq8459uxe2h6if2v3p4rmex16g (checksum: eG1V7A9B0gcZwwHO3oTgcQ==)[0m
+[36m  Disk Storage (0.5ms) [0m[32mUploaded file to key: ihqc81hucp17aqdo64g7ejrfy8qv (checksum: d/9r/bpJSEJkvqMXdlLH8w==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 543bf85f-1258-40a6-9619-c8dc070ff004) to Async(default) with arguments: #<GlobalID:0x00007f3ff58c1e78 @uri=#<URI::GID gid://src/ActiveStorage::Blob/1>>
+[ActiveJob] ↳ app/controllers/games_controller.rb:12:in `create'
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: f6f15e14-f194-46f7-90d3-cd4f1357b7e9) to Async(default) with arguments: #<GlobalID:0x00007f3ff58fad90 @uri=#<URI::GID gid://src/ActiveStorage::Blob/2>>
+[ActiveJob] ↳ app/controllers/games_controller.rb:12:in `create'
+Redirected to http://localhost:3000/
+↳ app/controllers/games_controller.rb:13:in `create'
+Completed 302 Found in 241ms (ActiveRecord: 33.2ms (10 queries, 0 cached) | GC: 20.5ms)
+
+
+Started GET "/" for 172.28.0.1 at 2026-02-10 10:48:02 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+[ActiveJob] [ActiveStorage::AnalyzeJob] [543bf85f-1258-40a6-9619-c8dc070ff004]   [1m[36mActiveStorage::Blob Load (2.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 1 LIMIT 1 /*application='Src'*/[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [543bf85f-1258-40a6-9619-c8dc070ff004] Performing ActiveStorage::AnalyzeJob (Job ID: 543bf85f-1258-40a6-9619-c8dc070ff004) from Async(default) enqueued at 2026-02-10T10:48:02.612870611Z with arguments: #<GlobalID:0x00007f3ff69953f8 @uri=#<URI::GID gid://src/ActiveStorage::Blob/1>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [543bf85f-1258-40a6-9619-c8dc070ff004] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [543bf85f-1258-40a6-9619-c8dc070ff004]   [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mBEGIN /*application='Src',job='ActiveStorage%3A%3AAnalyzeJob'*/[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [543bf85f-1258-40a6-9619-c8dc070ff004]   [1m[36mActiveStorage::Blob Update (5.5ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = '{"identified":true,"analyzed":true}' WHERE "active_storage_blobs"."id" = 1 /*application='Src',job='ActiveStorage%3A%3AAnalyzeJob'*/[0m
+Processing by UserSessionsController#new as HTML
+[ActiveJob] [ActiveStorage::AnalyzeJob] [543bf85f-1258-40a6-9619-c8dc070ff004]   [1m[36mActiveStorage::Attachment Load (4.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."blob_id" = 1 /*application='Src',job='ActiveStorage%3A%3AAnalyzeJob'*/[0m
+  Rendering user_sessions/new.html.erb
+[ActiveJob] [ActiveStorage::AnalyzeJob] [543bf85f-1258-40a6-9619-c8dc070ff004]   [1m[36mGame Load (2.3ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = 4 /*application='Src',job='ActiveStorage%3A%3AAnalyzeJob'*/[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [543bf85f-1258-40a6-9619-c8dc070ff004]   [1m[36mGame Update (3.5ms)[0m  [1m[33mUPDATE "games" SET "updated_at" = '2026-02-10 10:48:02.707784' WHERE "games"."id" = 4 /*application='Src',job='ActiveStorage%3A%3AAnalyzeJob'*/[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [543bf85f-1258-40a6-9619-c8dc070ff004]   [1m[36mTRANSACTION (3.3ms)[0m  [1m[35mCOMMIT /*application='Src',job='ActiveStorage%3A%3AAnalyzeJob'*/[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [543bf85f-1258-40a6-9619-c8dc070ff004] Performed ActiveStorage::AnalyzeJob (Job ID: 543bf85f-1258-40a6-9619-c8dc070ff004) from Async(default) in 82.49ms
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f6f15e14-f194-46f7-90d3-cd4f1357b7e9]   [1m[36mActiveStorage::Blob Load (83.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 2 LIMIT 1 /*application='Src'*/[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f6f15e14-f194-46f7-90d3-cd4f1357b7e9] Performing ActiveStorage::AnalyzeJob (Job ID: f6f15e14-f194-46f7-90d3-cd4f1357b7e9) from Async(default) enqueued at 2026-02-10T10:48:02.615460014Z with arguments: #<GlobalID:0x00007f3ff49993d8 @uri=#<URI::GID gid://src/ActiveStorage::Blob/2>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f6f15e14-f194-46f7-90d3-cd4f1357b7e9] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f6f15e14-f194-46f7-90d3-cd4f1357b7e9]   [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN /*application='Src',job='ActiveStorage%3A%3AAnalyzeJob'*/[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f6f15e14-f194-46f7-90d3-cd4f1357b7e9]   [1m[36mActiveStorage::Blob Update (4.0ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = '{"identified":true,"analyzed":true}' WHERE "active_storage_blobs"."id" = 2 /*application='Src',job='ActiveStorage%3A%3AAnalyzeJob'*/[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f6f15e14-f194-46f7-90d3-cd4f1357b7e9]   [1m[36mActiveStorage::Attachment Load (2.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."blob_id" = 2 /*application='Src',job='ActiveStorage%3A%3AAnalyzeJob'*/[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f6f15e14-f194-46f7-90d3-cd4f1357b7e9]   [1m[36mGame Load (1.5ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = 4 /*application='Src',job='ActiveStorage%3A%3AAnalyzeJob'*/[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f6f15e14-f194-46f7-90d3-cd4f1357b7e9]   [1m[36mGame Update (0.8ms)[0m  [1m[33mUPDATE "games" SET "updated_at" = '2026-02-10 10:48:02.751086' WHERE "games"."id" = 4 /*application='Src',job='ActiveStorage%3A%3AAnalyzeJob'*/[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f6f15e14-f194-46f7-90d3-cd4f1357b7e9]   [1m[36mTRANSACTION (2.6ms)[0m  [1m[35mCOMMIT /*application='Src',job='ActiveStorage%3A%3AAnalyzeJob'*/[0m
+  [1m[36mUser Load (59.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='new',application='Src',controller='user_sessions'*/[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f6f15e14-f194-46f7-90d3-cd4f1357b7e9] Performed ActiveStorage::AnalyzeJob (Job ID: f6f15e14-f194-46f7-90d3-cd4f1357b7e9) from Async(default) in 116.27ms
+  ↳ app/views/user_sessions/new.html.erb:768
+  Rendered user_sessions/new.html.erb (Duration: 76.3ms | GC: 0.0ms)
+Completed 200 OK in 96ms (Views: 4.2ms | ActiveRecord: 77.7ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  [1m[36mGame Load (1.5ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT 1 /*application='Src'*/[0m
+  [1m[36mActiveStorage::Attachment Count (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 4 AND "active_storage_attachments"."record_type" = 'Game' AND "active_storage_attachments"."name" = 'photos' /*application='Src'*/[0m
+  [1m[36mActiveStorage::Attachment Pluck (0.9ms)[0m  [1m[34mSELECT "active_storage_attachments"."id", "active_storage_attachments"."record_id", "active_storage_attachments"."blob_id", "active_storage_attachments"."created_at" FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_type" = 'Game' AND "active_storage_attachments"."name" = 'photos' ORDER BY "active_storage_attachments"."id" DESC LIMIT 10 /*application='Src'*/[0m
+Started POST "/user_session" for 172.28.0.1 at 2026-02-10 10:52:31 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by UserSessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"[FILTERED]", "password"=>"[FILTERED]", "commit"=>"ログイン"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'test@example.com' ORDER BY "users"."id" ASC LIMIT 1 /*action='create',application='Src',controller='user_sessions'*/[0m
+  ↳ app/controllers/user_sessions_controller.rb:7:in `create'
+DEPRECATION WARNING: `redirect_back_or_to` overrides the method of the same name defined in Rails 7. To avoid overriding, set `config.use_redirect_back_or_to_by_rails = true` and use `redirect_to_before_login_path`. In a future release, `config.use_redirect_back_or_to_by_rails = true` will become the default. (called from create at /app/src/app/controllers/user_sessions_controller.rb:8)
+Redirected to http://localhost:3000/dashboard
+↳ app/controllers/user_sessions_controller.rb:8:in `create'
+Completed 302 Found in 173ms (ActiveRecord: 9.7ms (1 query, 0 cached) | GC: 23.1ms)
+
+
+Started GET "/dashboard" for 172.28.0.1 at 2026-02-10 10:52:31 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardsController#show as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering dashboards/show.html.erb within layouts/application
+  Rendered dashboards/show.html.erb within layouts/application (Duration: 0.3ms | GC: 0.0ms)
+  Rendered shared/_header.html.erb (Duration: 3.0ms | GC: 1.0ms)
+  Rendered shared/_flash.html.erb (Duration: 3.1ms | GC: 2.4ms)
+  Rendered shared/_footer.html.erb (Duration: 1.2ms | GC: 0.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 33.5ms | GC: 21.3ms)
+Completed 200 OK in 52ms (Views: 37.0ms | ActiveRecord: 0.9ms (1 query, 0 cached) | GC: 32.2ms)
+
+
+Started GET "/games/new" for 172.28.0.1 at 2026-02-10 10:52:34 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by GamesController#new as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='new',application='Src',controller='games'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering games/new.html.erb within layouts/application
+  [1m[36mTeam Load (0.9ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."id" ASC /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:26
+  [1m[36mStadium Load (1.0ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" ORDER BY "stadiums"."id" ASC /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:31
+  Rendered games/_form.html.erb (Duration: 16.7ms | GC: 0.5ms)
+  Rendered games/new.html.erb within layouts/application (Duration: 17.3ms | GC: 0.5ms)
+  Rendered shared/_header.html.erb (Duration: 0.4ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 19.2ms | GC: 0.5ms)
+Completed 200 OK in 55ms (Views: 16.7ms | ActiveRecord: 9.5ms (3 queries, 0 cached) | GC: 4.5ms)
+
+
+Started GET "/dashboard" for 172.28.0.1 at 2026-02-10 10:53:28 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardsController#show as HTML
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering dashboards/show.html.erb within layouts/application
+  Rendered dashboards/show.html.erb within layouts/application (Duration: 0.1ms | GC: 0.0ms)
+  Rendered shared/_header.html.erb (Duration: 2.0ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.9ms | GC: 0.0ms)
+Completed 200 OK in 22ms (Views: 10.4ms | ActiveRecord: 1.8ms (1 query, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/games/new" for 172.28.0.1 at 2026-02-10 10:53:30 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by GamesController#new as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='new',application='Src',controller='games'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering games/new.html.erb within layouts/application
+  [1m[36mTeam Load (1.0ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."id" ASC /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:26
+  [1m[36mStadium Load (0.9ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" ORDER BY "stadiums"."id" ASC /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:31
+  Rendered games/_form.html.erb (Duration: 9.9ms | GC: 0.0ms)
+  Rendered games/new.html.erb within layouts/application (Duration: 10.2ms | GC: 0.0ms)
+  Rendered shared/_header.html.erb (Duration: 1.2ms | GC: 0.2ms)
+  Rendered shared/_flash.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 13.8ms | GC: 0.2ms)
+Completed 200 OK in 23ms (Views: 13.0ms | ActiveRecord: 2.9ms (3 queries, 0 cached) | GC: 0.4ms)
+
+
+Started GET "/dashboard" for 172.28.0.1 at 2026-02-10 10:53:30 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardsController#show as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering dashboards/show.html.erb within layouts/application
+  Rendered dashboards/show.html.erb within layouts/application (Duration: 0.1ms | GC: 0.0ms)
+  Rendered shared/_header.html.erb (Duration: 1.0ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.5ms | GC: 0.0ms)
+Completed 200 OK in 13ms (Views: 5.0ms | ActiveRecord: 1.2ms (1 query, 0 cached) | GC: 0.4ms)
+
+
+Started GET "/games/new" for 172.28.0.1 at 2026-02-10 10:53:31 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by GamesController#new as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='new',application='Src',controller='games'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering games/new.html.erb within layouts/application
+  [1m[36mTeam Load (0.8ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."id" ASC /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:26
+  [1m[36mStadium Load (0.8ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" ORDER BY "stadiums"."id" ASC /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:31
+  Rendered games/_form.html.erb (Duration: 6.5ms | GC: 0.0ms)
+  Rendered games/new.html.erb within layouts/application (Duration: 6.7ms | GC: 0.0ms)
+  Rendered shared/_header.html.erb (Duration: 0.4ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 8.3ms | GC: 0.0ms)
+Completed 200 OK in 13ms (Views: 7.3ms | ActiveRecord: 2.3ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/dashboard" for 172.28.0.1 at 2026-02-10 10:53:32 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardsController#show as HTML
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering dashboards/show.html.erb within layouts/application
+  Rendered dashboards/show.html.erb within layouts/application (Duration: 0.1ms | GC: 0.0ms)
+  Rendered shared/_header.html.erb (Duration: 0.8ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.0ms | GC: 0.0ms)
+Completed 200 OK in 12ms (Views: 5.2ms | ActiveRecord: 1.4ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/dashboard" for 172.28.0.1 at 2026-02-10 12:12:00 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardsController#show as HTML
+  [1m[36mUser Load (130.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering dashboards/show.html.erb within layouts/application
+  Rendered dashboards/show.html.erb within layouts/application (Duration: 1.6ms | GC: 0.0ms)
+  [1m[36mTeam Load (2.5ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  ↳ app/views/shared/_header.html.erb:34
+  Rendered shared/_header.html.erb (Duration: 40.6ms | GC: 11.5ms)
+  Rendered shared/_flash.html.erb (Duration: 0.8ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 59.5ms | GC: 11.5ms)
+Completed 200 OK in 256ms (Views: 70.0ms | ActiveRecord: 179.0ms (2 queries, 0 cached) | GC: 16.9ms)
+
+
+Started GET "/dashboard" for 172.28.0.1 at 2026-02-10 12:12:14 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardsController#show as HTML
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering dashboards/show.html.erb within layouts/application
+  Rendered dashboards/show.html.erb within layouts/application (Duration: 0.1ms | GC: 0.0ms)
+  [1m[36mTeam Load (1.8ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  ↳ app/views/shared/_header.html.erb:34
+  Rendered shared/_header.html.erb (Duration: 7.6ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 11.3ms | GC: 0.0ms)
+Completed 200 OK in 22ms (Views: 10.7ms | ActiveRecord: 3.5ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/games/new" for 172.28.0.1 at 2026-02-10 12:12:16 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by GamesController#new as HTML
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='new',application='Src',controller='games'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering games/new.html.erb within layouts/application
+  [1m[36mTeam Load (2.3ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."id" ASC /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:26
+  [1m[36mStadium Load (2.1ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" ORDER BY "stadiums"."id" ASC /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:31
+  Rendered games/_form.html.erb (Duration: 25.1ms | GC: 0.0ms)
+  Rendered games/new.html.erb within layouts/application (Duration: 27.6ms | GC: 0.0ms)
+  [1m[36mTeam Load (1.4ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/shared/_header.html.erb:34
+  Rendered shared/_header.html.erb (Duration: 8.0ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 42.2ms | GC: 0.0ms)
+Completed 200 OK in 110ms (Views: 38.6ms | ActiveRecord: 7.4ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/dashboard" for 172.28.0.1 at 2026-02-10 12:12:19 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardsController#show as HTML
+  [1m[36mUser Load (5.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering dashboards/show.html.erb within layouts/application
+  Rendered dashboards/show.html.erb within layouts/application (Duration: 0.1ms | GC: 0.0ms)
+  [1m[36mTeam Load (1.9ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  ↳ app/views/shared/_header.html.erb:34
+  Rendered shared/_header.html.erb (Duration: 13.8ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.5ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 3.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 29.2ms | GC: 0.0ms)
+Completed 200 OK in 147ms (Views: 29.5ms | ActiveRecord: 7.4ms (2 queries, 0 cached) | GC: 81.7ms)
+
+
+Started GET "/dashboard" for 172.28.0.1 at 2026-02-10 12:12:26 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardsController#show as HTML
+  [1m[36mUser Load (6.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering dashboards/show.html.erb within layouts/application
+  Rendered dashboards/show.html.erb within layouts/application (Duration: 4.5ms | GC: 0.0ms)
+  [1m[36mTeam Load (1.8ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  ↳ app/views/shared/_header.html.erb:34
+  Rendered shared/_header.html.erb (Duration: 32.0ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.6ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 1.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 57.4ms | GC: 0.0ms)
+Completed 200 OK in 148ms (Views: 62.3ms | ActiveRecord: 8.0ms (2 queries, 0 cached) | GC: 21.5ms)
+
+
+Started GET "/dashboard" for 172.28.0.1 at 2026-02-10 12:17:34 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardsController#show as HTML
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering dashboards/show.html.erb within layouts/application
+  Rendered dashboards/show.html.erb within layouts/application (Duration: 2.1ms | GC: 0.0ms)
+  [1m[36mTeam Load (1.6ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  ↳ app/views/shared/_header.html.erb:34
+  Rendered shared/_header.html.erb (Duration: 36.6ms | GC: 2.9ms)
+  Rendered shared/_flash.html.erb (Duration: 1.2ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 1.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 52.4ms | GC: 2.9ms)
+Completed 200 OK in 162ms (Views: 47.6ms | ActiveRecord: 35.1ms (2 queries, 0 cached) | GC: 42.2ms)
+
+
+Started GET "/dashboard" for 172.28.0.1 at 2026-02-10 12:35:04 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardsController#show as HTML
+  [1m[36mUser Load (171.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering dashboards/show.html.erb within layouts/application
+  Rendered dashboards/show.html.erb within layouts/application (Duration: 4.3ms | GC: 0.0ms)
+  [1m[36mTeam Load (2.8ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  ↳ app/views/shared/_header.html.erb:34
+  Rendered shared/_header.html.erb (Duration: 66.3ms | GC: 2.4ms)
+  Rendered shared/_flash.html.erb (Duration: 2.2ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 12.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 116.1ms | GC: 5.4ms)
+Completed 200 OK in 467ms (Views: 114.3ms | ActiveRecord: 232.2ms (2 queries, 0 cached) | GC: 101.9ms)
+
+
+Started GET "/games/new" for 172.28.0.1 at 2026-02-10 12:35:08 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by GamesController#new as HTML
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='new',application='Src',controller='games'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering games/new.html.erb within layouts/application
+  [1m[36mTeam Load (1.7ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."id" ASC /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:44
+  [1m[36mStadium Load (1.4ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" ORDER BY "stadiums"."id" ASC /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:51
+  [1m[36mTeam Load (1.2ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:69
+  Rendered games/_form.html.erb (Duration: 30.8ms | GC: 0.1ms)
+  Rendered games/new.html.erb within layouts/application (Duration: 32.7ms | GC: 0.1ms)
+  Rendered shared/_header.html.erb (Duration: 3.0ms | GC: 0.4ms)
+  Rendered shared/_flash.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 40.2ms | GC: 0.5ms)
+Completed 200 OK in 123ms (Views: 36.5ms | ActiveRecord: 24.9ms (4 queries, 0 cached) | GC: 1.5ms)
+
+
+Started GET "/games/new" for 172.28.0.1 at 2026-02-10 12:39:01 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by GamesController#new as HTML
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='new',application='Src',controller='games'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering games/new.html.erb within layouts/application
+  [1m[36mTeam Load (2.2ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."id" ASC /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:44
+  [1m[36mStadium Load (1.1ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" ORDER BY "stadiums"."id" ASC /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:51
+  [1m[36mTeam Load (1.6ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:69
+  Rendered games/_form.html.erb (Duration: 54.1ms | GC: 0.0ms)
+  Rendered games/new.html.erb within layouts/application (Duration: 56.5ms | GC: 0.0ms)
+  Rendered shared/_header.html.erb (Duration: 4.1ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.9ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 1.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 72.1ms | GC: 0.0ms)
+Completed 200 OK in 312ms (Views: 74.2ms | ActiveRecord: 45.3ms (4 queries, 0 cached) | GC: 7.6ms)
+
+
+Started POST "/games" for 172.28.0.1 at 2026-02-10 12:39:41 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by GamesController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "game"=>{"date"=>"2026-05-08", "home_away"=>"home", "opponent_team_id"=>"3", "stadium_id"=>"4", "custom_stadium_name"=>"", "favorite_team_score"=>"1", "opponent_score"=>"0", "starting_pitcher"=>"", "photos"=>["", #<ActionDispatch::Http::UploadedFile:0x00007f3ff6dba8c0 @tempfile=#<Tempfile:/tmp/RackMultipart20260210-1-w8p811.png>, @content_type="image/png", @original_filename="☆70277527-f79b-41ef-b6b7-3390c85a6972.png", @headers="Content-Disposition: form-data; name=\"game[photos][]\"; filename=\"☆70277527-f79b-41ef-b6b7-3390c85a6972.png\"\r\nContent-Type: image/png\r\n">], "video_url"=>""}, "commit"=>"登録する"}
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='create',application='Src',controller='games'*/[0m
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mBEGIN /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/models/game.rb:26:in `other_stadium?'
+  [1m[36mStadium Load (21.4ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" WHERE "stadiums"."id" = 4 LIMIT 1 /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/models/game.rb:26:in `other_stadium?'
+  [1m[36mTeam Load (1.7ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 3 LIMIT 1 /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/controllers/games_controller.rb:12:in `create'
+  [1m[36mGame Create (25.0ms)[0m  [1m[32mINSERT INTO "games" ("user_id", "opponent_team_id", "stadium_id", "date", "home_away", "starting_pitcher", "favorite_team_score", "opponent_score", "custom_stadium_name", "result", "video_url", "created_at", "updated_at") VALUES (1, 3, 4, '2026-05-08', 0, '', 1, 0, NULL, 0, '', '2026-02-10 12:39:42.285665', '2026-02-10 12:39:42.285665') RETURNING "id" /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/controllers/games_controller.rb:12:in `create'
+  [1m[36mActiveStorage::Attachment Load (21.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 5 AND "active_storage_attachments"."record_type" = 'Game' AND "active_storage_attachments"."name" = 'photos' /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/controllers/games_controller.rb:12:in `create'
+  [1m[36mActiveStorage::Blob Create (5.6ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ('ycg6834hpp62j25f94qc0wdgth9o', '☆70277527-f79b-41ef-b6b7-3390c85a6972.png', 'image/png', '{"identified":true}', 'local', 804297, 'Sd6MdNEILKAgiF71hDny0Q==', '2026-02-10 12:39:42.385058') RETURNING "id" /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/controllers/games_controller.rb:12:in `create'
+  [1m[36mActiveStorage::Attachment Create (6.1ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ('photos', 'Game', 5, 3, '2026-02-10 12:39:42.436102') RETURNING "id" /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/controllers/games_controller.rb:12:in `create'
+  [1m[36mGame Update (6.7ms)[0m  [1m[33mUPDATE "games" SET "updated_at" = '2026-02-10 12:39:42.480113' WHERE "games"."id" = 5 /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/controllers/games_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (15.3ms)[0m  [1m[35mCOMMIT /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/controllers/games_controller.rb:12:in `create'
+[36m  Disk Storage (16.5ms) [0m[32mUploaded file to key: ycg6834hpp62j25f94qc0wdgth9o (checksum: Sd6MdNEILKAgiF71hDny0Q==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 88ce610e-eb0a-469f-a3e0-32f90de6bad7) to Async(default) with arguments: #<GlobalID:0x00007f3ff480cdf8 @uri=#<URI::GID gid://src/ActiveStorage::Blob/3>>
+[ActiveJob] ↳ app/controllers/games_controller.rb:12:in `create'
+Redirected to http://localhost:3000/
+↳ app/controllers/games_controller.rb:13:in `create'
+Completed 302 Found in 719ms (ActiveRecord: 124.2ms (8 queries, 0 cached) | GC: 42.4ms)
+
+
+[ActiveJob] [ActiveStorage::AnalyzeJob] [88ce610e-eb0a-469f-a3e0-32f90de6bad7]   [1m[36mActiveStorage::Blob Load (4.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 3 LIMIT 1 /*application='Src'*/[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [88ce610e-eb0a-469f-a3e0-32f90de6bad7] Performing ActiveStorage::AnalyzeJob (Job ID: 88ce610e-eb0a-469f-a3e0-32f90de6bad7) from Async(default) enqueued at 2026-02-10T12:39:42.564350498Z with arguments: #<GlobalID:0x00007f3ff48364c8 @uri=#<URI::GID gid://src/ActiveStorage::Blob/3>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [88ce610e-eb0a-469f-a3e0-32f90de6bad7] Skipping image analysis because the ruby-vips gem isn't installed
+Started GET "/" for 172.28.0.1 at 2026-02-10 12:39:42 +0000
+[ActiveJob] [ActiveStorage::AnalyzeJob] [88ce610e-eb0a-469f-a3e0-32f90de6bad7]   [1m[36mTRANSACTION (3.3ms)[0m  [1m[35mBEGIN /*application='Src',job='ActiveStorage%3A%3AAnalyzeJob'*/[0m
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+[ActiveJob] [ActiveStorage::AnalyzeJob] [88ce610e-eb0a-469f-a3e0-32f90de6bad7]   [1m[36mActiveStorage::Blob Update (12.5ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = '{"identified":true,"analyzed":true}' WHERE "active_storage_blobs"."id" = 3 /*application='Src',job='ActiveStorage%3A%3AAnalyzeJob'*/[0m
+Processing by UserSessionsController#new as HTML
+[ActiveJob] [ActiveStorage::AnalyzeJob] [88ce610e-eb0a-469f-a3e0-32f90de6bad7]   [1m[36mActiveStorage::Attachment Load (16.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."blob_id" = 3 /*application='Src',job='ActiveStorage%3A%3AAnalyzeJob'*/[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [88ce610e-eb0a-469f-a3e0-32f90de6bad7]   [1m[36mGame Load (12.0ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = 5 /*application='Src',job='ActiveStorage%3A%3AAnalyzeJob'*/[0m
+  Rendering user_sessions/new.html.erb
+[ActiveJob] [ActiveStorage::AnalyzeJob] [88ce610e-eb0a-469f-a3e0-32f90de6bad7]   [1m[36mGame Update (30.7ms)[0m  [1m[33mUPDATE "games" SET "updated_at" = '2026-02-10 12:39:42.778787' WHERE "games"."id" = 5 /*application='Src',job='ActiveStorage%3A%3AAnalyzeJob'*/[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [88ce610e-eb0a-469f-a3e0-32f90de6bad7]   [1m[36mTRANSACTION (9.5ms)[0m  [1m[35mCOMMIT /*application='Src',job='ActiveStorage%3A%3AAnalyzeJob'*/[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [88ce610e-eb0a-469f-a3e0-32f90de6bad7] Performed ActiveStorage::AnalyzeJob (Job ID: 88ce610e-eb0a-469f-a3e0-32f90de6bad7) from Async(default) in 214.03ms
+  [1m[36mUser Load (78.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='new',application='Src',controller='user_sessions'*/[0m
+  ↳ app/views/user_sessions/new.html.erb:768
+  Rendered user_sessions/new.html.erb (Duration: 104.7ms | GC: 2.8ms)
+Completed 200 OK in 194ms (Views: 11.6ms | ActiveRecord: 95.7ms (1 query, 0 cached) | GC: 43.8ms)
+
+
+Started POST "/user_session" for 172.28.0.1 at 2026-02-10 12:40:01 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by UserSessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"[FILTERED]", "password"=>"[FILTERED]", "commit"=>"ログイン"}
+  [1m[36mUser Load (7.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'test@example.com' ORDER BY "users"."id" ASC LIMIT 1 /*action='create',application='Src',controller='user_sessions'*/[0m
+  ↳ app/controllers/user_sessions_controller.rb:7:in `create'
+  Rendering user_sessions/new.html.erb
+  Rendered user_sessions/new.html.erb (Duration: 4.7ms | GC: 0.0ms)
+Completed 422 Unprocessable Content in 532ms (Views: 7.2ms | ActiveRecord: 7.7ms (1 query, 0 cached) | GC: 5.2ms)
+
+
+Started POST "/user_session" for 172.28.0.1 at 2026-02-10 12:40:10 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by UserSessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"[FILTERED]", "password"=>"[FILTERED]", "commit"=>"ログイン"}
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'test@example.com' ORDER BY "users"."id" ASC LIMIT 1 /*action='create',application='Src',controller='user_sessions'*/[0m
+  ↳ app/controllers/user_sessions_controller.rb:7:in `create'
+DEPRECATION WARNING: `redirect_back_or_to` overrides the method of the same name defined in Rails 7. To avoid overriding, set `config.use_redirect_back_or_to_by_rails = true` and use `redirect_to_before_login_path`. In a future release, `config.use_redirect_back_or_to_by_rails = true` will become the default. (called from create at /app/src/app/controllers/user_sessions_controller.rb:8)
+Redirected to http://localhost:3000/dashboard
+↳ app/controllers/user_sessions_controller.rb:8:in `create'
+Completed 302 Found in 213ms (ActiveRecord: 2.3ms (1 query, 0 cached) | GC: 0.6ms)
+
+
+Started GET "/dashboard" for 172.28.0.1 at 2026-02-10 12:40:10 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardsController#show as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering dashboards/show.html.erb within layouts/application
+  Rendered dashboards/show.html.erb within layouts/application (Duration: 0.5ms | GC: 0.0ms)
+  [1m[36mTeam Load (1.2ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  ↳ app/views/shared/_header.html.erb:34
+  Rendered shared/_header.html.erb (Duration: 9.4ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.7ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 16.6ms | GC: 0.0ms)
+Completed 200 OK in 29ms (Views: 15.9ms | ActiveRecord: 3.4ms (2 queries, 0 cached) | GC: 1.1ms)
+
+
+Started GET "/games/new" for 172.28.0.1 at 2026-02-10 12:40:14 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by GamesController#new as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='new',application='Src',controller='games'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering games/new.html.erb within layouts/application
+  [1m[36mTeam Load (2.5ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."id" ASC /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:44
+  [1m[36mStadium Load (2.3ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" ORDER BY "stadiums"."id" ASC /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:51
+  [1m[36mTeam Load (2.1ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:69
+  Rendered games/_form.html.erb (Duration: 27.4ms | GC: 0.3ms)
+  Rendered games/new.html.erb within layouts/application (Duration: 28.6ms | GC: 0.3ms)
+  Rendered shared/_header.html.erb (Duration: 1.0ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 32.5ms | GC: 0.3ms)
+Completed 200 OK in 42ms (Views: 26.8ms | ActiveRecord: 8.0ms (4 queries, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/dashboard" for 172.28.0.1 at 2026-02-10 12:44:55 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardsController#show as HTML
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering dashboards/show.html.erb within layouts/application
+  Rendered dashboards/show.html.erb within layouts/application (Duration: 1.6ms | GC: 0.0ms)
+  [1m[36mTeam Load (1.4ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  ↳ app/views/shared/_header.html.erb:34
+  Rendered shared/_header.html.erb (Duration: 38.3ms | GC: 3.4ms)
+  Rendered shared/_flash.html.erb (Duration: 0.7ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 1.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 53.7ms | GC: 5.1ms)
+Completed 200 OK in 100ms (Views: 51.7ms | ActiveRecord: 17.0ms (2 queries, 0 cached) | GC: 6.5ms)
+
+
+Started GET "/games/new" for 172.28.0.1 at 2026-02-10 12:45:00 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by GamesController#new as HTML
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='new',application='Src',controller='games'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering games/new.html.erb within layouts/application
+  [1m[36mTeam Load (1.4ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."id" ASC /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:44
+  [1m[36mStadium Load (2.0ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" ORDER BY "stadiums"."id" ASC /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:51
+  [1m[36mTeam Load (6.3ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:69
+  Rendered games/_form.html.erb (Duration: 85.6ms | GC: 0.0ms)
+  Rendered games/new.html.erb within layouts/application (Duration: 90.9ms | GC: 0.0ms)
+  Rendered shared/_header.html.erb (Duration: 1.9ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 3.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 109.2ms | GC: 0.0ms)
+Completed 200 OK in 208ms (Views: 100.8ms | ActiveRecord: 22.2ms (4 queries, 0 cached) | GC: 1.1ms)
+
+
+Started GET "/games/new" for 172.28.0.1 at 2026-02-10 12:45:17 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by GamesController#new as HTML
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='new',application='Src',controller='games'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering games/new.html.erb within layouts/application
+  [1m[36mTeam Load (1.4ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."id" ASC /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:44
+  [1m[36mStadium Load (5.0ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" ORDER BY "stadiums"."id" ASC /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:51
+  [1m[36mTeam Load (1.9ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:69
+  Rendered games/_form.html.erb (Duration: 79.6ms | GC: 0.0ms)
+  Rendered games/new.html.erb within layouts/application (Duration: 82.3ms | GC: 0.0ms)
+  Rendered shared/_header.html.erb (Duration: 3.5ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 1.2ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 1.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 99.0ms | GC: 0.0ms)
+Completed 200 OK in 253ms (Views: 99.1ms | ActiveRecord: 34.4ms (4 queries, 0 cached) | GC: 1.3ms)
+
+
+  [1m[36mGame Pluck (2.6ms)[0m  [1m[34mSELECT "games"."id", "games"."user_id", "games"."date", "games"."home_away", "games"."favorite_team_score", "games"."opponent_score", "games"."created_at" FROM "games" ORDER BY "games"."id" DESC LIMIT 5 /*application='Src'*/[0m
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1 /*application='Src'*/[0m
+  [1m[36mGame Pluck (3.7ms)[0m  [1m[34mSELECT "games"."id", "games"."date", "games"."stadium_id", "games"."favorite_team_score", "games"."opponent_score" FROM "games" WHERE "games"."user_id" = 1 ORDER BY "games"."id" DESC LIMIT 5 /*application='Src'*/[0m
+  [1m[36mGame Load (4.4ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT 1 /*application='Src'*/[0m
+  [1m[36mStadium Load (2.1ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" WHERE "stadiums"."id" = 4 LIMIT 1 /*application='Src'*/[0m
+  [1m[36mGame Load (1.4ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT 1 /*application='Src'*/[0m
+  [1m[36mGame Load (1.4ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT 1 /*application='Src'*/[0m
+  [1m[36mActiveStorage::Attachment Count (5.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 5 AND "active_storage_attachments"."record_type" = 'Game' AND "active_storage_attachments"."name" = 'photos' /*application='Src'*/[0m
+  [1m[36mActiveStorage::Attachment Load (2.7ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 5 AND "active_storage_attachments"."record_type" = 'Game' AND "active_storage_attachments"."name" = 'photos' /*application='Src'*/[0m
+  [1m[36mActiveStorage::Blob Load (2.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 3 LIMIT 1 /*application='Src'*/[0m
+  [1m[36mActiveStorage::Attachment Pluck (1.7ms)[0m  [1m[34mSELECT "active_storage_attachments"."id", "active_storage_attachments"."record_id", "active_storage_attachments"."created_at" FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_type" = 'Game' AND "active_storage_attachments"."name" = 'photos' ORDER BY "active_storage_attachments"."id" DESC LIMIT 5 /*application='Src'*/[0m
+  [1m[36mGame Load (1.4ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT 1 /*application='Src'*/[0m
+  [1m[36mActiveStorage::Attachment Count (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 5 AND "active_storage_attachments"."record_type" = 'Game' AND "active_storage_attachments"."name" = 'photos' /*application='Src'*/[0m
+Started GET "/games/new" for 172.28.0.1 at 2026-02-10 12:52:09 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by GamesController#new as HTML
+  [1m[36mUser Load (74.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='new',application='Src',controller='games'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering games/new.html.erb within layouts/application
+  [1m[36mTeam Load (1.8ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."id" ASC /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:44
+  [1m[36mStadium Load (1.4ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" ORDER BY "stadiums"."id" ASC /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:51
+  [1m[36mTeam Load (1.0ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:69
+  Rendered games/_form.html.erb (Duration: 34.0ms | GC: 1.5ms)
+  Rendered games/new.html.erb within layouts/application (Duration: 37.5ms | GC: 1.5ms)
+  Rendered shared/_header.html.erb (Duration: 3.5ms | GC: 0.8ms)
+  Rendered shared/_flash.html.erb (Duration: 0.8ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 48.2ms | GC: 2.4ms)
+Completed 200 OK in 244ms (Views: 47.3ms | ActiveRecord: 104.5ms (4 queries, 0 cached) | GC: 28.0ms)
+
+
+Started GET "/dashboard" for 172.28.0.1 at 2026-02-10 12:53:16 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardsController#show as HTML
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering dashboards/show.html.erb within layouts/application
+  Rendered dashboards/show.html.erb within layouts/application (Duration: 0.6ms | GC: 0.0ms)
+  [1m[36mTeam Load (1.4ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  ↳ app/views/shared/_header.html.erb:34
+  Rendered shared/_header.html.erb (Duration: 8.0ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 12.7ms | GC: 0.0ms)
+Completed 200 OK in 29ms (Views: 13.6ms | ActiveRecord: 3.5ms (2 queries, 0 cached) | GC: 2.8ms)
+
+
+Started GET "/games/new" for 172.28.0.1 at 2026-02-10 12:53:17 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by GamesController#new as HTML
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='new',application='Src',controller='games'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering games/new.html.erb within layouts/application
+  [1m[36mTeam Load (1.7ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."id" ASC /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:44
+  [1m[36mStadium Load (1.4ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" ORDER BY "stadiums"."id" ASC /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:51
+  [1m[36mTeam Load (1.9ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:69
+  Rendered games/_form.html.erb (Duration: 68.5ms | GC: 0.7ms)
+  Rendered games/new.html.erb within layouts/application (Duration: 69.8ms | GC: 0.7ms)
+  Rendered shared/_header.html.erb (Duration: 3.0ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.4ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 79.4ms | GC: 0.7ms)
+Completed 200 OK in 114ms (Views: 76.5ms | ActiveRecord: 6.6ms (4 queries, 0 cached) | GC: 2.1ms)
+
+
+Started GET "/dashboard" for 172.28.0.1 at 2026-02-10 12:53:37 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardsController#show as HTML
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering dashboards/show.html.erb within layouts/application
+  Rendered dashboards/show.html.erb within layouts/application (Duration: 0.1ms | GC: 0.0ms)
+  [1m[36mTeam Load (1.9ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  ↳ app/views/shared/_header.html.erb:34
+  Rendered shared/_header.html.erb (Duration: 17.6ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 23.6ms | GC: 0.0ms)
+Completed 200 OK in 45ms (Views: 23.8ms | ActiveRecord: 3.5ms (2 queries, 0 cached) | GC: 0.6ms)
+
+
+Started DELETE "/logout" for 172.28.0.1 at 2026-02-10 12:53:38 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by UserSessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (5.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='destroy',application='Src',controller='user_sessions'*/[0m
+  ↳ app/controllers/user_sessions_controller.rb:16:in `destroy'
+Redirected to http://localhost:3000/
+↳ app/controllers/user_sessions_controller.rb:17:in `destroy'
+Completed 302 Found in 36ms (ActiveRecord: 1.6ms (1 query, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/" for 172.28.0.1 at 2026-02-10 12:53:39 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by UserSessionsController#new as HTML
+  Rendering user_sessions/new.html.erb
+  Rendered user_sessions/new.html.erb (Duration: 15.5ms | GC: 0.2ms)
+Completed 200 OK in 21ms (Views: 17.4ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/users/new" for 172.28.0.1 at 2026-02-10 12:53:41 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by UsersController#new as HTML
+  [1m[36mTeam Load (4.9ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" IN ('阪神タイガース', '横浜DeNAベイスターズ', '読売ジャイアンツ', '中日ドラゴンズ', '広島東洋カープ', '東京ヤクルトスワローズ', '福岡ソフトバンクホークス', '北海道日本ハムファイターズ', 'オリックス・バファローズ', '東北楽天ゴールデンイーグルス', '埼玉西武ライオンズ', '千葉ロッテマリーンズ') /*action='new',application='Src',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:26:in `set_teams'
+  Rendering users/new.html.erb
+  Rendered users/new.html.erb (Duration: 35.6ms | GC: 0.0ms)
+Completed 200 OK in 59ms (Views: 37.9ms | ActiveRecord: 4.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/user_session" for 172.28.0.1 at 2026-02-10 12:53:56 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by UserSessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"[FILTERED]", "password"=>"[FILTERED]", "commit"=>"ログイン"}
+  [1m[36mUser Load (3.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'test@example.com' ORDER BY "users"."id" ASC LIMIT 1 /*action='create',application='Src',controller='user_sessions'*/[0m
+  ↳ app/controllers/user_sessions_controller.rb:7:in `create'
+DEPRECATION WARNING: `redirect_back_or_to` overrides the method of the same name defined in Rails 7. To avoid overriding, set `config.use_redirect_back_or_to_by_rails = true` and use `redirect_to_before_login_path`. In a future release, `config.use_redirect_back_or_to_by_rails = true` will become the default. (called from create at /app/src/app/controllers/user_sessions_controller.rb:8)
+Redirected to http://localhost:3000/dashboard
+↳ app/controllers/user_sessions_controller.rb:8:in `create'
+Completed 302 Found in 213ms (ActiveRecord: 3.8ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/dashboard" for 172.28.0.1 at 2026-02-10 12:53:56 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardsController#show as HTML
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering dashboards/show.html.erb within layouts/application
+  Rendered dashboards/show.html.erb within layouts/application (Duration: 0.1ms | GC: 0.0ms)
+  [1m[36mTeam Load (1.0ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  ↳ app/views/shared/_header.html.erb:34
+  Rendered shared/_header.html.erb (Duration: 6.3ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 10.7ms | GC: 0.0ms)
+Completed 200 OK in 22ms (Views: 12.0ms | ActiveRecord: 3.0ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/dashboard" for 172.28.0.1 at 2026-02-10 12:56:28 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardsController#show as HTML
+  [1m[36mUser Load (6.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering dashboards/show.html.erb within layouts/application
+  Rendered dashboards/show.html.erb within layouts/application (Duration: 1.7ms | GC: 0.0ms)
+  [1m[36mTeam Load (1.3ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  ↳ app/views/shared/_header.html.erb:34
+  Rendered shared/_header.html.erb (Duration: 32.7ms | GC: 1.2ms)
+  Rendered shared/_flash.html.erb (Duration: 0.7ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 1.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 48.1ms | GC: 1.2ms)
+Completed 200 OK in 134ms (Views: 50.9ms | ActiveRecord: 25.7ms (2 queries, 0 cached) | GC: 11.7ms)
+
+
+Started GET "/games/new" for 172.28.0.1 at 2026-02-10 12:56:30 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by GamesController#new as HTML
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='new',application='Src',controller='games'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering games/new.html.erb within layouts/application
+  [1m[36mTeam Load (1.3ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."id" ASC /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:44
+  [1m[36mStadium Load (1.1ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" ORDER BY "stadiums"."id" ASC /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:51
+  [1m[36mTeam Load (1.4ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:69
+  Rendered games/_form.html.erb (Duration: 41.4ms | GC: 0.0ms)
+  Rendered games/new.html.erb within layouts/application (Duration: 43.3ms | GC: 0.0ms)
+  Rendered shared/_header.html.erb (Duration: 1.5ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 50.2ms | GC: 0.0ms)
+Completed 200 OK in 116ms (Views: 46.6ms | ActiveRecord: 15.9ms (4 queries, 0 cached) | GC: 1.1ms)
+
+
+Started GET "/dashboard" for 172.28.0.1 at 2026-02-10 12:57:10 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardsController#show as HTML
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering dashboards/show.html.erb within layouts/application
+  Rendered dashboards/show.html.erb within layouts/application (Duration: 0.1ms | GC: 0.0ms)
+  [1m[36mTeam Load (1.7ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  ↳ app/views/shared/_header.html.erb:34
+  Rendered shared/_header.html.erb (Duration: 18.6ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 1.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 26.6ms | GC: 0.0ms)
+Completed 200 OK in 48ms (Views: 28.2ms | ActiveRecord: 3.4ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/dashboard" for 172.28.0.1 at 2026-02-10 12:57:12 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardsController#show as HTML
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering dashboards/show.html.erb within layouts/application
+  Rendered dashboards/show.html.erb within layouts/application (Duration: 0.1ms | GC: 0.0ms)
+  [1m[36mTeam Load (1.6ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  ↳ app/views/shared/_header.html.erb:34
+  Rendered shared/_header.html.erb (Duration: 9.4ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 14.6ms | GC: 0.0ms)
+Completed 200 OK in 26ms (Views: 14.6ms | ActiveRecord: 2.9ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/games/new" for 172.28.0.1 at 2026-02-10 12:57:13 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by GamesController#new as HTML
+  [1m[36mUser Load (3.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='new',application='Src',controller='games'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering games/new.html.erb within layouts/application
+  [1m[36mTeam Load (1.5ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."id" ASC /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:44
+  [1m[36mStadium Load (2.4ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" ORDER BY "stadiums"."id" ASC /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:51
+  [1m[36mTeam Load (1.4ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:69
+  Rendered games/_form.html.erb (Duration: 69.5ms | GC: 23.8ms)
+  Rendered games/new.html.erb within layouts/application (Duration: 70.1ms | GC: 23.8ms)
+  Rendered shared/_header.html.erb (Duration: 1.9ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 82.4ms | GC: 23.8ms)
+Completed 200 OK in 104ms (Views: 79.9ms | ActiveRecord: 8.4ms (4 queries, 0 cached) | GC: 23.8ms)
+
+
+Started GET "/games/new" for 172.28.0.1 at 2026-02-10 12:57:15 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by GamesController#new as HTML
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='new',application='Src',controller='games'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering games/new.html.erb within layouts/application
+  [1m[36mTeam Load (1.4ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."id" ASC /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:44
+  [1m[36mStadium Load (2.4ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" ORDER BY "stadiums"."id" ASC /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:51
+  [1m[36mTeam Load (1.1ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:69
+  Rendered games/_form.html.erb (Duration: 24.3ms | GC: 1.0ms)
+  Rendered games/new.html.erb within layouts/application (Duration: 24.9ms | GC: 1.0ms)
+  Rendered shared/_header.html.erb (Duration: 2.3ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 31.0ms | GC: 1.0ms)
+Completed 200 OK in 46ms (Views: 27.7ms | ActiveRecord: 6.6ms (4 queries, 0 cached) | GC: 1.0ms)
+
+
+Started GET "/dashboard" for 172.28.0.1 at 2026-02-10 12:57:16 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardsController#show as HTML
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering dashboards/show.html.erb within layouts/application
+  Rendered dashboards/show.html.erb within layouts/application (Duration: 0.2ms | GC: 0.0ms)
+  [1m[36mTeam Load (1.4ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  ↳ app/views/shared/_header.html.erb:34
+  Rendered shared/_header.html.erb (Duration: 15.7ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 29.5ms | GC: 1.1ms)
+Completed 200 OK in 45ms (Views: 30.1ms | ActiveRecord: 2.7ms (2 queries, 0 cached) | GC: 1.1ms)
+
+

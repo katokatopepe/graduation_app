@@ -31,7 +31,8 @@ stadiums = [
   { name: "京セラドーム大阪", short_name: "京セラ" },
   { name: "楽天モバイルパーク宮城", short_name: "楽天" },
   { name: "ベルーナドーム", short_name: "ベルーナ" },
-  { name: "ZOZOマリンスタジアム", short_name: "ZOZO" }
+  { name: "ZOZOマリンスタジアム", short_name: "ZOZO" },
+  { name: "その他", short_name: "その他" }
 ]
 
 stadiums.each do |attrs|
