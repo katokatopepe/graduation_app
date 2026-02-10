@@ -2,8 +2,17 @@
   <% if game.errors.any? %>
     <div class="flash-alert">
       <ul class="error-list">
-        <% game.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
+        <% [
+          :date,
+          :home_away,
+          :opponent_team_id,
+          :stadium_id,
+          :favorite_team_score,
+          :opponent_score
+        ].each do |attr| %>
+          <% game.errors.full_messages_for(attr).each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
         <% end %>
       </ul>
     </div>
@@ -101,7 +110,6 @@
         <div class="file-upload-hint" id="photo-upload-hint">クリックまたはドラッグして画像を選択</div>
       </div>
       <div class="photo-preview-grid" id="photo-preview-grid"></div>
-      <!-- 実際に送信されるfile input（JSで管理） -->
       <div id="photo-hidden-inputs"></div>
     </div>
 
@@ -113,104 +121,8 @@
     </div>
   </fieldset>
 
-  <!-- 送信ボタン -->
   <div class="form-actions">
     <%= f.submit "登録する", class: "btn-submit" %>
     <%= link_to "キャンセル", dashboard_path, class: "btn-cancel" %>
   </div>
 <% end %>
-
-<script>
-  function initGameForm() {
-    // 球場「その他」トグル
-    const stadiumSelect = document.getElementById("game_stadium_id");
-    const customField = document.getElementById("custom_stadium_field");
-    if (stadiumSelect && customField) {
-      const OTHER_NAME = "その他";
-      const toggleStadium = () => {
-        const selectedText = stadiumSelect.options[stadiumSelect.selectedIndex]?.text;
-        customField.style.display = (selectedText === OTHER_NAME) ? "block" : "none";
-      };
-      toggleStadium();
-      stadiumSelect.addEventListener("change", toggleStadium);
-    }
-
-    // 写真プレビュー・削除管理
-    const photoPicker = document.getElementById("photo-picker");
-    const previewGrid = document.getElementById("photo-preview-grid");
-    const uploadHint = document.getElementById("photo-upload-hint");
-    const hiddenInputs = document.getElementById("photo-hidden-inputs");
-    let selectedFiles = [];
-
-    function renderPreviews() {
-      if (!previewGrid || !hiddenInputs) return;
-      previewGrid.innerHTML = "";
-      hiddenInputs.innerHTML = "";
-
-      if (uploadHint) {
-        uploadHint.textContent = selectedFiles.length > 0
-          ? selectedFiles.length + "枚の画像を選択中"
-          : "クリックまたはドラッグして画像を選択";
-      }
-
-      selectedFiles.forEach((file, index) => {
-        // hidden file input生成（DataTransferで1ファイルずつ）
-        const dt = new DataTransfer();
-        dt.items.add(file);
-        const hiddenInput = document.createElement("input");
-        hiddenInput.type = "file";
-        hiddenInput.name = "game[photos][]";
-        hiddenInput.files = dt.files;
-        hiddenInput.style.display = "none";
-        hiddenInputs.appendChild(hiddenInput);
-
-        // プレビューカード生成
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          const item = document.createElement("div");
-          item.className = "photo-preview-item";
-          item.innerHTML =
-            '<div class="photo-preview-img-wrap">' +
-              '<img src="' + e.target.result + '" alt="プレビュー ' + (index + 1) + '" class="photo-preview-img">' +
-              '<button type="button" class="photo-remove-btn" data-index="' + index + '" title="削除">&#10005;</button>' +
-            '</div>' +
-            '<span class="photo-preview-name">' + file.name + '</span>';
-          previewGrid.appendChild(item);
-
-          item.querySelector(".photo-remove-btn").addEventListener("click", (ev) => {
-            ev.preventDefault();
-            selectedFiles.splice(index, 1);
-            renderPreviews();
-          });
-        };
-        reader.readAsDataURL(file);
-      });
-    }
-
-    if (photoPicker) {
-      photoPicker.addEventListener("change", () => {
-        Array.from(photoPicker.files).forEach((file) => {
-          if (file.type.startsWith("image/")) {
-            selectedFiles.push(file);
-          }
-        });
-        photoPicker.value = "";
-        renderPreviews();
-      });
-    }
-    const teamShortNames = <%= raw teams.map { |t| [t.id, t.short_name] }.to_h.to_json %>;
-    const opponentSelect = document.getElementById("game_opponent_team_id");
-    const opponentLabel = document.getElementById("opponent-score-label");
-    if (opponentSelect && opponentLabel) {
-      const updateLabel = () => {
-        const teamId = parseInt(opponentSelect.value);
-        opponentLabel.textContent = teamShortNames[teamId] || "相手";
-      };
-      updateLabel();
-      opponentSelect.addEventListener("change", updateLabel);
-    }
-  }
-
-  document.addEventListener("turbo:load", initGameForm);
-  document.addEventListener("DOMContentLoaded", initGameForm);
-</script>
