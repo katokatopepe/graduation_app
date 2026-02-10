@@ -1,27 +1,47 @@
 <header class="app-header">
   <nav class="app-nav">
+    <!-- 左側：ロゴ + ナビリンク -->
     <div class="app-nav-left">
-
-      <span class="app-logo">LOGO</span>
+      <%= link_to dashboard_path, class: "app-logo-link" do %>
+        <span class="app-logo">Baseball Log</span>
+      <% end %>
 
       <% if logged_in? %>
+        <div class="nav-links">
+          <%= link_to dashboard_path, class: "nav-link" do %>
+            <span class="nav-icon">&#9750;</span>
+            <span class="nav-text">ホーム</span>
+          <% end %>
 
-        <%= link_to "ホーム", dashboard_path %>
+          <%= link_to new_game_path, class: "nav-link" do %>
+            <span class="nav-icon">&#9998;</span>
+            <span class="nav-text">試合登録</span>
+          <% end %>
 
-        <%= link_to "試合登録", "#" %>
-
-        <%= link_to "マイページ", "#" %>
+          <%= link_to "#", class: "nav-link" do %>
+            <span class="nav-icon">&#9786;</span>
+            <span class="nav-text">マイページ</span>
+          <% end %>
+        </div>
       <% end %>
     </div>
 
+    <!-- 右側：ユーザー情報 + ログアウト -->
     <div class="app-nav-right">
       <% if logged_in? %>
-        <%= button_to "ログアウト", logout_path, method: :delete, class: "logout-link" %>
+        <div class="user-info">
+          <span class="user-team-badge"><%= current_user.favorite_team.display_name(:short) %></span>
           <span class="app-username"><%= current_user.name %></span>
+        </div>
+        <%= button_to logout_path, method: :delete, class: "logout-btn" do %>
+          <span class="logout-text">ログアウト</span>
+        <% end %>
       <% else %>
-        <%= link_to "ログイン", login_path %>
-    <% end %>
-
+        <%= link_to "ログイン", login_path, class: "nav-link" %>
+      <% end %>
     </div>
   </nav>
+
+  <!-- スコアボード風アクセントライン -->
+  <div class="header-accent-line"></div>
 </header>
