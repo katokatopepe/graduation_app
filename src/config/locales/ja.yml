@@ -1,0 +1,28 @@
+ja:
+  activerecord:
+    models:
+      game: 試合記録
+    attributes:
+      game:
+
+        stadium: 球場
+        opponent_team: 対戦相手
+
+        stadium_id: 球場
+        opponent_team_id: 対戦相手
+
+        date: 日付
+        home_away: ホーム/ビジター
+        favorite_team_score: 推しチーム得点
+        opponent_score: 対戦相手得点
+        starting_pitcher: 先発投手
+        custom_stadium_name: 球場（自由入力）
+        result: 試合結果
+        video_url: 動画URL
+
+  errors:
+    format: "%{attribute}%{message}"
+    messages:
+      blank: "を入力してください"
+      not_a_number: "は数値で入力してください"
+      required: "を選択してください"

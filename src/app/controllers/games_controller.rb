@@ -10,7 +10,7 @@ class GamesController < ApplicationController
     @game = current_user.games.new(game_params)
 
     if @game.save
-      redirect_to root_path, notice: "試合記録を登録しました"
+      redirect_to dashboard_path, notice: "試合記録を登録しました"
     else
       flash.now[:alert] = "入力内容を確認してください"
       render :new, status: :unprocessable_entity

@@ -1,7 +1,7 @@
 class Game < ApplicationRecord
   belongs_to :user
-  belongs_to :stadium
-  belongs_to :opponent_team, class_name: "Team"
+  belongs_to :stadium, optional: true
+  belongs_to :opponent_team, class_name: "Team", optional: true
 
   has_many_attached :photos
 
@@ -12,8 +12,8 @@ class Game < ApplicationRecord
   validates :home_away, presence: true
   validates :favorite_team_score, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :opponent_score, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
-  validates :opponent_team, presence: true
-  validates :stadium, presence: true
+  validates :opponent_team_id, presence: true
+  validates :stadium_id, presence: true
 
   validate :custom_stadium_name_required_when_other
 
