@@ -49,7 +49,10 @@
       <%= f.label :opponent_team_id, class: "form-label" do %>
         対戦相手<span class="label-required">必須</span>
       <% end %>
-      <%= f.collection_select :opponent_team_id, teams, :id, :name, { prompt: "選択してください" }, { class: "form-select", id: "game_opponent_team_id" } %>
+      <%= f.select :opponent_team_id,
+          teams.map { |t| [t.name, t.id, { "data-short-name" => t.short_name }] },
+          { prompt: "選択してください" },
+          { class: "form-select", id: "game_opponent_team_id" } %>
     </div>
 
     <div class="form-field">

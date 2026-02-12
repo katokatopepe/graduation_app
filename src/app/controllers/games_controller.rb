@@ -1,6 +1,7 @@
 class GamesController < ApplicationController
   before_action :require_login
   before_action :load_masters, only: %i[new create]
+  before_action :set_game, only: %i[show]
 
   def new
     @game = current_user.games.new
@@ -18,6 +19,12 @@ class GamesController < ApplicationController
   end
 
   private
+
+  def set_game
+    @game = current_user.games.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to dashboard_path, alert: "その投稿は表示できません"
+  end
 
   def load_masters
     @teams = Team.order(:id)

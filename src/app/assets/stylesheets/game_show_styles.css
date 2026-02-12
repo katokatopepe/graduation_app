@@ -1,0 +1,571 @@
+/* ============================================
+   GAME SHOW PAGE
+   application.css に追記してください
+   ============================================ */
+
+/* パンくずリスト */
+.show-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.8rem;
+}
+
+.breadcrumb-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.breadcrumb-link:hover {
+  color: var(--accent-green);
+}
+
+.breadcrumb-separator {
+  color: var(--text-muted);
+  opacity: 0.4;
+}
+
+.breadcrumb-current {
+  color: var(--text-secondary);
+}
+
+/* メインカード */
+.show-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  max-width: 780px;
+  margin: 0 auto;
+  overflow: hidden;
+  animation: cardFadeIn 0.5s ease forwards;
+}
+
+@keyframes cardFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* スコアボードエリア */
+.show-scoreboard {
+  background: linear-gradient(135deg, rgba(30, 30, 30, 0.95) 0%, rgba(20, 20, 20, 0.98) 100%);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 2rem 2rem 1.75rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.show-scoreboard::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-green), var(--accent-orange), var(--accent-green));
+  opacity: 0.7;
+}
+
+.show-meta-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  color: #ffffff;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.meta-date,
+.meta-stadium {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0.4rem 0.85rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.meta-icon {
+  font-size: 1.05rem;
+}
+
+.meta-divider {
+  width: 4px; height: 4px;
+  background: var(--accent-green);
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+/* スコア表示 */
+.score-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.score-team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  min-width: 120px;
+}
+
+.score-team-label {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.score-team-name {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: center;
+  line-height: 1.3;
+}
+
+.score-team-score {
+  font-family: var(--font-display);
+  font-size: 2.8rem;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+.score-team.is-favorite .score-team-score {
+  color: var(--accent-green);
+  text-shadow: 0 0 20px rgba(50, 205, 50, 0.3);
+}
+
+.score-team.is-opponent .score-team-score {
+  color: var(--text-secondary);
+}
+
+.score-vs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.score-vs-text {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 2px;
+}
+
+.score-vs-dash {
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: var(--text-muted);
+  opacity: 0.5;
+}
+
+/* 勝敗バッジ */
+.result-badge-wrap {
+  text-align: center;
+}
+
+.result-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem auto 0;
+  padding: 0.3rem 1.2rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.result-badge.is-win {
+  background: rgba(50, 205, 50, 0.12);
+  color: var(--accent-green);
+  border: 1px solid rgba(50, 205, 50, 0.25);
+}
+
+.result-badge.is-lose {
+  background: rgba(255, 69, 0, 0.1);
+  color: var(--accent-orange);
+  border: 1px solid rgba(255, 69, 0, 0.2);
+}
+
+.result-badge.is-draw {
+  background: rgba(160, 160, 168, 0.1);
+  color: var(--text-secondary);
+  border: 1px solid rgba(160, 160, 168, 0.2);
+}
+
+/* 先発投手（スコアボード内サブ情報） */
+.scoreboard-sub-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.sub-info-label {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  opacity: 0.7;
+  letter-spacing: 0.5px;
+}
+
+.sub-info-value {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+/* 詳細セクション */
+.show-details {
+  padding: 1.75rem 2rem;
+}
+
+.detail-section {
+  margin-bottom: 1.5rem;
+}
+
+.detail-section:last-child {
+  margin-bottom: 0;
+}
+
+.detail-section-title {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--accent-green);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.detail-row {
+  display: flex;
+  align-items: baseline;
+  padding: 0.5rem 0;
+}
+
+.detail-row + .detail-row {
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.detail-label {
+  width: 110px;
+  flex-shrink: 0;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.detail-value {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  font-weight: 400;
+}
+
+.detail-value a {
+  color: var(--accent-green);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(50, 205, 50, 0.3);
+  transition: all 0.2s ease;
+}
+
+.detail-value a:hover {
+  color: #5dea5d;
+  border-bottom-color: rgba(50, 205, 50, 0.6);
+}
+
+.detail-value .link-icon {
+  font-size: 0.75rem;
+  margin-left: 0.3rem;
+  opacity: 0.6;
+}
+
+/* 動画サムネイル */
+.video-thumbnail-link {
+  display: block;
+  max-width: 360px;
+  text-decoration: none;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  background: rgba(15, 15, 15, 0.5);
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.video-thumbnail-link:hover {
+  border-color: var(--accent-green-dim);
+  transform: translateY(-2px);
+}
+
+.video-thumbnail-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.video-thumbnail-img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.video-thumbnail-link:hover .video-thumbnail-img {
+  transform: scale(1.03);
+}
+
+.video-play-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.35);
+  transition: background 0.25s ease;
+}
+
+.video-thumbnail-link:hover .video-play-overlay {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.video-play-icon {
+  width: 48px; height: 48px;
+  background: rgba(255, 69, 0, 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: #fff;
+  padding-left: 3px;
+  box-shadow: 0 4px 20px rgba(255, 69, 0, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.video-thumbnail-link:hover .video-play-icon {
+  transform: scale(1.1);
+  box-shadow: 0 6px 28px rgba(255, 69, 0, 0.5);
+}
+
+.video-thumbnail-caption {
+  display: block;
+  padding: 0.55rem 0.75rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.3px;
+  border-top: 1px solid var(--border-subtle);
+  transition: color 0.2s ease;
+}
+
+.video-thumbnail-link:hover .video-thumbnail-caption {
+  color: var(--accent-green);
+}
+
+.video-thumbnail-caption .link-icon {
+  font-size: 0.7rem;
+  margin-left: 0.2rem;
+  opacity: 0.6;
+}
+
+/* 写真ギャラリー */
+.photo-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.75rem;
+}
+
+.photo-gallery-item {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  background: rgba(15, 15, 15, 0.5);
+  cursor: pointer;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.photo-gallery-item:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-green-dim);
+}
+
+.photo-gallery-img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.photo-gallery-item:hover .photo-gallery-img {
+  transform: scale(1.03);
+}
+
+/* ライトボックス */
+.lightbox-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.lightbox-overlay.is-active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.lightbox-img {
+  max-width: 90vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1.5rem; right: 1.5rem;
+  width: 40px; height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.lightbox-close:hover {
+  background: rgba(255, 69, 0, 0.3);
+  border-color: var(--accent-orange);
+  color: var(--accent-orange);
+}
+
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px; height: 44px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  color: var(--text-primary);
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.lightbox-nav:hover {
+  background: rgba(50, 205, 50, 0.15);
+  border-color: var(--accent-green-dim);
+}
+
+.lightbox-prev { left: 1.5rem; }
+.lightbox-next { right: 1.5rem; }
+
+.lightbox-counter {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+}
+
+/* 戻るボタン */
+.show-actions {
+  padding: 0 2rem 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.6rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  transition: all 0.25s ease;
+  letter-spacing: 0.3px;
+}
+
+.btn-back:hover {
+  color: var(--text-primary);
+  border-color: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.btn-back-icon {
+  font-size: 0.75rem;
+  transition: transform 0.2s ease;
+}
+
+.btn-back:hover .btn-back-icon {
+  transform: translateX(-3px);
+}
+
+/* --- GAME SHOW RESPONSIVE --- */
+@media (max-width: 768px) {
+  .show-scoreboard { padding: 1.5rem 1.25rem; }
+  .show-meta-top { flex-wrap: wrap; justify-content: center; gap: 0.75rem; }
+  .score-display { gap: 1rem; }
+  .score-team { min-width: 90px; }
+  .score-team-name { font-size: 0.95rem; }
+  .score-team-score { font-size: 2.2rem; }
+  .show-details { padding: 1.25rem; }
+  .detail-row { flex-direction: column; gap: 0.15rem; }
+  .detail-label { width: auto; }
+  .photo-gallery { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 0.5rem; }
+  .show-actions { padding: 0 1.25rem 1.5rem; }
+  .video-thumbnail-link { max-width: 100%; }
+  .lightbox-nav { width: 36px; height: 36px; font-size: 1rem; }
+  .lightbox-prev { left: 0.75rem; }
+  .lightbox-next { right: 0.75rem; }
+}
+
+@media (max-width: 480px) {
+  .show-breadcrumb { font-size: 0.72rem; }
+  .score-team-score { font-size: 1.8rem; }
+  .score-team-name { font-size: 0.85rem; }
+  .score-vs-text { font-size: 0.7rem; }
+  .photo-gallery { grid-template-columns: repeat(2, 1fr); }
+}

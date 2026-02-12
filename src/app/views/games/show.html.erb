@@ -1,0 +1,200 @@
+<!-- パンくず -->
+<nav class="show-breadcrumb">
+  <%= link_to "ホーム", dashboard_path, class: "breadcrumb-link" %>
+  <span class="breadcrumb-separator">›</span>
+  <span class="breadcrumb-current">試合記録 詳細</span>
+</nav>
+
+<!-- メインカード -->
+<div class="show-card">
+
+  <!-- スコアボード -->
+  <div class="show-scoreboard">
+    <div class="show-meta-top">
+      <span class="meta-date">
+        <span class="meta-icon">&#128197;</span>
+        <%= @game.date.strftime("%Y年%-m月%-d日（#{%w[日 月 火 水 木 金 土][@game.date.wday]}）") %>
+      </span>
+      <span class="meta-divider"></span>
+      <span class="meta-stadium">
+        <span class="meta-icon">&#127967;</span>
+        <%= @game.stadium&.name.presence || @game.custom_stadium_name.presence || "未設定" %>
+      </span>
+    </div>
+
+    <div class="score-display">
+      <% if @game.home_away == "home" %>
+        <%# ホーム観戦：左に推し球団、右に対戦相手 %>
+        <div class="score-team is-favorite">
+          <span class="score-team-label">Home</span>
+          <span class="score-team-name"><%= current_user.favorite_team&.name || "My Team" %></span>
+          <span class="score-team-score"><%= @game.favorite_team_score %></span>
+        </div>
+        <div class="score-vs">
+          <span class="score-vs-text">VS</span>
+          <span class="score-vs-dash">—</span>
+        </div>
+        <div class="score-team is-opponent">
+          <span class="score-team-label">Visitor</span>
+          <span class="score-team-name"><%= @game.opponent_team&.name || "対戦相手" %></span>
+          <span class="score-team-score"><%= @game.opponent_score %></span>
+        </div>
+      <% else %>
+        <%# ビジター観戦：左に対戦相手（ホーム）、右に推し球団 %>
+        <div class="score-team is-opponent">
+          <span class="score-team-label">Home</span>
+          <span class="score-team-name"><%= @game.opponent_team&.name || "対戦相手" %></span>
+          <span class="score-team-score"><%= @game.opponent_score %></span>
+        </div>
+        <div class="score-vs">
+          <span class="score-vs-text">VS</span>
+          <span class="score-vs-dash">—</span>
+        </div>
+        <div class="score-team is-favorite">
+          <span class="score-team-label">Visitor</span>
+          <span class="score-team-name"><%= current_user.favorite_team&.name || "My Team" %></span>
+          <span class="score-team-score"><%= @game.favorite_team_score %></span>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="result-badge-wrap">
+      <% fav = @game.favorite_team_score.to_i; opp = @game.opponent_score.to_i %>
+      <% if fav > opp %>
+        <span class="result-badge is-win">&#9733; WIN</span>
+      <% elsif fav < opp %>
+        <span class="result-badge is-lose">&#9733; LOSE</span>
+      <% else %>
+        <span class="result-badge is-draw">&#9733; DRAW</span>
+      <% end %>
+    </div>
+
+    <% if @game.starting_pitcher.present? %>
+      <div class="scoreboard-sub-info">
+        <span class="sub-info-label">先発</span>
+        <span class="sub-info-value"><%= @game.starting_pitcher %></span>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- 詳細情報 -->
+  <div class="show-details">
+
+    <% if @game.video_url.present? %>
+      <div class="detail-section">
+        <h3 class="detail-section-title">Video</h3>
+        <% youtube_id = @game.video_url.to_s[/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([a-zA-Z0-9_-]{11})/, 1] %>
+        <% if youtube_id.present? %>
+          <a href="<%= @game.video_url %>" target="_blank" rel="noopener" class="video-thumbnail-link">
+            <div class="video-thumbnail-wrap">
+              <img src="https://img.youtube.com/vi/<%= youtube_id %>/mqdefault.jpg"
+                   alt="動画サムネイル"
+                   class="video-thumbnail-img">
+              <div class="video-play-overlay">
+                <span class="video-play-icon">&#9654;</span>
+              </div>
+            </div>
+            <span class="video-thumbnail-caption">YouTubeで再生 <span class="link-icon">&#8599;</span></span>
+          </a>
+        <% else %>
+          <div class="detail-row">
+            <span class="detail-value">
+              <%= link_to @game.video_url, @game.video_url, target: "_blank", rel: "noopener" do %>
+                <%= truncate(@game.video_url, length: 60) %>
+                <span class="link-icon">&#8599;</span>
+              <% end %>
+            </span>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
+    <% if @game.photos.attached? %>
+      <div class="detail-section">
+        <h3 class="detail-section-title">Photos</h3>
+        <div class="photo-gallery" id="photo-gallery">
+          <% @game.photos.each_with_index do |photo, i| %>
+            <div class="photo-gallery-item" data-index="<%= i %>" onclick="openLightbox(<%= i %>)">
+              <%= image_tag url_for(photo),
+                            alt: "写真 #{i + 1}",
+                            class: "photo-gallery-img",
+                            loading: "lazy" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+
+  <!-- アクション -->
+  <div class="show-actions">
+    <%= link_to dashboard_path, class: "btn-back" do %>
+      <span class="btn-back-icon">&#8592;</span>
+      ホームに戻る
+    <% end %>
+  </div>
+
+</div>
+
+<%# ライトボックス（写真がある場合のみ） %>
+<% if @game.photos.attached? %>
+  <div class="lightbox-overlay" id="lightbox">
+    <button class="lightbox-close" onclick="closeLightbox()">&#10005;</button>
+    <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)">&#8249;</button>
+    <img class="lightbox-img" id="lightbox-img" src="" alt="">
+    <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)">&#8250;</button>
+    <span class="lightbox-counter" id="lightbox-counter"></span>
+  </div>
+
+  <script>
+    document.addEventListener("turbo:load", initLightbox);
+    document.addEventListener("DOMContentLoaded", initLightbox);
+
+    function initLightbox() {
+      const gallery = document.querySelectorAll('.photo-gallery-item');
+      if (!gallery.length) return;
+
+      window._lbTotal = gallery.length;
+      window._lbImages = Array.from(gallery).map(item => {
+        const img = item.querySelector('img');
+        return { src: img.src, alt: img.alt };
+      });
+    }
+
+    function openLightbox(index) {
+      window._lbCurrent = index;
+      const lb = document.getElementById('lightbox');
+      const img = document.getElementById('lightbox-img');
+      const counter = document.getElementById('lightbox-counter');
+
+      img.src = window._lbImages[index].src;
+      img.alt = window._lbImages[index].alt;
+      counter.textContent = (index + 1) + ' / ' + window._lbTotal;
+      lb.classList.add('is-active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('is-active');
+      document.body.style.overflow = '';
+    }
+
+    function navigateLightbox(dir) {
+      const next = (window._lbCurrent + dir + window._lbTotal) % window._lbTotal;
+      openLightbox(next);
+    }
+
+    document.addEventListener('keydown', (e) => {
+      const lb = document.getElementById('lightbox');
+      if (!lb || !lb.classList.contains('is-active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') navigateLightbox(-1);
+      if (e.key === 'ArrowRight') navigateLightbox(1);
+    });
+
+    document.getElementById('lightbox')?.addEventListener('click', (e) => {
+      if (e.target.id === 'lightbox') closeLightbox();
+    });
+  </script>
+<% end %>
