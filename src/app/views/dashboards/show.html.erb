@@ -1,2 +1,23 @@
-<h1>Dashboard</h1>
-<p>ログイン後の画面（仮）</p>
+<h1>ダッシュボード</h1>
+
+<p>
+  <%= link_to "試合記録を投稿する", new_game_path %>
+</p>
+
+<% if @games.present? %>
+  <h2>あなたの試合記録</h2>
+
+  <ul>
+    <% @games.each do |game| %>
+      <li>
+        <%= game.date %>
+        <% if game.opponent_team.present? %>
+          - vs <%= game.opponent_team.name %>
+        <% end %>
+        （<%= link_to "詳細", game_path(game) %>）
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>まだ試合記録がありません。</p>
+<% end %>

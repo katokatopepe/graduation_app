@@ -13,6 +13,6 @@ Rails.application.routes.draw do
 
   resources :users, only: %i[new create]
 
-  resources :games, only: %i[new create]
+  resources :games, only: %i[new create show]
 
 end
