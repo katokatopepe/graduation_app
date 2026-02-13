@@ -1,14 +1,14 @@
 class GamesController < ApplicationController
   before_action :require_login
-  before_action :load_masters, only: %i[new create]
-  before_action :set_game, only: %i[show]
+  before_action :load_masters, only: %i[new create edit update]
+  before_action :set_game, only: %i[show edit update destroy]
 
   def new
-    @game = current_user.games.new
+    @game = current_user.games.build
   end
 
   def create
-    @game = current_user.games.new(game_params)
+    @game = current_user.games.build(game_params)
 
     if @game.save
       redirect_to dashboard_path, notice: "試合記録を登録しました"
@@ -16,6 +16,26 @@ class GamesController < ApplicationController
       flash.now[:alert] = "入力内容を確認してください"
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def show
+  end
+
+  def edit
+  end
+
+  def update
+    if @game.update(game_params)
+      redirect_to dashboard_path, notice: "試合記録を更新しました"
+    else
+      flash.now[:alert] = "入力内容を確認してください"
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @game.destroy!
+    redirect_to dashboard_path, notice: "試合記録を削除しました"
   end
 
   private
