@@ -1,0 +1,119 @@
+<script>
+document.addEventListener("turbo:load", initGameForm);
+document.addEventListener("DOMContentLoaded", initGameForm);
+
+let _initialized = false;
+function initGameForm() {
+  if (_initialized) return;
+  _initialized = true;
+
+  // ==============================
+  // ① 対戦相手 → スコアラベル連動（short_name使用）
+  // ==============================
+  const opponentSelect = document.getElementById("game_opponent_team_id");
+  const opponentLabel = document.getElementById("opponent-score-label");
+
+  if (opponentSelect && opponentLabel) {
+    opponentSelect.addEventListener("change", () => {
+      const selected = opponentSelect.options[opponentSelect.selectedIndex];
+      opponentLabel.textContent = (selected && selected.value)
+        ? (selected.dataset.shortName || selected.text)
+        : "相手";
+    });
+
+    const current = opponentSelect.options[opponentSelect.selectedIndex];
+    if (current && current.value) {
+      opponentLabel.textContent = current.dataset.shortName || current.text;
+    }
+  }
+
+  // ==============================
+  // ② 写真プレビュー・削除管理
+  // ==============================
+  const photoPicker = document.getElementById("photo-picker");
+  const previewGrid = document.getElementById("photo-preview-grid");
+  const hiddenInputs = document.getElementById("photo-hidden-inputs");
+  const uploadHint = document.getElementById("photo-upload-hint");
+
+
+  let selectedFiles = [];
+
+  function renderPreviews() {
+    previewGrid.innerHTML = "";
+    hiddenInputs.innerHTML = "";
+
+    if (uploadHint) {
+      uploadHint.textContent = selectedFiles.length > 0
+        ? selectedFiles.length + "枚の写真を選択中（クリックで追加）"
+        : "クリックまたはドラッグして画像を選択";
+    }
+
+    selectedFiles.forEach((file, index) => {
+      const item = document.createElement("div");
+      item.className = "photo-preview-item";
+
+      const imgWrap = document.createElement("div");
+      imgWrap.className = "photo-preview-img-wrap";
+
+      const img = document.createElement("img");
+      img.className = "photo-preview-img";
+      img.alt = "プレビュー " + (index + 1);
+
+      const reader = new FileReader();
+      reader.onload = (e) => { img.src = e.target.result; };
+      reader.readAsDataURL(file);
+
+      const removeBtn = document.createElement("button");
+      removeBtn.type = "button";
+      removeBtn.className = "photo-remove-btn";
+      removeBtn.textContent = "✕";
+      removeBtn.addEventListener("click", () => {
+        selectedFiles.splice(index, 1);
+        renderPreviews();
+      });
+
+      imgWrap.appendChild(img);
+      imgWrap.appendChild(removeBtn);
+
+      const name = document.createElement("span");
+      name.className = "photo-preview-name";
+      name.textContent = file.name;
+
+      item.appendChild(imgWrap);
+      item.appendChild(name);
+      previewGrid.appendChild(item);
+
+      const dt = new DataTransfer();
+      dt.items.add(file);
+      const hiddenFile = document.createElement("input");
+      hiddenFile.type = "file";
+      hiddenFile.name = "game[photos][]";
+      hiddenFile.files = dt.files;
+      hiddenFile.style.display = "none";
+      hiddenInputs.appendChild(hiddenFile);
+    });
+  }
+
+  photoPicker.addEventListener("change", () => {
+    const newFiles = Array.from(photoPicker.files);
+    selectedFiles = selectedFiles.concat(newFiles);
+    photoPicker.value = "";
+    renderPreviews();
+  });
+
+  // ==============================
+  // 球場「その他」表示切替
+  // ==============================
+  const stadiumSelect = document.getElementById("game_stadium_id");
+  const customField = document.getElementById("custom_stadium_field");
+
+  if (stadiumSelect && customField) {
+    function toggleCustomStadium() {
+      const selectedText = stadiumSelect.options[stadiumSelect.selectedIndex]?.text || "";
+      customField.style.display = selectedText.includes("その他") ? "block" : "none";
+    }
+    toggleCustomStadium();
+    stadiumSelect.addEventListener("change", toggleCustomStadium);
+  }
+}
+</script>

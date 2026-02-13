@@ -24,7 +24,6 @@
 
     <div class="score-display">
       <% if @game.home_away == "home" %>
-        <%# ホーム観戦：左に推し球団、右に対戦相手 %>
         <div class="score-team is-favorite">
           <span class="score-team-label">Home</span>
           <span class="score-team-name"><%= current_user.favorite_team&.name || "My Team" %></span>
@@ -40,7 +39,6 @@
           <span class="score-team-score"><%= @game.opponent_score %></span>
         </div>
       <% else %>
-        <%# ビジター観戦：左に対戦相手（ホーム）、右に推し球団 %>
         <div class="score-team is-opponent">
           <span class="score-team-label">Home</span>
           <span class="score-team-name"><%= @game.opponent_team&.name || "対戦相手" %></span>
@@ -128,11 +126,28 @@
   </div>
 
   <!-- アクション -->
-  <div class="show-actions">
-    <%= link_to dashboard_path, class: "btn-back" do %>
-      <span class="btn-back-icon">&#8592;</span>
-      ホームに戻る
-    <% end %>
+  <div class="show-actions-bar">
+    <div class="show-actions-left">
+      <%= link_to dashboard_path, class: "btn-back" do %>
+        <span class="btn-back-icon">&#8592;</span>
+        ホームに戻る
+      <% end %>
+    </div>
+
+    <div class="show-actions-right">
+      <%= link_to edit_game_path(@game), class: "btn-edit" do %>
+        <span class="btn-edit-icon">&#9998;</span>
+        編集
+      <% end %>
+
+      <%= button_to game_path(@game),
+              method: :delete,
+              data: { turbo_confirm: "この試合記録を削除しますか？" },
+              class: "btn-delete" do %>
+        <span class="btn-delete-icon">&#128465;</span>
+        削除
+      <% end %>
+    </div>
   </div>
 
 </div>
