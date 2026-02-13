@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   resources :users, only: %i[new create]
 
-  resource :dashboard, only: :show
+  resource :dashboard, only: [:show]
 
   resources :games, only: %i[new create show edit update destroy]
 
