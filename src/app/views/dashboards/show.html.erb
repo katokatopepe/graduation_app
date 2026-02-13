@@ -1,23 +1,455 @@
-<h1>ダッシュボード</h1>
+<%# ============================================
+   Dashboard (ホーム) - app/views/dashboards/show.html.erb
+   ============================================ %>
 
-<p>
-  <%= link_to "試合記録を投稿する", new_game_path %>
-</p>
+<style>
+  /* ============================================
+     DASHBOARD STYLES
+     ============================================ */
 
-<% if @games.present? %>
-  <h2>あなたの試合記録</h2>
+  /* --- サマリセクション（プレースホルダー） --- */
+  .dashboard-summary {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 10px;
+    padding: 2.5rem 2rem;
+    margin-bottom: 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
 
-  <ul>
-    <% @games.each do |game| %>
-      <li>
-        <%= game.date %>
-        <% if game.opponent_team.present? %>
-          - vs <%= game.opponent_team.name %>
-        <% end %>
-        （<%= link_to "詳細", game_path(game) %>）
-      </li>
+  .dashboard-summary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-green), var(--accent-orange), var(--accent-green));
+    opacity: 0.6;
+  }
+
+  .summary-title {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .summary-title-icon {
+    color: var(--accent-green);
+    font-size: 1.1rem;
+  }
+
+  .summary-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 180px;
+    border: 2px dashed var(--border-light);
+    border-radius: 8px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    gap: 0.75rem;
+  }
+
+  .summary-placeholder-icon {
+    font-size: 2.2rem;
+    opacity: 0.4;
+  }
+
+  .summary-placeholder-text {
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  /* --- 試合結果一覧セクション --- */
+  .games-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 10px;
+    padding: 1.5rem;
+  }
+
+  .games-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .games-title {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .games-title-icon {
+    color: var(--accent-orange);
+    font-size: 1rem;
+  }
+
+  .games-count {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.25rem 0.7rem;
+    border-radius: 20px;
+  }
+
+  .btn-new-game {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.82rem;
+    font-family: var(--font-body);
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .btn-new-game:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--text-muted);
+    transform: translateY(-1px);
+  }
+
+  .btn-new-game:active {
+    transform: translateY(0);
+  }
+
+  /* --- 試合一覧リスト --- */
+  .games-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .game-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 6px;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: all 0.15s ease;
+    border: 1px solid transparent;
+  }
+
+  .game-row:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: var(--border-light);
+    transform: translateX(3px);
+  }
+
+  /* 勝敗マーク */
+  .game-result-mark {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    font-family: var(--font-display);
+  }
+
+  .result-win {
+    background: rgba(50, 205, 50, 0.15);
+    color: var(--accent-green);
+    border: 1.5px solid rgba(50, 205, 50, 0.4);
+  }
+
+  .result-lose {
+    background: rgba(255, 69, 0, 0.12);
+    color: var(--accent-orange);
+    border: 1.5px solid rgba(255, 69, 0, 0.35);
+  }
+
+  .result-draw {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-secondary);
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .result-canceled {
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-muted);
+    border: 1.5px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* 日付 */
+  .game-date {
+    flex-shrink: 0;
+    width: 60px;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* スコア表示 */
+  .game-score {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .game-team-name {
+    font-size: 0.88rem;
+    font-weight: 400;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .game-team-name.is-favorite {
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+
+  .game-team-name.is-opponent {
+    color: var(--text-secondary);
+  }
+
+  .game-score-numbers {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1rem;
+    font-variant-numeric: tabular-nums;
+    flex-shrink: 0;
+  }
+
+  .game-score-favorite {
+    color: var(--text-primary);
+    min-width: 18px;
+    text-align: center;
+  }
+
+  .game-score-separator {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+  }
+
+  .game-score-opponent {
+    color: var(--text-secondary);
+    min-width: 18px;
+    text-align: center;
+  }
+
+  /* 球場 */
+  .game-stadium {
+    flex-shrink: 0;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.04);
+    padding: 0.2rem 0.55rem;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+
+  /* 矢印アイコン */
+  .game-arrow {
+    flex-shrink: 0;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: all 0.15s ease;
+  }
+
+  .game-row:hover .game-arrow {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* --- 空状態 --- */
+  .games-empty {
+    text-align: center;
+    padding: 3rem 1.5rem;
+    color: var(--text-muted);
+  }
+
+  .games-empty-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    opacity: 0.3;
+  }
+
+  .games-empty-title {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+  }
+
+  .games-empty-text {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  /* --- レスポンシブ --- */
+  @media (max-width: 768px) {
+    .dashboard-summary {
+      padding: 1.5rem 1.25rem;
+    }
+
+    .games-section {
+      padding: 1.25rem 1rem;
+    }
+
+    .games-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .game-row {
+      padding: 0.75rem 0.6rem;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .game-stadium {
+      display: none;
+    }
+
+    .game-date {
+      width: 52px;
+      font-size: 0.78rem;
+    }
+
+    .game-team-name {
+      font-size: 0.82rem;
+      max-width: 80px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .game-result-mark {
+      width: 24px;
+      height: 24px;
+      font-size: 0.7rem;
+    }
+
+    .game-score-numbers {
+      font-size: 0.9rem;
+    }
+  }
+</style>
+
+<!-- ============================================
+     サマリセクション（プレースホルダー）
+     ============================================ -->
+<section class="dashboard-summary">
+  <h2 class="summary-title">
+    <span class="summary-title-icon">&#x1F4CA;</span>
+    観戦結果サマリ
+  </h2>
+  <div class="summary-placeholder">
+    <div class="summary-placeholder-icon">&#x1F3DF;&#xFE0F;</div>
+    <div class="summary-placeholder-text">
+      観戦データのサマリ・グラフ機能は<br>次回アップデートで実装予定です
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     試合結果一覧
+     ============================================ -->
+<section class="games-section">
+  <div class="games-header">
+    <h2 class="games-title">
+      <span class="games-title-icon">&#x26BE;</span>
+      試合結果一覧
+      <span class="games-count"><%= @games.size %>件</span>
+    </h2>
+    <%= link_to new_game_path, class: "btn-new-game" do %>
+      <span>&#x270F;&#xFE0F;</span> 試合を記録する
     <% end %>
-  </ul>
-<% else %>
-  <p>まだ試合記録がありません。</p>
-<% end %>
+  </div>
+
+  <% if @games.any? %>
+    <ul class="games-list">
+      <% @games.each do |game| %>
+        <li>
+          <%= link_to game_path(game), class: "game-row" do %>
+            <%# 勝敗マーク %>
+            <span class="game-result-mark result-<%= game.result %>">
+              <% case game.result
+                 when "win" %>○
+              <% when "lose" %>●
+              <% when "draw" %>△
+              <% when "canceled" %>中
+              <% end %>
+            </span>
+
+            <%# 日付 %>
+            <span class="game-date"><%= game.date.strftime("%-m/%-d") %></span>
+
+            <%# スコア %>
+            <span class="game-score">
+              <span class="game-team-name is-favorite"><%= current_user.favorite_team.display_name(:short) %></span>
+              <span class="game-score-numbers">
+                <span class="game-score-favorite"><%= game.favorite_team_score %></span>
+                <span class="game-score-separator">-</span>
+                <span class="game-score-opponent"><%= game.opponent_score %></span>
+              </span>
+              <span class="game-team-name is-opponent"><%= game.opponent_team&.display_name(:short) %></span>
+            </span>
+
+            <%# 球場 %>
+            <% stadium_name = game.stadium&.name == "その他" ? game.custom_stadium_name : game.stadium&.name %>
+            <% if stadium_name.present? %>
+              <span class="game-stadium"><%= stadium_name %></span>
+            <% end %>
+
+            <%# 矢印 %>
+            <span class="game-arrow">&#x203A;</span>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <div class="games-empty">
+      <div class="games-empty-icon">&#x1F3DF;&#xFE0F;</div>
+      <h3 class="games-empty-title">まだ観戦記録がありません</h3>
+      <p class="games-empty-text">
+        球場での思い出を記録して、<br>
+        あなたの観戦ヒストリーを作りましょう！
+      </p>
+      <%= link_to new_game_path, class: "btn-new-game" do %>
+        <span>&#x270F;&#xFE0F;</span> 最初の試合を記録する
+      <% end %>
+    </div>
+  <% end %>
+</section>

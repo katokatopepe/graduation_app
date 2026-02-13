@@ -9,9 +9,9 @@ Rails.application.routes.draw do
   get    "/login",  to: "user_sessions#new"
   delete "/logout", to: "user_sessions#destroy"
 
-  get "dashboard", to: "dashboards#show"
-
   resources :users, only: %i[new create]
+
+  resource :dashboard, only: :show
 
   resources :games, only: %i[new create show edit update destroy]
 
