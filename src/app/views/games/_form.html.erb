@@ -2,17 +2,8 @@
   <% if game.errors.any? %>
     <div class="flash-alert">
       <ul class="error-list">
-        <% [
-          :date,
-          :home_away,
-          :opponent_team_id,
-          :stadium_id,
-          :favorite_team_score,
-          :opponent_score
-        ].each do |attr| %>
-          <% game.errors.full_messages_for(attr).each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
+        <% game.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
         <% end %>
       </ul>
     </div>
@@ -108,9 +99,47 @@
       <%= f.label :photos, class: "form-label" do %>
         写真（複数可）
       <% end %>
+
+      <%# 保存済み写真の表示（編集時のみ） %>
+      <% if game.persisted? && game.photos.attached? %>
+        <div class="photo-saved-grid" id="saved-photos-grid">
+          <% game.photos.attachments.each do |attachment| %>
+            <div class="photo-preview-item photo-saved-item" id="saved-photo-<%= attachment.id %>">
+              <div class="photo-preview-img-wrap">
+                <%= image_tag attachment.blob, class: "photo-preview-img" %>
+                <button type="button"
+                        class="photo-remove-btn saved-photo-remove-btn"
+                        data-attachment-id="<%= attachment.id %>"
+                        title="削除する">✕</button>
+              </div>
+              <span class="photo-preview-name photo-saved-label">保存済み</span>
+            </div>
+          <% end %>
+        </div>
+        <div id="remove-photo-inputs"></div>
+      <% end %>
+
+      <%# バリデーションエラー時にキャッシュされた写真の表示（新規登録時） %>
+      <% if defined?(@cached_photo_signed_ids) && @cached_photo_signed_ids.present? %>
+        <div class="photo-saved-grid" style="margin-bottom: 0.75rem;">
+          <% @cached_photo_signed_ids.each_with_index do |signed_id, i| %>
+            <% blob = ActiveStorage::Blob.find_signed(signed_id) %>
+            <% next unless blob %>
+            <div class="photo-preview-item photo-saved-item">
+              <div class="photo-preview-img-wrap">
+                <%= image_tag url_for(blob), class: "photo-preview-img" %>
+              </div>
+              <input type="hidden" name="game[cached_photo_signed_ids][]" value="<%= signed_id %>">
+              <span class="photo-preview-name photo-saved-label">選択済み</span>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+
+      <%# 新規写真アップロード %>
       <div class="file-upload-area" id="photo-upload-area">
         <input type="file" multiple accept="image/*" class="file-input" id="photo-picker">
-        <div class="file-upload-hint" id="photo-upload-hint">クリックまたはドラッグして画像を選択</div>
+        <div class="file-upload-hint" id="photo-upload-hint">クリックまたはドラッグして画像を追加</div>
       </div>
       <div class="photo-preview-grid" id="photo-preview-grid"></div>
       <div id="photo-hidden-inputs"></div>
@@ -124,8 +153,9 @@
     </div>
   </fieldset>
 
+  <!-- 送信ボタン -->
   <div class="form-actions">
-    <%= f.submit "登録する", class: "btn-submit" %>
+    <%= f.submit(game.persisted? ? "更新する" : "登録する", class: "btn-submit") %>
     <%= link_to "キャンセル", dashboard_path, class: "btn-cancel" %>
   </div>
 <% end %>
