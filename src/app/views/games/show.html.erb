@@ -26,7 +26,7 @@
       <% if @game.home_away == "home" %>
         <div class="score-team is-favorite">
           <span class="score-team-label">Home</span>
-          <span class="score-team-name"><%= current_user.favorite_team&.name || "My Team" %></span>
+          <span class="score-team-name"><%= current_user.favorite_team&.display_name(:short) || "My Team" %></span>
           <span class="score-team-score"><%= @game.favorite_team_score %></span>
         </div>
         <div class="score-vs">
@@ -35,13 +35,13 @@
         </div>
         <div class="score-team is-opponent">
           <span class="score-team-label">Visitor</span>
-          <span class="score-team-name"><%= @game.opponent_team&.name || "対戦相手" %></span>
+          <span class="score-team-name"><%= @game.opponent_team&.display_name(:short) || "対戦相手" %></span>
           <span class="score-team-score"><%= @game.opponent_score %></span>
         </div>
       <% else %>
         <div class="score-team is-opponent">
           <span class="score-team-label">Home</span>
-          <span class="score-team-name"><%= @game.opponent_team&.name || "対戦相手" %></span>
+          <span class="score-team-name"><%= @game.opponent_team&.display_name(:short) || "対戦相手" %></span>
           <span class="score-team-score"><%= @game.opponent_score %></span>
         </div>
         <div class="score-vs">
@@ -50,7 +50,7 @@
         </div>
         <div class="score-team is-favorite">
           <span class="score-team-label">Visitor</span>
-          <span class="score-team-name"><%= current_user.favorite_team&.name || "My Team" %></span>
+          <span class="score-team-name"><%= current_user.favorite_team&.display_name(:short) || "My Team" %></span>
           <span class="score-team-score"><%= @game.favorite_team_score %></span>
         </div>
       <% end %>
