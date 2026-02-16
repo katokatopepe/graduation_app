@@ -60,9 +60,17 @@ class GamesController < ApplicationController
   end
 
   def destroy
-    @game.destroy!
-    redirect_to dashboard_path, notice: "試合記録を削除しました"
+    if @game.destroy
+      redirect_to dashboard_path, notice: "試合記録を削除しました"
+    else
+      # destroyがfalseになるケース（コールバックで止まる等）
+      redirect_to dashboard_path, alert: "削除に失敗しました"
+    end
+  rescue ActiveRecord::RecordNotDestroyed => e
+    Rails.logger.warn("Game destroy failed: #{e.message}")
+    redirect_to dashboard_path, alert: "削除に失敗しました"
   end
+
 
   private
 
@@ -70,6 +78,7 @@ class GamesController < ApplicationController
     @game = current_user.games.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     redirect_to dashboard_path, alert: "その投稿は表示できません"
+    return
   end
 
   def load_masters

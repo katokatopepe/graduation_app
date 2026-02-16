@@ -140,13 +140,15 @@
         編集
       <% end %>
 
-      <%= button_to game_path(@game),
-              method: :delete,
-              data: { turbo_confirm: "この試合記録を削除しますか？" },
-              class: "btn-delete" do %>
-        <span class="btn-delete-icon">&#128465;</span>
-        削除
-      <% end %>
+    <%= button_to game_path(@game),
+        method: :delete,
+        form: { data: { turbo_confirm: "この試合記録を削除しますか？" } },
+        data: { turbo_submits_with: "削除中..." },
+        class: "btn-delete" do %>
+      <span class="btn-delete-icon">&#128465;</span>
+      削除
+    <% end %>
+
     </div>
   </div>
 
