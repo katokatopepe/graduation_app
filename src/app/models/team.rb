@@ -1,7 +1,11 @@
 class Team < ApplicationRecord
   has_many :users, foreign_key: :favorite_team_id, dependent: :restrict_with_error
+
   validates :name, presence: true, uniqueness: true
   validates :short_name, presence: true, uniqueness: true
+
+  enum :league, { central: 0, pacific: 1 }
+
   ORDER_BY_LAST_SEASON = [
     # セ・リーグ（昨年度順位順）
     "阪神タイガース",
