@@ -1,11 +1,28 @@
 <%= form_with model: game, local: true, html: { multipart: true, class: "game-form" } do |f| %>
   <% if game.errors.any? %>
+    <% group1 = [:date, :home_away] %>
+    <% group2 = [:opponent_team_id,:custom_stadium_name,:stadium_id, :favorite_team_score, :opponent_score] %>
+
+    <% messages1 = group1.flat_map { |attr| game.errors.full_messages_for(attr) } %>
+    <% messages2 = group2.flat_map { |attr| game.errors.full_messages_for(attr) } %>
+
+    <% used = messages1 + messages2 %>
+    <% rest = game.errors.full_messages - used %>
+
     <div class="flash-alert">
       <ul class="error-list">
-        <% game.errors.full_messages.each do |msg| %>
+        <% messages1.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
       </ul>
+
+      <% if messages2.any? || rest.any? %>
+        <ul class="error-list error-list--spaced">
+          <% (messages2 + rest).each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      <% end %>
     </div>
   <% end %>
 
