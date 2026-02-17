@@ -19395,3 +19395,569 @@ Processing by ActiveStorage::DiskController#show as JPEG
 Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
 
 
+Started GET "/" for 172.28.0.1 at 2026-02-17 04:57:45 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[36mActiveRecord::SchemaMigration Load (3.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Src'*/[0m
+Processing by UserSessionsController#new as HTML
+  Rendering user_sessions/new.html.erb
+  Rendered user_sessions/new.html.erb (Duration: 8.4ms | GC: 0.0ms)
+Completed 200 OK in 37ms (Views: 12.5ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/favicon.ico" for 172.28.0.1 at 2026-02-17 04:57:46 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started POST "/user_session" for 172.28.0.1 at 2026-02-17 04:59:36 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by UserSessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"[FILTERED]", "password"=>"[FILTERED]", "commit"=>"ログイン"}
+  [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'test@example.com' ORDER BY "users"."id" ASC LIMIT 1 /*action='create',application='Src',controller='user_sessions'*/[0m
+  ↳ app/controllers/user_sessions_controller.rb:7:in `create'
+DEPRECATION WARNING: `redirect_back_or_to` overrides the method of the same name defined in Rails 7. To avoid overriding, set `config.use_redirect_back_or_to_by_rails = true` and use `redirect_to_before_login_path`. In a future release, `config.use_redirect_back_or_to_by_rails = true` will become the default. (called from create at /app/src/app/controllers/user_sessions_controller.rb:8)
+Redirected to http://localhost:3000/dashboard
+↳ app/controllers/user_sessions_controller.rb:8:in `create'
+Completed 302 Found in 207ms (ActiveRecord: 50.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/dashboard" for 172.28.0.1 at 2026-02-17 04:59:36 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardsController#show as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering dashboards/show.html.erb within layouts/application
+  [1m[36mGame Count (9.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "games" WHERE "games"."user_id" = 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  ↳ app/views/dashboards/show.html.erb:395
+  [1m[36mGame Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "games" WHERE "games"."user_id" = 1 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  ↳ app/views/dashboards/show.html.erb:402
+  Rendered dashboards/show.html.erb within layouts/application (Duration: 31.2ms | GC: 1.1ms)
+  [1m[36mTeam Load (4.8ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  ↳ app/views/shared/_header.html.erb:34
+  Rendered shared/_header.html.erb (Duration: 50.1ms | GC: 1.2ms)
+  Rendered shared/_flash.html.erb (Duration: 2.2ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 1.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 116.4ms | GC: 11.5ms)
+Completed 200 OK in 242ms (Views: 107.4ms | ActiveRecord: 25.8ms (4 queries, 0 cached) | GC: 56.6ms)
+
+
+Started GET "/games/new" for 172.28.0.1 at 2026-02-17 04:59:39 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by GamesController#new as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='new',application='Src',controller='games'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering games/new.html.erb within layouts/application
+  [1m[36mTeam Load (0.6ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."id" ASC /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:45:in `map'
+  [1m[36mStadium Load (3.3ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" ORDER BY "stadiums"."id" ASC /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:54
+  [1m[36mTeam Load (0.6ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:72
+  Rendered games/_form.html.erb (Duration: 23.0ms | GC: 1.6ms)
+  Rendered games/_form_script.html.erb (Duration: 0.4ms | GC: 0.0ms)
+  Rendered games/new.html.erb within layouts/application (Duration: 25.7ms | GC: 1.6ms)
+  Rendered shared/_header.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 27.1ms | GC: 1.6ms)
+Completed 200 OK in 47ms (Views: 23.4ms | ActiveRecord: 7.7ms (4 queries, 0 cached) | GC: 2.3ms)
+
+
+Started GET "/dashboard" for 172.28.0.1 at 2026-02-17 05:00:36 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardsController#show as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering dashboards/show.html.erb within layouts/application
+  [1m[36mGame Count (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "games" WHERE "games"."user_id" = 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  ↳ app/views/dashboards/show.html.erb:395
+  [1m[36mGame Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "games" WHERE "games"."user_id" = 1 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  ↳ app/views/dashboards/show.html.erb:402
+  Rendered dashboards/show.html.erb within layouts/application (Duration: 4.2ms | GC: 0.0ms)
+  [1m[36mTeam Load (0.7ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  ↳ app/views/shared/_header.html.erb:34
+  Rendered shared/_header.html.erb (Duration: 2.9ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 8.4ms | GC: 0.0ms)
+Completed 200 OK in 13ms (Views: 6.8ms | ActiveRecord: 2.7ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/games" for 172.28.0.1 at 2026-02-17 05:01:14 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by GamesController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "game"=>{"date"=>"2026-02-15", "home_away"=>"home", "opponent_team_id"=>"3", "stadium_id"=>"13", "custom_stadium_name"=>"Agre北谷スタジアム", "favorite_team_score"=>"1", "opponent_score"=>"1", "starting_pitcher"=>"", "video_url"=>""}, "commit"=>"登録する"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='create',application='Src',controller='games'*/[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/models/game.rb:26:in `other_stadium?'
+  [1m[36mStadium Load (4.3ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" WHERE "stadiums"."id" = 13 LIMIT 1 /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/models/game.rb:26:in `other_stadium?'
+  [1m[36mGame Create (6.0ms)[0m  [1m[32mINSERT INTO "games" ("user_id", "opponent_team_id", "stadium_id", "date", "home_away", "starting_pitcher", "favorite_team_score", "opponent_score", "custom_stadium_name", "result", "video_url", "created_at", "updated_at") VALUES (1, 3, 13, '2026-02-15', 0, '', 1, 1, 'Agre北谷スタジアム', 2, '', '2026-02-17 05:01:14.272546', '2026-02-17 05:01:14.272546') RETURNING "id" /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/controllers/games_controller.rb:17:in `create'
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/controllers/games_controller.rb:17:in `create'
+Redirected to http://localhost:3000/dashboard
+↳ app/controllers/games_controller.rb:20:in `create'
+Completed 302 Found in 34ms (ActiveRecord: 13.3ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/dashboard" for 172.28.0.1 at 2026-02-17 05:01:14 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardsController#show as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering dashboards/show.html.erb within layouts/application
+  [1m[36mGame Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "games" WHERE "games"."user_id" = 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  ↳ app/views/dashboards/show.html.erb:395
+  [1m[36mGame Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "games" WHERE "games"."user_id" = 1 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  ↳ app/views/dashboards/show.html.erb:402
+  [1m[36mGame Load (1.6ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."user_id" = 1 ORDER BY "games"."date" DESC, "games"."id" DESC /*action='show',application='Src',controller='dashboards'*/[0m
+  ↳ app/views/dashboards/show.html.erb:404
+  [1m[36mTeam Load (0.7ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 3 /*action='show',application='Src',controller='dashboards'*/[0m
+  ↳ app/views/dashboards/show.html.erb:404
+  [1m[36mStadium Load (0.5ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" WHERE "stadiums"."id" = 13 /*action='show',application='Src',controller='dashboards'*/[0m
+  ↳ app/views/dashboards/show.html.erb:404
+  [1m[36mTeam Load (1.3ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  ↳ app/views/dashboards/show.html.erb:422
+  Rendered dashboards/show.html.erb within layouts/application (Duration: 53.0ms | GC: 15.1ms)
+  Rendered shared/_header.html.erb (Duration: 0.4ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 54.8ms | GC: 15.1ms)
+Completed 200 OK in 59ms (Views: 49.8ms | ActiveRecord: 6.2ms (7 queries, 0 cached) | GC: 15.1ms)
+
+
+Started GET "/games/new" for 172.28.0.1 at 2026-02-17 05:01:21 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by GamesController#new as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='new',application='Src',controller='games'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering games/new.html.erb within layouts/application
+  [1m[36mTeam Load (1.9ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."id" ASC /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:45:in `map'
+  [1m[36mStadium Load (0.7ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" ORDER BY "stadiums"."id" ASC /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:54
+  [1m[36mTeam Load (1.1ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:72
+  Rendered games/_form.html.erb (Duration: 14.3ms | GC: 0.7ms)
+  Rendered games/_form_script.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered games/new.html.erb within layouts/application (Duration: 14.7ms | GC: 0.7ms)
+  Rendered shared/_header.html.erb (Duration: 0.4ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 16.6ms | GC: 1.0ms)
+Completed 200 OK in 24ms (Views: 13.8ms | ActiveRecord: 4.9ms (4 queries, 0 cached) | GC: 1.0ms)
+
+
+Started GET "/games/new" for 172.28.0.1 at 2026-02-17 05:06:32 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by GamesController#new as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='new',application='Src',controller='games'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering games/new.html.erb within layouts/application
+  [1m[36mTeam Load (0.6ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."id" ASC /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:45:in `map'
+  [1m[36mStadium Load (0.4ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" ORDER BY "stadiums"."id" ASC /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:54
+  [1m[36mTeam Load (0.6ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:72
+  Rendered games/_form.html.erb (Duration: 13.2ms | GC: 0.3ms)
+  Rendered games/_form_script.html.erb (Duration: 0.4ms | GC: 0.0ms)
+  Rendered games/new.html.erb within layouts/application (Duration: 14.8ms | GC: 0.3ms)
+  Rendered shared/_header.html.erb (Duration: 0.7ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 18.0ms | GC: 0.3ms)
+Completed 200 OK in 74ms (Views: 16.5ms | ActiveRecord: 11.6ms (4 queries, 0 cached) | GC: 14.0ms)
+
+
+Started POST "/games" for 172.28.0.1 at 2026-02-17 05:06:38 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by GamesController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "game"=>{"date"=>"", "opponent_team_id"=>"", "stadium_id"=>"", "custom_stadium_name"=>"", "favorite_team_score"=>"", "opponent_score"=>"", "starting_pitcher"=>"", "video_url"=>""}, "commit"=>"登録する"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='create',application='Src',controller='games'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering games/new.html.erb within layouts/application
+  [1m[36mTeam Load (0.8ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."id" ASC /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:45:in `map'
+  [1m[36mStadium Load (0.8ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" ORDER BY "stadiums"."id" ASC /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:54
+  [1m[36mTeam Load (0.8ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:72
+  Rendered games/_form.html.erb (Duration: 61.6ms | GC: 0.0ms)
+  Rendered games/_form_script.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered games/new.html.erb within layouts/application (Duration: 62.4ms | GC: 0.0ms)
+  Rendered shared/_header.html.erb (Duration: 1.3ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 66.5ms | GC: 0.0ms)
+Completed 422 Unprocessable Content in 82ms (Views: 65.4ms | ActiveRecord: 3.0ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/games" for 172.28.0.1 at 2026-02-17 05:06:55 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by GamesController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "game"=>{"date"=>"2026-02-17", "opponent_team_id"=>"", "stadium_id"=>"", "custom_stadium_name"=>"", "favorite_team_score"=>"", "opponent_score"=>"", "starting_pitcher"=>"", "video_url"=>""}, "commit"=>"登録する"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='create',application='Src',controller='games'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering games/new.html.erb within layouts/application
+  [1m[36mTeam Load (0.9ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."id" ASC /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:45:in `map'
+  [1m[36mStadium Load (1.2ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" ORDER BY "stadiums"."id" ASC /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:54
+  [1m[36mTeam Load (0.7ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:72
+  Rendered games/_form.html.erb (Duration: 18.5ms | GC: 0.0ms)
+  Rendered games/_form_script.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered games/new.html.erb within layouts/application (Duration: 18.9ms | GC: 0.0ms)
+  Rendered shared/_header.html.erb (Duration: 1.2ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 22.5ms | GC: 0.0ms)
+Completed 422 Unprocessable Content in 28ms (Views: 20.8ms | ActiveRecord: 3.4ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/games" for 172.28.0.1 at 2026-02-17 05:07:30 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by GamesController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "game"=>{"date"=>"2026-02-17", "opponent_team_id"=>"", "stadium_id"=>"13", "custom_stadium_name"=>"", "favorite_team_score"=>"", "opponent_score"=>"", "starting_pitcher"=>"", "video_url"=>""}, "commit"=>"登録する"}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='create',application='Src',controller='games'*/[0m
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mBEGIN /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/models/game.rb:27:in `other_stadium?'
+  [1m[36mStadium Load (4.6ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" WHERE "stadiums"."id" = 13 LIMIT 1 /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/models/game.rb:27:in `other_stadium?'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[31mROLLBACK /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/controllers/games_controller.rb:17:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering games/new.html.erb within layouts/application
+  [1m[36mTeam Load (0.6ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."id" ASC /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:45:in `map'
+  [1m[36mStadium Load (0.4ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" ORDER BY "stadiums"."id" ASC /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:54
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:72
+  Rendered games/_form.html.erb (Duration: 17.5ms | GC: 8.6ms)
+  Rendered games/_form_script.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered games/new.html.erb within layouts/application (Duration: 17.8ms | GC: 8.6ms)
+  Rendered shared/_header.html.erb (Duration: 0.5ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 19.4ms | GC: 8.6ms)
+Completed 422 Unprocessable Content in 40ms (Views: 18.8ms | ActiveRecord: 9.0ms (5 queries, 0 cached) | GC: 8.6ms)
+
+
+Started GET "/games/new" for 172.28.0.1 at 2026-02-17 05:09:19 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by GamesController#new as HTML
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='new',application='Src',controller='games'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering games/new.html.erb within layouts/application
+  [1m[36mTeam Load (0.8ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."id" ASC /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:45:in `map'
+  [1m[36mStadium Load (0.6ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" ORDER BY "stadiums"."id" ASC /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:54
+  [1m[36mTeam Load (0.9ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:72
+  Rendered games/_form.html.erb (Duration: 11.5ms | GC: 0.6ms)
+  Rendered games/_form_script.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered games/new.html.erb within layouts/application (Duration: 12.0ms | GC: 0.6ms)
+  Rendered shared/_header.html.erb (Duration: 0.5ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 13.7ms | GC: 0.6ms)
+Completed 200 OK in 24ms (Views: 12.2ms | ActiveRecord: 4.3ms (4 queries, 0 cached) | GC: 0.6ms)
+
+
+Started POST "/games" for 172.28.0.1 at 2026-02-17 05:09:21 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by GamesController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "game"=>{"date"=>"", "opponent_team_id"=>"", "stadium_id"=>"", "custom_stadium_name"=>"", "favorite_team_score"=>"", "opponent_score"=>"", "starting_pitcher"=>"", "video_url"=>""}, "commit"=>"登録する"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='create',application='Src',controller='games'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering games/new.html.erb within layouts/application
+  [1m[36mTeam Load (0.6ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."id" ASC /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:45:in `map'
+  [1m[36mStadium Load (0.7ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" ORDER BY "stadiums"."id" ASC /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:54
+  [1m[36mTeam Load (0.7ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:72
+  Rendered games/_form.html.erb (Duration: 14.5ms | GC: 1.0ms)
+  Rendered games/_form_script.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered games/new.html.erb within layouts/application (Duration: 14.9ms | GC: 1.0ms)
+  Rendered shared/_header.html.erb (Duration: 0.7ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 16.8ms | GC: 1.0ms)
+Completed 422 Unprocessable Content in 25ms (Views: 15.7ms | ActiveRecord: 2.8ms (4 queries, 0 cached) | GC: 1.3ms)
+
+
+Started GET "/dashboard" for 172.28.0.1 at 2026-02-17 05:18:53 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardsController#show as HTML
+  [1m[36mUser Load (21.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering dashboards/show.html.erb within layouts/application
+  [1m[36mGame Count (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "games" WHERE "games"."user_id" = 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  ↳ app/views/dashboards/show.html.erb:395
+  [1m[36mGame Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "games" WHERE "games"."user_id" = 1 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  ↳ app/views/dashboards/show.html.erb:402
+  [1m[36mGame Load (1.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."user_id" = 1 ORDER BY "games"."date" DESC, "games"."id" DESC /*action='show',application='Src',controller='dashboards'*/[0m
+  ↳ app/views/dashboards/show.html.erb:404
+  [1m[36mTeam Load (0.7ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 3 /*action='show',application='Src',controller='dashboards'*/[0m
+  ↳ app/views/dashboards/show.html.erb:404
+  [1m[36mStadium Load (0.7ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" WHERE "stadiums"."id" = 13 /*action='show',application='Src',controller='dashboards'*/[0m
+  ↳ app/views/dashboards/show.html.erb:404
+  [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  ↳ app/views/dashboards/show.html.erb:422
+  Rendered dashboards/show.html.erb within layouts/application (Duration: 24.4ms | GC: 0.6ms)
+  Rendered shared/_header.html.erb (Duration: 0.8ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 27.5ms | GC: 0.6ms)
+Completed 200 OK in 68ms (Views: 23.6ms | ActiveRecord: 32.4ms (7 queries, 0 cached) | GC: 2.0ms)
+
+
+Started GET "/games/new" for 172.28.0.1 at 2026-02-17 05:18:54 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by GamesController#new as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='new',application='Src',controller='games'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering games/new.html.erb within layouts/application
+  [1m[36mTeam Load (0.8ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."id" ASC /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:62:in `map'
+  [1m[36mStadium Load (0.8ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" ORDER BY "stadiums"."id" ASC /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:71
+  [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:89
+  Rendered games/_form.html.erb (Duration: 9.3ms | GC: 0.0ms)
+  Rendered games/_form_script.html.erb (Duration: 0.4ms | GC: 0.0ms)
+  Rendered games/new.html.erb within layouts/application (Duration: 10.6ms | GC: 0.0ms)
+  Rendered shared/_header.html.erb (Duration: 0.5ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 12.0ms | GC: 0.0ms)
+Completed 200 OK in 17ms (Views: 10.5ms | ActiveRecord: 2.9ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/games" for 172.28.0.1 at 2026-02-17 05:18:57 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by GamesController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "game"=>{"date"=>"", "opponent_team_id"=>"", "stadium_id"=>"", "custom_stadium_name"=>"", "favorite_team_score"=>"", "opponent_score"=>"", "starting_pitcher"=>"", "video_url"=>""}, "commit"=>"登録する"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='create',application='Src',controller='games'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering games/new.html.erb within layouts/application
+  [1m[36mTeam Load (1.2ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."id" ASC /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:62:in `map'
+  [1m[36mStadium Load (1.1ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" ORDER BY "stadiums"."id" ASC /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:71
+  [1m[36mTeam Load (1.0ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:89
+  Rendered games/_form.html.erb (Duration: 74.5ms | GC: 22.0ms)
+  Rendered games/_form_script.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered games/new.html.erb within layouts/application (Duration: 75.4ms | GC: 22.0ms)
+  Rendered shared/_header.html.erb (Duration: 1.1ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 79.1ms | GC: 22.0ms)
+Completed 422 Unprocessable Content in 95ms (Views: 76.8ms | ActiveRecord: 4.2ms (4 queries, 0 cached) | GC: 22.0ms)
+
+
+Started POST "/games" for 172.28.0.1 at 2026-02-17 05:19:11 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by GamesController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "game"=>{"date"=>"", "opponent_team_id"=>"", "stadium_id"=>"", "custom_stadium_name"=>"", "favorite_team_score"=>"", "opponent_score"=>"", "starting_pitcher"=>"", "video_url"=>""}, "commit"=>"登録する"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='create',application='Src',controller='games'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering games/new.html.erb within layouts/application
+  [1m[36mTeam Load (0.8ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."id" ASC /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:62:in `map'
+  [1m[36mStadium Load (0.6ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" ORDER BY "stadiums"."id" ASC /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:71
+  [1m[36mTeam Load (0.7ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:89
+  Rendered games/_form.html.erb (Duration: 16.9ms | GC: 0.7ms)
+  Rendered games/_form_script.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered games/new.html.erb within layouts/application (Duration: 17.4ms | GC: 0.7ms)
+  Rendered shared/_header.html.erb (Duration: 0.4ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 19.0ms | GC: 0.7ms)
+Completed 422 Unprocessable Content in 29ms (Views: 18.3ms | ActiveRecord: 2.7ms (4 queries, 0 cached) | GC: 1.0ms)
+
+
+Started POST "/games" for 172.28.0.1 at 2026-02-17 05:19:30 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by GamesController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "game"=>{"date"=>"", "opponent_team_id"=>"", "stadium_id"=>"13", "custom_stadium_name"=>"", "favorite_team_score"=>"", "opponent_score"=>"", "starting_pitcher"=>"", "video_url"=>""}, "commit"=>"登録する"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='create',application='Src',controller='games'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/models/game.rb:28:in `other_stadium?'
+  [1m[36mStadium Load (1.9ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" WHERE "stadiums"."id" = 13 LIMIT 1 /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/models/game.rb:28:in `other_stadium?'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/controllers/games_controller.rb:17:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering games/new.html.erb within layouts/application
+  [1m[36mTeam Load (0.6ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."id" ASC /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:62:in `map'
+  [1m[36mStadium Load (0.3ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" ORDER BY "stadiums"."id" ASC /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:71
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:89
+  Rendered games/_form.html.erb (Duration: 11.5ms | GC: 0.0ms)
+  Rendered games/_form_script.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered games/new.html.erb within layouts/application (Duration: 12.0ms | GC: 0.0ms)
+  Rendered shared/_header.html.erb (Duration: 0.6ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 13.9ms | GC: 0.0ms)
+Completed 422 Unprocessable Content in 24ms (Views: 13.2ms | ActiveRecord: 4.5ms (5 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/games" for 172.28.0.1 at 2026-02-17 05:21:33 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by GamesController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "game"=>{"date"=>"", "opponent_team_id"=>"", "stadium_id"=>"13", "custom_stadium_name"=>"", "favorite_team_score"=>"", "opponent_score"=>"", "starting_pitcher"=>"", "video_url"=>""}, "commit"=>"登録する"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='create',application='Src',controller='games'*/[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/models/game.rb:28:in `other_stadium?'
+  [1m[36mStadium Load (0.8ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" WHERE "stadiums"."id" = 13 LIMIT 1 /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/models/game.rb:28:in `other_stadium?'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/controllers/games_controller.rb:17:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering games/new.html.erb within layouts/application
+  [1m[36mTeam Load (0.7ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."id" ASC /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:62:in `map'
+  [1m[36mStadium Load (0.4ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" ORDER BY "stadiums"."id" ASC /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:71
+  [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:89
+  Rendered games/_form.html.erb (Duration: 17.3ms | GC: 1.4ms)
+  Rendered games/_form_script.html.erb (Duration: 0.5ms | GC: 0.0ms)
+  Rendered games/new.html.erb within layouts/application (Duration: 19.1ms | GC: 1.4ms)
+  Rendered shared/_header.html.erb (Duration: 0.9ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 22.6ms | GC: 1.6ms)
+Completed 422 Unprocessable Content in 69ms (Views: 22.0ms | ActiveRecord: 13.5ms (5 queries, 0 cached) | GC: 7.3ms)
+
+
+Started GET "/games/new" for 172.28.0.1 at 2026-02-17 05:21:40 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by GamesController#new as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='new',application='Src',controller='games'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering games/new.html.erb within layouts/application
+  [1m[36mTeam Load (0.8ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."id" ASC /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:62:in `map'
+  [1m[36mStadium Load (1.7ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" ORDER BY "stadiums"."id" ASC /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:71
+  [1m[36mTeam Load (0.7ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*action='new',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:89
+  Rendered games/_form.html.erb (Duration: 15.1ms | GC: 0.3ms)
+  Rendered games/_form_script.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered games/new.html.erb within layouts/application (Duration: 15.5ms | GC: 0.3ms)
+  Rendered shared/_header.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 16.7ms | GC: 0.3ms)
+Completed 200 OK in 22ms (Views: 14.2ms | ActiveRecord: 4.2ms (4 queries, 0 cached) | GC: 0.3ms)
+
+
+Started POST "/games" for 172.28.0.1 at 2026-02-17 05:21:42 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by GamesController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "game"=>{"date"=>"", "opponent_team_id"=>"", "stadium_id"=>"", "custom_stadium_name"=>"", "favorite_team_score"=>"", "opponent_score"=>"", "starting_pitcher"=>"", "video_url"=>""}, "commit"=>"登録する"}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='create',application='Src',controller='games'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering games/new.html.erb within layouts/application
+  [1m[36mTeam Load (1.0ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."id" ASC /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:62:in `map'
+  [1m[36mStadium Load (1.3ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" ORDER BY "stadiums"."id" ASC /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:71
+  [1m[36mTeam Load (1.4ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:89
+  Rendered games/_form.html.erb (Duration: 22.4ms | GC: 0.0ms)
+  Rendered games/_form_script.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered games/new.html.erb within layouts/application (Duration: 23.1ms | GC: 0.0ms)
+  Rendered shared/_header.html.erb (Duration: 0.7ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 25.6ms | GC: 0.0ms)
+Completed 422 Unprocessable Content in 37ms (Views: 22.5ms | ActiveRecord: 5.4ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/games" for 172.28.0.1 at 2026-02-17 05:21:50 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by GamesController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "game"=>{"date"=>"", "opponent_team_id"=>"", "stadium_id"=>"13", "custom_stadium_name"=>"", "favorite_team_score"=>"", "opponent_score"=>"", "starting_pitcher"=>"", "video_url"=>""}, "commit"=>"登録する"}
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='create',application='Src',controller='games'*/[0m
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mBEGIN /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/models/game.rb:28:in `other_stadium?'
+  [1m[36mStadium Load (6.8ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" WHERE "stadiums"."id" = 13 LIMIT 1 /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/models/game.rb:28:in `other_stadium?'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[31mROLLBACK /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/controllers/games_controller.rb:17:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering games/new.html.erb within layouts/application
+  [1m[36mTeam Load (1.2ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."id" ASC /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:62:in `map'
+  [1m[36mStadium Load (0.7ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" ORDER BY "stadiums"."id" ASC /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:71
+  [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/views/games/_form.html.erb:89
+  Rendered games/_form.html.erb (Duration: 20.3ms | GC: 6.3ms)
+  Rendered games/_form_script.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered games/new.html.erb within layouts/application (Duration: 20.9ms | GC: 6.3ms)
+  Rendered shared/_header.html.erb (Duration: 0.6ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 23.6ms | GC: 6.3ms)
+Completed 422 Unprocessable Content in 54ms (Views: 21.7ms | ActiveRecord: 12.9ms (5 queries, 0 cached) | GC: 6.3ms)
+
+
+Started POST "/games" for 172.28.0.1 at 2026-02-17 05:23:22 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by GamesController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "game"=>{"date"=>"2026-02-18", "home_away"=>"home", "opponent_team_id"=>"3", "stadium_id"=>"2", "custom_stadium_name"=>"あああ", "favorite_team_score"=>"2", "opponent_score"=>"1", "starting_pitcher"=>"", "video_url"=>""}, "commit"=>"登録する"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='create',application='Src',controller='games'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/models/game.rb:28:in `other_stadium?'
+  [1m[36mStadium Load (2.4ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" WHERE "stadiums"."id" = 2 LIMIT 1 /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/models/game.rb:28:in `other_stadium?'
+  [1m[36mGame Create (1.3ms)[0m  [1m[32mINSERT INTO "games" ("user_id", "opponent_team_id", "stadium_id", "date", "home_away", "starting_pitcher", "favorite_team_score", "opponent_score", "custom_stadium_name", "result", "video_url", "created_at", "updated_at") VALUES (1, 3, 2, '2026-02-18', 0, '', 2, 1, NULL, 0, '', '2026-02-17 05:23:22.106749', '2026-02-17 05:23:22.106749') RETURNING "id" /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/controllers/games_controller.rb:17:in `create'
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[35mCOMMIT /*action='create',application='Src',controller='games'*/[0m
+  ↳ app/controllers/games_controller.rb:17:in `create'
+Redirected to http://localhost:3000/dashboard
+↳ app/controllers/games_controller.rb:20:in `create'
+Completed 302 Found in 19ms (ActiveRecord: 7.8ms (3 queries, 0 cached) | GC: 0.9ms)
+
+
+Started GET "/dashboard" for 172.28.0.1 at 2026-02-17 05:23:22 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardsController#show as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering dashboards/show.html.erb within layouts/application
+  [1m[36mGame Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "games" WHERE "games"."user_id" = 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  ↳ app/views/dashboards/show.html.erb:395
+  [1m[36mGame Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "games" WHERE "games"."user_id" = 1 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  ↳ app/views/dashboards/show.html.erb:402
+  [1m[36mGame Load (0.8ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."user_id" = 1 ORDER BY "games"."date" DESC, "games"."id" DESC /*action='show',application='Src',controller='dashboards'*/[0m
+  ↳ app/views/dashboards/show.html.erb:404
+  [1m[36mTeam Load (0.6ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 3 /*action='show',application='Src',controller='dashboards'*/[0m
+  ↳ app/views/dashboards/show.html.erb:404
+  [1m[36mStadium Load (0.6ms)[0m  [1m[34mSELECT "stadiums".* FROM "stadiums" WHERE "stadiums"."id" IN (2, 13) /*action='show',application='Src',controller='dashboards'*/[0m
+  ↳ app/views/dashboards/show.html.erb:404
+  [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1 /*action='show',application='Src',controller='dashboards'*/[0m
+  ↳ app/views/dashboards/show.html.erb:422
+  Rendered dashboards/show.html.erb within layouts/application (Duration: 12.6ms | GC: 0.0ms)
+  Rendered shared/_header.html.erb (Duration: 0.4ms | GC: 0.0ms)
+  Rendered shared/_flash.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 14.4ms | GC: 0.0ms)
+Completed 200 OK in 18ms (Views: 11.7ms | ActiveRecord: 3.8ms (7 queries, 0 cached) | GC: 0.0ms)
+
+

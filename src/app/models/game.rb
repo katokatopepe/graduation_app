@@ -14,6 +14,8 @@ class Game < ApplicationRecord
   validates :opponent_score, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :opponent_team_id, presence: true
   validates :stadium_id, presence: true
+  validates :result, presence: true, if: -> { favorite_team_score.present? && opponent_score.present? }
+
 
   validate :custom_stadium_name_required_when_other
 
