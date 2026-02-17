@@ -1,23 +1,25 @@
 teams = [
-  ["阪神タイガース", "阪神"],
-  ["横浜DeNAベイスターズ", "DeNA"],
-  ["読売ジャイアンツ", "巨人"],
-  ["中日ドラゴンズ", "中日"],
-  ["広島東洋カープ", "広島"],
-  ["東京ヤクルトスワローズ", "ヤクルト"],
-  ["福岡ソフトバンクホークス", "ソフトバンク"],
-  ["北海道日本ハムファイターズ", "日本ハム"],
-  ["オリックス・バファローズ", "オリックス"],
-  ["東北楽天ゴールデンイーグルス", "楽天"],
-  ["埼玉西武ライオンズ", "西武"],
-  ["千葉ロッテマリーンズ", "ロッテ"],
+  # セリーグ（2025順位）
+  { name: "阪神タイガース", short_name: "阪神", league: :central, last_year_rank: 1 },
+  { name: "横浜DeNAベイスターズ", short_name: "DeNA", league: :central, last_year_rank: 2 },
+  { name: "読売ジャイアンツ", short_name: "巨人", league: :central, last_year_rank: 3 },
+  { name: "中日ドラゴンズ", short_name: "中日", league: :central, last_year_rank: 4 },
+  { name: "広島東洋カープ", short_name: "広島", league: :central, last_year_rank: 5 },
+  { name: "東京ヤクルトスワローズ", short_name: "ヤクルト", league: :central, last_year_rank: 6 },
+
+  # パリーグ（2025順位）
+  { name: "福岡ソフトバンクホークス", short_name: "ソフトバンク", league: :pacific, last_year_rank: 1 },
+  { name: "北海道日本ハムファイターズ", short_name: "日本ハム", league: :pacific, last_year_rank: 2 },
+  { name: "オリックス・バファローズ", short_name: "オリックス", league: :pacific, last_year_rank: 3 },
+  { name: "東北楽天ゴールデンイーグルス", short_name: "楽天", league: :pacific, last_year_rank: 4 },
+  { name: "埼玉西武ライオンズ", short_name: "西武", league: :pacific, last_year_rank: 5 },
+  { name: "千葉ロッテマリーンズ", short_name: "ロッテ", league: :pacific, last_year_rank: 6 },
 ]
 
-teams.each do |name, short_name|
-  Team.find_or_create_by!(name: name) do |t|
-    t.short_name = short_name
-  end
+teams.each do |attrs|
+  Team.find_or_initialize_by(name: attrs[:name]).update!(attrs)
 end
+
 
 stadiums = [
   { name: "阪神甲子園球場", short_name: "甲子園" },

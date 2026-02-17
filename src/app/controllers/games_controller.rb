@@ -82,9 +82,10 @@ class GamesController < ApplicationController
   end
 
   def load_masters
-    @teams = Team.order(:id)
+    @teams = Team.order(:league, :last_year_rank, :id)
     @stadiums = Stadium.order(:id)
   end
+
 
   # ★ photos を除外した params
   def game_params
