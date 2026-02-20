@@ -57,13 +57,17 @@
     </div>
 
     <div class="result-badge-wrap">
-      <% fav = @game.favorite_team_score.to_i; opp = @game.opponent_score.to_i %>
-      <% if fav > opp %>
+      <% case @game.result %>
+      <% when "win" %>
         <span class="result-badge is-win">&#9733; WIN</span>
-      <% elsif fav < opp %>
+      <% when "lose" %>
         <span class="result-badge is-lose">&#9733; LOSE</span>
-      <% else %>
+      <% when "draw" %>
         <span class="result-badge is-draw">&#9733; DRAW</span>
+      <% when "canceled" %>
+        <span class="result-badge is-canceled">&#9733; CANCELED</span>
+      <% else %>
+        <span class="result-badge">&#9733; -</span>
       <% end %>
     </div>
 
