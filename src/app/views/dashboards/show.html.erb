@@ -7,12 +7,82 @@
      DASHBOARD STYLES
      ============================================ */
 
-  /* --- サマリセクション（プレースホルダー） --- */
+  /* --- フィルタバー --- */
+  .filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .filter-select {
+    appearance: none;
+    -webkit-appearance: none;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    padding: 0.5rem 2rem 0.5rem 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23888'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    min-width: 120px;
+  }
+
+  .filter-select:hover {
+    border-color: var(--text-muted);
+    background-color: rgba(255, 255, 255, 0.09);
+  }
+
+  .filter-select:focus {
+    outline: none;
+    border-color: var(--accent-green);
+    box-shadow: 0 0 0 2px rgba(50, 205, 50, 0.15);
+  }
+
+  .filter-select option {
+    background: #2a2a2e;
+    color: var(--text-primary);
+  }
+
+  .filter-select.is-active {
+    border-color: var(--accent-green);
+    background-color: rgba(50, 205, 50, 0.06);
+  }
+
+  .filter-reset {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.45rem 0.75rem;
+    font-size: 0.78rem;
+    font-family: var(--font-body);
+    color: var(--text-muted);
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .filter-reset:hover {
+    color: var(--text-secondary);
+    background: rgba(255, 255, 255, 0.04);
+    border-color: var(--border-light);
+  }
+
+  /* --- サマリセクション --- */
   .dashboard-summary {
     background: var(--bg-card);
     border: 1px solid var(--border-subtle);
     border-radius: 10px;
-    padding: 2.5rem 2rem;
+    padding: 2rem 1.5rem;
     margin-bottom: 2.5rem;
     position: relative;
     overflow: hidden;
@@ -45,7 +115,241 @@
     font-size: 1.1rem;
   }
 
-  .summary-placeholder {
+  /* サマリ本体のグリッドレイアウト */
+  .summary-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 1.25rem;
+  }
+
+  /* 左上: 円グラフ + 合計勝敗 */
+  .summary-chart-area {
+    grid-row: 1 / 2;
+    grid-column: 1 / 2;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+  }
+
+  /* 右上: ホーム・ビジター勝敗 */
+  .summary-breakdown {
+    grid-row: 1 / 2;
+    grid-column: 2 / 2;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  /* 下段: 統計カード3列 */
+  .summary-stats-row {
+    grid-row: 2 / 3;
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+  }
+
+  /* --- 円グラフ（CSS conic-gradient） --- */
+  .pie-chart-wrapper {
+    flex-shrink: 0;
+    position: relative;
+    width: 110px;
+    height: 110px;
+  }
+
+  .pie-chart {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    position: relative;
+  }
+
+  .pie-chart-inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--bg-card);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .pie-chart-total {
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  .pie-chart-total strong {
+    display: block;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+  }
+
+  /* 凡例 */
+  .chart-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+  }
+
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .legend-dot.win  { background: var(--accent-green); }
+  .legend-dot.lose { background: var(--accent-orange); }
+  .legend-dot.draw { background: var(--text-muted); }
+
+  .legend-label {
+    color: var(--text-secondary);
+  }
+
+  .legend-count {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-left: auto;
+  }
+
+  /* --- ホーム・ビジター勝敗カード --- */
+  .breakdown-card {
+    padding: 0.85rem 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .breakdown-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    min-width: 60px;
+    flex-shrink: 0;
+  }
+
+  .breakdown-record {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    flex: 1;
+  }
+
+  .breakdown-win {
+    color: var(--accent-green);
+    font-weight: 700;
+  }
+
+  .breakdown-lose {
+    color: var(--accent-orange);
+    font-weight: 700;
+  }
+
+  .breakdown-draw {
+    color: var(--text-muted);
+    font-weight: 700;
+  }
+
+  .breakdown-sep {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+  }
+
+  /* ミニ勝率バー */
+  .breakdown-bar-track {
+    flex-shrink: 0;
+    width: 60px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .breakdown-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    background: var(--accent-green);
+    transition: width 0.4s ease;
+  }
+
+  /* --- 統計カード --- */
+  .stat-card {
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    text-align: center;
+  }
+
+  .stat-card-label {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+  }
+
+  .stat-card-value {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.2;
+  }
+
+  .stat-card-value.scored {
+    color: var(--accent-green);
+  }
+
+  .stat-card-value.allowed {
+    color: var(--accent-orange);
+  }
+
+  .stat-card-sub {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-top: 0.25rem;
+  }
+
+  /* 直近5試合の勝敗テキスト */
+  .recent-record {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    margin-top: 0.3rem;
+  }
+
+  .recent-record-win  { color: var(--accent-green); font-weight: 700; font-size: 0.85rem; }
+  .recent-record-lose { color: var(--accent-orange); font-weight: 700; font-size: 0.85rem; }
+  .recent-record-draw { color: var(--text-muted); font-weight: 700; font-size: 0.85rem; }
+
+  /* --- 0件時のサマリ --- */
+  .summary-empty {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -58,14 +362,22 @@
     gap: 0.75rem;
   }
 
-  .summary-placeholder-icon {
+  .summary-empty-icon {
     font-size: 2.2rem;
     opacity: 0.4;
   }
 
-  .summary-placeholder-text {
+  .summary-empty-text {
     text-align: center;
     line-height: 1.6;
+  }
+
+  /* --- 中止テキスト --- */
+  .canceled-note {
+    text-align: right;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
   }
 
   /* --- 試合結果一覧セクション --- */
@@ -204,7 +516,7 @@
   /* 日付 */
   .game-date {
     flex-shrink: 0;
-    width: 60px;
+    width: 90px;
     font-size: 0.82rem;
     color: var(--text-secondary);
     font-variant-numeric: tabular-nums;
@@ -323,6 +635,33 @@
       padding: 1.5rem 1.25rem;
     }
 
+    .filter-bar {
+      gap: 0.5rem;
+    }
+
+    .filter-select {
+      min-width: 100px;
+      font-size: 0.78rem;
+      padding: 0.45rem 1.8rem 0.45rem 0.6rem;
+    }
+
+    .summary-body {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto auto;
+    }
+
+    .summary-chart-area {
+      grid-column: 1 / -1;
+    }
+
+    .summary-breakdown {
+      grid-column: 1 / -1;
+    }
+
+    .summary-stats-row {
+      grid-column: 1 / -1;
+    }
+
     .games-section {
       padding: 1.25rem 1rem;
     }
@@ -344,7 +683,7 @@
     }
 
     .game-date {
-      width: 52px;
+      width: 78px;
       font-size: 0.78rem;
     }
 
@@ -355,6 +694,20 @@
   }
 
   @media (max-width: 480px) {
+    .summary-chart-area {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .chart-legend {
+      width: 100%;
+    }
+
+    .summary-stats-row {
+      grid-template-columns: 1fr;
+    }
+
     .game-result-mark {
       width: 24px;
       height: 24px;
@@ -368,19 +721,173 @@
 </style>
 
 <!-- ============================================
-     サマリセクション（プレースホルダー）
+     観戦結果サマリ
      ============================================ -->
 <section class="dashboard-summary">
   <h2 class="summary-title">
     <span class="summary-title-icon">&#x1F4CA;</span>
     観戦結果サマリ
   </h2>
-  <div class="summary-placeholder">
-    <div class="summary-placeholder-icon">&#x1F3DF;&#xFE0F;</div>
-    <div class="summary-placeholder-text">
-      観戦データのサマリ・グラフ機能は<br>次回アップデートで実装予定です
+
+  <%# --- フィルタバー --- %>
+  <%= form_tag dashboard_path, method: :get, class: "filter-bar" do %>
+    <select name="year" class="filter-select <%= 'is-active' if @filter_year %>" onchange="this.form.submit()">
+      <option value="">全期間</option>
+      <% @filter_years.each do |y| %>
+        <option value="<%= y %>" <%= 'selected' if @filter_year == y.to_s %>><%= y %>年</option>
+      <% end %>
+    </select>
+
+    <select name="opponent" class="filter-select <%= 'is-active' if @filter_opponent %>" onchange="this.form.submit()">
+      <option value="">対戦相手：全て</option>
+      <% @filter_opponents.each do |team| %>
+        <option value="<%= team.id %>" <%= 'selected' if @filter_opponent == team.id.to_s %>><%= team.display_name(:short) %></option>
+      <% end %>
+    </select>
+
+    <select name="stadium" class="filter-select <%= 'is-active' if @filter_stadium %>" onchange="this.form.submit()">
+      <option value="">球場：全て</option>
+      <% @filter_stadiums.each do |s| %>
+        <option value="<%= s.id %>" <%= 'selected' if @filter_stadium == s.id.to_s %>><%= s.name %></option>
+      <% end %>
+    </select>
+
+    <% if @filter_year || @filter_opponent || @filter_stadium %>
+      <%= link_to dashboard_path, class: "filter-reset" do %>
+        &#x2715; リセット
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <%# --- サマリ本体 --- %>
+  <% if @summary[:total][:total] > 0 %>
+    <%
+      # 円グラフ用の角度計算
+      total = @summary[:total]
+      sum = total[:total].to_f
+      win_pct  = (total[:win]  / sum * 100).round(1)
+      lose_pct = (total[:lose] / sum * 100).round(1)
+      draw_pct = (100 - win_pct - lose_pct).round(1)
+
+      # conic-gradient の角度
+      win_deg  = (total[:win]  / sum * 360).round(1)
+      lose_deg = (total[:lose] / sum * 360).round(1)
+    %>
+
+    <div class="summary-body">
+      <%# 左上: 円グラフ + 勝敗（合計） %>
+      <div class="summary-chart-area">
+        <div class="pie-chart-wrapper">
+          <div class="pie-chart" style="background: conic-gradient(
+            var(--accent-green) 0deg <%= win_deg %>deg,
+            var(--accent-orange) <%= win_deg %>deg <%= win_deg + lose_deg %>deg,
+            rgba(255,255,255,0.25) <%= win_deg + lose_deg %>deg 360deg
+          );">
+            <div class="pie-chart-inner">
+              <span class="pie-chart-total">
+                <strong><%= total[:total] %></strong>
+                試合
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="chart-legend">
+          <div class="legend-item">
+            <span class="legend-dot win"></span>
+            <span class="legend-label">勝</span>
+            <span class="legend-count"><%= total[:win] %></span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot lose"></span>
+            <span class="legend-label">負</span>
+            <span class="legend-count"><%= total[:lose] %></span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot draw"></span>
+            <span class="legend-label">分</span>
+            <span class="legend-count"><%= total[:draw] %></span>
+          </div>
+        </div>
+      </div>
+
+      <%# 右上: ホーム・ビジター勝敗 %>
+      <div class="summary-breakdown">
+        <%# ホーム %>
+        <div class="breakdown-card">
+          <span class="breakdown-label">ホーム</span>
+          <span class="breakdown-record">
+            <span class="breakdown-win"><%= @summary[:home][:win] %>勝</span>
+            <span class="breakdown-sep">/</span>
+            <span class="breakdown-lose"><%= @summary[:home][:lose] %>敗</span>
+            <span class="breakdown-sep">/</span>
+            <span class="breakdown-draw"><%= @summary[:home][:draw] %>分</span>
+          </span>
+          <% home_total = @summary[:home][:total] %>
+          <% home_win_pct = home_total > 0 ? (@summary[:home][:win].to_f / home_total * 100).round : 0 %>
+          <div class="breakdown-bar-track">
+            <div class="breakdown-bar-fill" style="width: <%= home_win_pct %>%"></div>
+          </div>
+        </div>
+
+        <%# ビジター %>
+        <div class="breakdown-card">
+          <span class="breakdown-label">ビジター</span>
+          <span class="breakdown-record">
+            <span class="breakdown-win"><%= @summary[:visitor][:win] %>勝</span>
+            <span class="breakdown-sep">/</span>
+            <span class="breakdown-lose"><%= @summary[:visitor][:lose] %>敗</span>
+            <span class="breakdown-sep">/</span>
+            <span class="breakdown-draw"><%= @summary[:visitor][:draw] %>分</span>
+          </span>
+          <% visitor_total = @summary[:visitor][:total] %>
+          <% visitor_win_pct = visitor_total > 0 ? (@summary[:visitor][:win].to_f / visitor_total * 100).round : 0 %>
+          <div class="breakdown-bar-track">
+            <div class="breakdown-bar-fill" style="width: <%= visitor_win_pct %>%"></div>
+          </div>
+        </div>
+      </div>
+
+      <%# 下段: 平均得点・平均失点・直近5試合 %>
+      <div class="summary-stats-row">
+        <div class="stat-card">
+          <div class="stat-card-label">平均得点</div>
+          <div class="stat-card-value scored"><%= @avg_scored || "--" %></div>
+          <div class="stat-card-sub">対象：<%= @active_game_count %>試合</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-card-label">平均失点</div>
+          <div class="stat-card-value allowed"><%= @avg_allowed || "--" %></div>
+          <div class="stat-card-sub">対象：<%= @active_game_count %>試合</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-card-label">直近5試合</div>
+          <div class="stat-card-value"><%= @recent_5_record[:total] %><span style="font-size: 0.8rem; font-weight: 400; color: var(--text-muted);">試合</span></div>
+          <div class="recent-record">
+            <span class="recent-record-win"><%= @recent_5_record[:win] %>勝</span>
+            <span class="recent-record-lose"><%= @recent_5_record[:lose] %>敗</span>
+            <span class="recent-record-draw"><%= @recent_5_record[:draw] %>分</span>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
+
+    <% if @canceled_count > 0 %>
+      <div class="canceled-note">※ 中止試合 <%= @canceled_count %>件（集計対象外）</div>
+    <% end %>
+
+  <% else %>
+    <%# データ0件時 %>
+    <div class="summary-empty">
+      <div class="summary-empty-icon">&#x1F3DF;&#xFE0F;</div>
+      <div class="summary-empty-text">
+        まだ試合記録がありません<br>
+        試合を記録するとサマリが表示されます
+      </div>
+    </div>
+  <% end %>
 </section>
 
 <!-- ============================================
@@ -414,7 +921,7 @@
             </span>
 
             <%# 日付 %>
-            <span class="game-date"><%= game.date.strftime("%-m/%-d") %></span>
+            <span class="game-date"><%= game.date.strftime("%Y/%-m/%-d") %></span>
 
             <%# スコア %>
             <span class="game-score">
