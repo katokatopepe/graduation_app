@@ -1458,3 +1458,5 @@ html {
   .score-vs-text { font-size: 0.7rem; }
   .photo-gallery { grid-template-columns: repeat(2, 1fr); }
 }
+
+.result-badge.is-canceled { opacity: 0.8; }
