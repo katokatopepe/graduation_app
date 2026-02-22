@@ -76,4 +76,4 @@ https://yakyu-log.com/
 - 使用するフレームワーク：Ruby on Rails
 - データベース：PostgreSQL
 - デプロイ先：Heroku
-- 使用予定のライブラリ:Sorcery・Active Storage・Kaminari・Ransack等
+- 使用予定のライブラリ:Sorcery・Active Storage・Ransack等
